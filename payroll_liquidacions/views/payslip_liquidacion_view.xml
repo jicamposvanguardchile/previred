@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="pways_hr_payroll.view_hr_payslip_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='line_ids']" position="before">
-                <button name="get_indicadores" type="object" string="Calcular Liquidación" class="oe_highlight"/>
+                <button name="get_indicadores" type="object" string="Calcular liq" class="oe_highlight"/>
             </xpath>
         </field>
     </record>
