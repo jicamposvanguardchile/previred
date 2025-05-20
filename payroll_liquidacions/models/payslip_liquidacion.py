@@ -142,7 +142,7 @@ class HrPayslip(models.Model):
 
         for tabla in tablas:
             encabezado = normalizar(tabla.get_text())
-            if 'seguro de cesantia (AFC)' in encabezado or 'contrato' in encabezado:
+            if 'seguro de cesantia' in encabezado or 'afc' in encabezado:
                 for fila in tabla.find_all('tr')[1:]:
                     celdas = fila.find_all('td')
                     if len(celdas) >= 3:
@@ -163,7 +163,7 @@ class HrPayslip(models.Model):
 
         for tabla in tablas:
             encabezado = normalizar(tabla.get_text())
-            if 'tasa cotización obligatorio afp' in encabezado or 'AFP' in encabezado:
+            if 'tasa cotización obligatorio afp' in encabezado or 'afp' in encabezado:
                 for fila in tabla.find_all('tr')[1:]: 
                     celdas = fila.find_all('td')
                     if len(celdas) >= 4:  
