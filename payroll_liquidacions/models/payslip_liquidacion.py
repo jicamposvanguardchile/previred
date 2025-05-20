@@ -142,13 +142,13 @@ class HrPayslip(models.Model):
 
         for tabla in tablas:
             encabezado = normalizar(tabla.get_text())
-            if 'seguro de cesantia (AFC)' in encabezado:
+            if 'seguro de cesantia (AFC)' in encabezado or 'contrato' in encabezado:
                 for fila in tabla.find_all('tr')[1:]:
                     celdas = fila.find_all('td')
                     if len(celdas) >= 3:
                         contrato = celdas[0].get_text(strip=True)
-                        empleador = extraer_porcentaje(celdas[1].get_text(strip=True))
-                        trabajador = extraer_porcentaje(celdas[2].get_text(strip=True))
+                        empleador = extraer_monto(celdas[1].get_text(strip=True))
+                        trabajador = extraer_monto(celdas[2].get_text(strip=True))
 
 
                         self.env['hr.seguro.cesantia'].create({
@@ -163,7 +163,7 @@ class HrPayslip(models.Model):
 
         for tabla in tablas:
             encabezado = normalizar(tabla.get_text())
-            if 'tasa cotizacion obligatoria afp' in encabezado:
+            if 'tasa cotización obligatorio afp' in encabezado or 'AFP' in encabezado:
                 for fila in tabla.find_all('tr')[1:]: 
                     celdas = fila.find_all('td')
                     if len(celdas) >= 4:  
