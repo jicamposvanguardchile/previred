@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_indicadores,access_hr_indicadores,model_hr_indicadores,base.group_user,1,1,1,1
+access_hr_asignacion_familiar,access_hr_asignacion_familiar,model_hr_asignacion_familiar,base.group_user,1,1,1,1
+access_hr_seguro_cesantia,access_hr_seguro_cesantia,model_hr_seguro_cesantia,base.group_user,1,1,1,1
+access_hr_cotizacion_obligatoria_afp,access_hr_cotizacion_obligatoria_afp,model_hr_cotizacion_obligatoria_afp,base.group_user,1,1,1,1
+access_hr_cotizacion_trabajos_pesados,access_hr_cotizacion_trabajos_pesados,model_hr_cotizacion_trabajos_pesados,base.group_user,1,1,1,1
