@@ -4,7 +4,7 @@ from datetime import date, datetime, time, timedelta
 from odoo import api, fields, models, tools, _, Command
 from odoo.addons import decimal_precision as dp
 from odoo.exceptions import UserError, ValidationError
-from odoo.addons.pways_hr_payroll.models.browsable_object import BrowsableObject
+
 
 import logging
 _logger = logging.getLogger(__name__)
