@@ -1,55 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-
-        <!-- Vista formulario -->
-        <record id="view_form_l10n_cl_payslip_input_type" model="ir.ui.view">
+        <record id="hr_payslip_input_type_view_form_inherit" model="ir.ui.view">
             <field name="name">l10n_cl_hr.payslip.input.type.form</field>
-            <field name="model">l10n_cl_hr.payslip.input.type</field>
+            <field name="model">l10n_cl_hr.payslip.input.typee</field>
+            <field name="inherit_id" ref="pways_hr_payroll.hr_payslip_input_type_view_form"/>
             <field name="arch" type="xml">
-                <form string="Tipo de Input CL">
-                    <sheet>
-                        <group>
-                            <field name="name"/>
-                            <field name="code"/>
-                            <field name="show_input"/>
-                        </group>
-                    </sheet>
-                </form>
+
+                <field name="code" position="after">
+                    <field name="invisible_show_input" invisible="1"/>  
+		    <field name="show_input" attrs="{'invisible': [('invisible_show_input','=',True)]}"/>  
+                </field>
+
             </field>
         </record>
 
-        <!-- Vista árbol -->
-        <record id="view_tree_l10n_cl_payslip_input_type" model="ir.ui.view">
+        <record id="hr_payslip_input_type_view_tree_inherit" model="ir.ui.view">
             <field name="name">l10n_cl_hr.payslip.input.type.tree</field>
             <field name="model">l10n_cl_hr.payslip.input.type</field>
+            <field name="inherit_id" ref="pways_hr_payroll.hr_payslip_input_type_view_tree"/>
             <field name="arch" type="xml">
-                <tree>
-                    <field name="name"/>
-                    <field name="code"/>
-                    <field name="show_input"/>
-                </tree>
+
+                <field name="struct_ids" position="after">
+                    <field name="show_input"/>  
+                </field>
+
             </field>
         </record>
-
-        <!-- Acción -->
-        <record id="action_l10n_cl_hr_payslip_input_type" model="ir.actions.act_window">
-            <field name="name">Tipos de Input CL</field>
-            <field name="res_model">l10n_cl_hr.payslip.input.type</field>
-            <field name="view_mode">tree,form</field>
-        </record>
-
-        <!-- Menú raíz -->
-        <menuitem id="menu_l10n_cl_hr_payslip_input_type_root"
-                  name="Nómina CL"
-                  sequence="10"/>
-
-        <!-- Submenú -->
-        <menuitem id="menu_l10n_cl_hr_payslip_input_type"
-                  name="Tipos de Input"
-                  parent="menu_l10n_cl_hr_payslip_input_type_root"
-                  action="action_l10n_cl_hr_payslip_input_type"
-                  sequence="20"/>
 
     </data>
 </odoo>
