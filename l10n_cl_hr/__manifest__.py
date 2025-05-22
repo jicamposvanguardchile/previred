@@ -4,8 +4,7 @@
     'website': 'http://www.vanguardchile.cl',
     'license': 'AGPL-3',
     'depends': [
-            'hr_payroll',
-            'hr_payroll_account',
+            'pways_hr_payroll',
             'hr_holidays'
         ],
     'external_dependencies': {
@@ -18,7 +17,7 @@
         "KONOS",
     ],
     'license': 'AGPL-3',
-    'version': '15.0.1.0.2',
+    'version': '18.1',
     'description': """
 Chilean Payroll & Human Resources.
 ==================================
