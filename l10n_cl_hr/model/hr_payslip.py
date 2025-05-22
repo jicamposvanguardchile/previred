@@ -4,7 +4,7 @@ from datetime import date, datetime, time, timedelta
 from odoo import api, fields, models, tools, _, Command
 from odoo.addons import decimal_precision as dp
 from odoo.exceptions import UserError, ValidationError
-from odoo.addons.pways_hr_payroll.models.browsable_object import BrowsableObject
+#from odoo.addons.pways_hr_payroll.models.browsable_object import BrowsableObject
 
 import logging
 _logger = logging.getLogger(__name__)
@@ -89,7 +89,7 @@ class HrPayslip(models.Model):
             #payslip.parameters_ids.append(values)
             #payslip.update({'parameters_ids':[(0,0,values)]})
 
-
+    
     @api.model
     def create(self, vals):
         #JCR revisar. 
@@ -160,7 +160,15 @@ class HrPayslip(models.Model):
 
     @api.model
     def _get_localdict(self):
-        self.ensure_one()
+        class BrowsableObject(object):
+            def __init__(self, employee_id, dict, env=None):
+                self.employee_id = employee_id
+                self.dict = dict
+                self.env = env
+
+            def __getattr__(self, attr):
+                return self.dict.get(attr, 0.0)
+                self.ensure_one()
 
         localdict = super(HrPayslip, self)._get_localdict()
 
