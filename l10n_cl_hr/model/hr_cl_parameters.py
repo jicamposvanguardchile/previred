@@ -11,9 +11,9 @@ class HrPayslipClParameters(models.Model):
     _name = 'hr.payslip.cl.parameters'
     _description = 'Parámetros de Nómina Loc Chile'
 
-    work_entry_type_id = fields.Many2one('hr.work.entry.type', string='Type', required=True, ondelete='cascade',
-            index=True, help="The code that can be used in the salary rules")
-    name = fields.Char(string='Description', related='work_entry_type_id.name', store=True)
+    #work_entry_type_id = fields.Many2one('hr.work.entry.type', string='Type', required=True, ondelete='cascade',
+    #       index=True, help="The code that can be used in the salary rules")
+    name = fields.Char(string='Description')
     code = fields.Char(string='Code', related='work_entry_type_id.code')
 
     payslip_id = fields.Many2one('hr.payslip', string='Pay Slip', required=True, ondelete='cascade', index=True)
