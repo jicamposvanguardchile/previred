@@ -8,7 +8,7 @@ _logger = logging.getLogger(__name__)
 
 
 class HrPayslipClParameters(models.Model):
-    _name = 'l10n_cl_hr.payslip.cl.parameters'
+    _name = 'hr.payslip.cl.parameters'
     _description = 'Parámetros de Nómina Loc Chile'
 
     work_entry_type_id = fields.Many2one('hr.work.entry.type', string='Type', required=True, ondelete='cascade',

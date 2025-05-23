@@ -33,7 +33,7 @@ class HrPayslip(models.Model):
     date_end_mp = fields.Date('Fecha Fin MP',  help="Fecha del fin del movimiento de personal")
 
     #compute='_compute_parameters', store=True, readonly=True, copy=True,
-    parameters_ids = fields.One2many('l10n_cl_hr.payslip.cl.parameters', 'payslip_id', string='Parámetros Nómina CL',
+    parameters_ids = fields.One2many('hr.payslip.cl.parameters', 'payslip_id', string='Parámetros Nómina CL',
             store=True, copy=True, states={'draft': [('readonly', False)], 'verify': [('readonly', False)]})
 
 
