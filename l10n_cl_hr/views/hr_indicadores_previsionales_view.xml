@@ -169,11 +169,11 @@
 										<field name="mutual_seguridad_bool"
 											string="Tiene Mutual" />
 										<field name="mutualidad_id" string="Nombre"
-											invisible="mutual_seguridad_bool = False" />
+											invisible="mutual_seguridad_bool == False" />
 										<field name="mutual_seguridad"
-											invisible="mutual_seguridad_bool = False"/>
+											invisible="mutual_seguridad_bool == False"/>
 										<field name="isl"
-											invisible="mutual_seguridad_bool = True"/>
+											invisible="mutual_seguridad_bool == True"/>
 									</group>
 								</group>
 							</page>
