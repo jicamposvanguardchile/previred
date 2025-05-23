@@ -60,8 +60,6 @@
 	</record>
 
 
-
-
 	<!-- Menu DATOS MAESTROS -->
 	<menuitem id="cl_hr_menu_hr_job_tree"
 		action="hr.action_hr_job" parent="menu_cl_hr_payroll_master_data"
