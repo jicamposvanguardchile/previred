@@ -7,12 +7,12 @@
 		<field name="arch" type="xml">
 			<form string="Indicadores Previsionales">
 				<header>
-					<button string="Validar" type="object" name="action_done" states="draft" class="oe_highlight"
-						groups="hr_payroll.group_hr_payroll_user" />
-					<button string="Volver a borrador" type="object" name="action_draft" states="done" 
-						groups="hr_payroll.group_hr_payroll_manager" />
+					<button string="Validar" type="object" name="action_done" invisible="state != 'draft' " class="oe_highlight"
+						groups="pways_hr_payroll.group_hr_payroll_user" />
+					<button string="Volver a borrador" type="object" name="action_draft" invisible="state != 'done' " 
+						groups="pways_hr_payroll.group_hr_payroll_manager" />
 					<button string="Update" type="object" name="update_document"
-						context="{'force_update':True}" states="draft" />
+						context="{'force_update':True}" invisible="state != 'draft' " />
 					<field name="state" widget="statusbar" />
 				</header>
 				<sheet>
