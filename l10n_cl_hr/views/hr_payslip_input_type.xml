@@ -9,7 +9,7 @@
 
                 <field name="code" position="after">
                     <field name="invisible_show_input" invisible="1"/>  
-		    <field name="show_input" attrs="{'invisible': [('invisible_show_input','=',True)]}"/>  
+		    <field name="show_input" invisible="invisible_show_input == True"/>  
                 </field>
 
             </field>
