@@ -47,9 +47,9 @@
 		<field name="parent_id" ref="pways_hr_payroll.menu_hr_payroll_root" />
 	</record>
 
-	<record id="pways_hr_payroll.menu_hr_payroll_work_entries_root" model="ir.ui.menu">
+	<!-- <record id="pways_hr_payroll.menu_hr_payroll_work_entries_root" model="ir.ui.menu">
 		<field name="parent_id" ref="pways_hr_payroll.menu_hr_payroll_root" />
-	</record>
+	</record> -->
 	<!-- **** Employees **** -->
 	<record id="pways_hr_payroll.menu_hr_payroll_employees_root" model="ir.ui.menu">
 		<field name="parent_id" ref="pways_hr_payroll.menu_hr_payroll_root" />
