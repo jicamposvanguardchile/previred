@@ -10,14 +10,14 @@
             <field name="target">new</field>
         </record>
 
-        <menuitem
+       <!-- <menuitem
             name="Libro de Remuneraciones"
             parent="pways_hr_payroll.menu_cl_hr_payroll_reports"
             sequence="10"
             action="action_salary_books"
             id="menu_salary_books"
            />
-
+        -->
         <record id="view_salary_employee_month" model="ir.ui.view">
             <field name="name">Libro de Remuneraciones</field>
             <field name="model">hr.salary.employee.month</field>
