@@ -24,7 +24,7 @@
 			<form string="Parámetros">
                             <group col="3">
                                 <field name="name"/>
-                                <field name="work_entry_type_id"/>
+                               <!--d name="work_entry_type_id"/> -->
                                 <field name="number_of_days"/>
                                 <field name="number_of_hours" invisible="1"/>
                             </group>
