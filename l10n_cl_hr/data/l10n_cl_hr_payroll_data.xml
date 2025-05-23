@@ -39,7 +39,7 @@
 	<record id="hr_rule_1" model="hr.salary.rule">
             <field name="name">SUELDO BASE</field>
 	    <field name="sequence" eval="1"/>
-	    <field name="struct_id" ref="hr_structure_salary_rule_rel"/>
+	    <field name="struct_id" ref="hr_struct_cl"/>
             <field name="code">SUELDO</field> 
 	    <field name="category_id" ref="IMPONIBLE"/>
             <field name="condition_select">none</field>
