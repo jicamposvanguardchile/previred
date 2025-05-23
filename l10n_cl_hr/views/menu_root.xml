@@ -63,7 +63,7 @@
 	<!-- Menu DATOS MAESTROS -->
 	<menuitem id="cl_hr_menu_hr_job_tree"
 		action="hr.action_hr_job" parent="menu_cl_hr_payroll_master_data"
-		sequence="2" groups="hr_payroll.group_hr_payroll_user" />
+		sequence="2" groups="pways_hr_payroll.group_hr_payroll_user" />
 
 	<menuitem id="cl_hr_menu_hr_department_tree"
 		action="hr.hr_department_kanban_action"
@@ -78,7 +78,7 @@
 	<menuitem id="cl_hr_partner_bank_account_tree_view"
 		action="base.action_res_partner_bank_account_form"
 		parent="menu_cl_hr_payroll_master_data" sequence="5"
-		groups="hr_payroll.group_hr_payroll_user" />
+		groups="pways_hr_payroll.group_hr_payroll_user" />
 
 	<menuitem id="cl_hr_account_analytic_def_account"
 		action="analytic.action_account_analytic_account_form"
@@ -93,11 +93,11 @@
 	<menuitem id="cl_hr_resource_calendar_form"
 		action="resource.action_resource_calendar_form"
 		parent="menu_cl_hr_payroll_master_data" sequence="8"
-		groups="hr_payroll.group_hr_payroll_user" />
+		groups="pways_hr_payroll.group_hr_payroll_user" />
 
 	<menuitem id="cl_hr_resource_calendar_leave_tree"
 		action="resource.action_resource_calendar_leave_tree"
 		parent="menu_cl_hr_payroll_master_data" sequence="9"
-		groups="hr_payroll.group_hr_payroll_user" />
+		groups="pways_hr_payroll.group_hr_payroll_user" />
 
 </odoo>
