@@ -60,23 +60,23 @@
 							<div name="isapre_id">
 								<field name="isapre_id" string="Salud" required="1" />
 							</div>
-							<label for="isapre_moneda" attrs="{'invisible': [('isapre_id', '=', 1)]}" />
+							<label for="isapre_moneda" invisible="isapre_id == 1"/>
 							<div name="isapre_moneda">
-								<field name="isapre_moneda" attrs="{'invisible': [('isapre_id', '=', 1)]}" />
+								<field name="isapre_moneda" invisible="isapre_id == 1"/>
 							</div>
-							<label for="isapre_cotizacion_uf" attrs="{'invisible': [('isapre_id', '=', 1)]}"
+							<label for="isapre_cotizacion_uf" invisible="isapre_id == 1"
 								string="Cotización Pactada" />
 							<div name="isapre_cotizacion_uf">
-								<field name="isapre_cotizacion_uf" attrs="{'invisible': [('isapre_id', '=', 1)]}"
+								<field name="isapre_cotizacion_uf" invisible="isapre_id == 1"
 									string="Cotización" />
 							</div>
-							<label for="isapre_fun" attrs="{'invisible': [('isapre_id', '=', 1)]}" />
+							<label for="isapre_fun" invisible="isapre_id == 1" />
 							<div name="isapre_fun">
-								<field name="isapre_fun" attrs="{'invisible': [('isapre_id', '=', 1)]}" />
+								<field name="isapre_fun" invisible="isapre_id == 1" />
 							</div>
-							<label for="isapre_cuenta_propia" attrs="{'invisible': [('isapre_id', '=', 1)]}" />
+							<label for="isapre_cuenta_propia" invisible="isapre_id == 1" />
 							<div name="isapre_cuenta_propia">
-								<field name="isapre_cuenta_propia" attrs="{'invisible': [('isapre_id', '=', 1)]}" />
+								<field name="isapre_cuenta_propia" invisible="isapre_id == 1" />
 							</div>
 							
 						</group>
@@ -115,7 +115,7 @@
 							<label for="afp_id" />
 							<div name="afp_id">
 								<field name="afp_id" string="AFP"
-									attrs="{'invisible': [('pension', '!=', False)],'required': [('pension', '==', False)]}" />
+									invisible="pension == False"/>
 							</div>
 						</group>
 						<group name="APV" string="Aporte Previsional Voluntario">
