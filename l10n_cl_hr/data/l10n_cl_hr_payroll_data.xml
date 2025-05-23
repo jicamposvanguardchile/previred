@@ -15,7 +15,7 @@
             <field name='partner_id' ref='sii'/>
         </record>
 	-->
-	<record id="hr_struct_cl" model="pways.hr.payroll.structure">
+	<record id="hr_struct_cl" model="hr.payroll.structure">
 		<field name="name">Codigo del Trabajo</field>
 		<field name="code">Codigo del Trabajo de Chile</field>
 		<field name="type_id">1</field>
