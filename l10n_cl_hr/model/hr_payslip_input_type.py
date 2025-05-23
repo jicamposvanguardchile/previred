@@ -30,7 +30,7 @@ class HrPayslipInputType(models.Model):
     @api.model
     def _get_attachment_types(self):
         return {
-            'attachment': self.env.ref('hr_payroll.input_attachment_salary'),
-            'assignment': self.env.ref('hr_payroll.input_assignment_salary'),
-            'child_support': self.env.ref('hr_payroll.input_child_support'),
+            'attachment': self.env.ref('pways_hr_payroll.input_attachment_salary'),
+            'assignment': self.env.ref('pways_hr_payroll.input_assignment_salary'),
+            'child_support': self.env.ref('pways_hr_payroll.input_child_support'),
         }
