@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+        <!--
         <record id="hr_payslip_input_type_view_form_inherit" model="ir.ui.view">
             <field name="name">hr.payslip.input.type.form</field>
             <field name="model">hr.payslip.input.type</field>
@@ -13,7 +14,7 @@
                 </field>
 
             </field>
-        </record>
+        </record> -->
 
         <record id="hr_payslip_input_type_view_tree_inherit" model="ir.ui.view">
             <field name="name">hr.payslip.input.type.tree</field>
