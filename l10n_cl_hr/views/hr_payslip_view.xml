@@ -9,8 +9,8 @@
 	         <field name="credit_note" position="after">
                     <field name="indicadores_id" required="1"/>
 		    <field name="movimientos_personal" String="Código Movimiento"/>
-                    <field name="date_start_mp" String="Inicio MP" attrs="{'invisible': [('movimientos_personal', '=', '0')]}"/>
-		    <field name="date_end_mp" String="Fin MP" attrs="{'invisible': [('movimientos_personal', '=', '0')]}"/>
+                    <field name="date_start_mp" String="Inicio MP" invisible="movimientos_personal == 0"/>
+		    <field name="date_end_mp" String="Fin MP" invisible="movimientos_personal == 0"/>
 		</field>
 	        <field name="input_line_ids" position="after">
 		    <separator string="Parámetros Adicionales"/>
