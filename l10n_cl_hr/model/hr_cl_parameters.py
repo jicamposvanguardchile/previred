@@ -14,7 +14,7 @@ class HrPayslipClParameters(models.Model):
     #work_entry_type_id = fields.Many2one('hr.work.entry.type', string='Type', required=True, ondelete='cascade',
     #       index=True, help="The code that can be used in the salary rules")
     name = fields.Char(string='Description')
-    code = fields.Char(string='Code', related='work_entry_type_id.code')
+    code = fields.Char(string='Code')
 
     payslip_id = fields.Many2one('hr.payslip', string='Pay Slip', required=True, ondelete='cascade', index=True)
     sequence = fields.Integer(required=True, index=True, default=10)
