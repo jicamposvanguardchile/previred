@@ -17,6 +17,5 @@ class CLHrPayslipInputType(models.Model):
     invisible_show_input = fields.Boolean(compute='_compute_invisible_show_input')
 
     def _compute_invisible_show_input(self):
-        # Simplificado para evitar referencias a hr_payroll
         for input_type in self:
             input_type.invisible_show_input = not input_type.show_input

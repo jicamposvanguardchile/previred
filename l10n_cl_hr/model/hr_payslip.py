@@ -166,10 +166,6 @@ class HrPayslip(models.Model):
                 self.dict = dict
                 self.env = env
 
-            def __getattr__(self, attr):
-                return self.dict.get(attr, 0.0)
-                self.ensure_one()
-
         localdict = super(HrPayslip, self)._get_localdict()
 
         parameters = {line.code: line for line in self.parameters_ids if line.code}
