@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 	<!-- menus principales bajo en menu Nominas -->
-	<menuitem id="menu_cl_hr_payroll_base" name="Nómina RRHH"
+	<menuitem id="menu_cl_hr_payroll_base" name="Nomina RRHH"
 		parent="hr_payroll.menu_hr_payroll_root" sequence="2"
 		groups="hr_payroll.group_hr_payroll_user" />
 
 	<menuitem id="menu_cl_hr_payroll_addons"
-		name="Adicionales Nómina" parent="hr_payroll.menu_hr_payroll_root"
+		name="Adicionales Nomina" parent="hr_payroll.menu_hr_payroll_root"
 		sequence="3" />
 
 	<menuitem id="menu_cl_hr_payroll_indicators" name="Prevision"
