@@ -16,7 +16,7 @@
             </field>
         </record> -->
 
-        <record id="hr_payslip_input_type_view_tree_inherit" model="ir.ui.view">
+        <record id="l10n_cl_hr_payslip_input_type_view_tree_inherit" model="ir.ui.view">
             <field name="name">l10n_cl_hr.payslip.input.type.tree</field>
             <field name="model">l10n_cl_hr.payslip.input.type</field>
             <field name="inherit_id" ref="pways_hr_payroll.hr_payslip_input_type_view_tree"/>
