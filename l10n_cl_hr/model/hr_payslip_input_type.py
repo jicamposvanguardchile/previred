@@ -7,15 +7,30 @@ import logging
 _logger = logging.getLogger(__name__)
 
 
-class CLHrPayslipInputType(models.Model):
-    _name = 'hr.payslip.input.type'
-    _description = 'Tipo de input de nómina Chile (modificado)'
+class HrPayslipInputType(models.Model):
+    _inherit = 'hr.payslip.input.type'
 
-    name = fields.Char(required=True)
-    code = fields.Char()
     show_input = fields.Boolean('Agrega input en Nómina', default=False)
     invisible_show_input = fields.Boolean(compute='_compute_invisible_show_input')
 
+#    @api.depends('show_input')
     def _compute_invisible_show_input(self):
+        attachment_types = self._get_attachment_types()
+        attachment_type_ids = [f.id for f in attachment_types.values()]
         for input_type in self:
-            input_type.invisible_show_input = not input_type.show_input
+            _logger.info(' CCCC ')
+            _logger.info(attachment_types)
+            _logger.info(attachment_type_ids)
+            if input_type.id in attachment_type_ids:
+                input_type.invisible_show_input = True
+            else:
+                input_type.invisible_show_input = False
+
+    # Analogo al existente en hr_payslip
+    @api.model
+    def _get_attachment_types(self):
+        return {
+            'attachment': self.env.ref('hr_payroll.input_attachment_salary'),
+            'assignment': self.env.ref('hr_payroll.input_assignment_salary'),
+            'child_support': self.env.ref('hr_payroll.input_child_support'),
+        }
