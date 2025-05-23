@@ -8,7 +8,7 @@ _logger = logging.getLogger(__name__)
 
 
 class CLHrPayslipInputType(models.Model):
-    _name = 'l10n_cl_hr.payslip.input.type'
+    _name = 'hr.payslip.input.type'
     _description = 'Tipo de input de nómina Chile (modificado)'
 
     name = fields.Char(required=True)
