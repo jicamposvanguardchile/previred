@@ -82,13 +82,11 @@
 
 	<menuitem id="cl_hr_account_analytic_def_account"
 		action="analytic.action_account_analytic_account_form"
-		parent="menu_cl_hr_payroll_master_data" sequence="6"
-		groups="analytic.group_analytic_accounting" />
+		parent="menu_cl_hr_payroll_master_data" sequence="6"/>
 
 	<menuitem id="cl_hr_account_analytic_group_menu"
 		action="analytic.account_analytic_group_action"
-		parent="menu_cl_hr_payroll_master_data" sequence="7"
-		groups="analytic.group_analytic_accounting" />
+		parent="menu_cl_hr_payroll_master_data" sequence="7" />
 
 	<menuitem id="cl_hr_resource_calendar_form"
 		action="resource.action_resource_calendar_form"
