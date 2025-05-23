@@ -15,7 +15,7 @@
 
             </field>
         </record> -->
-
+        <!--
         <record id="l10n_cl_hr_payslip_input_type_view_tree_inherit" model="ir.ui.view">
             <field name="name">hr.payslip.input.type.tree</field>
             <field name="model">hr.payslip.input.type</field>
@@ -27,7 +27,7 @@
                 </field>
 
             </field>
-        </record>
+        </record> -->
 
     </data>
 </odoo>
