@@ -55,9 +55,9 @@
 		<field name="parent_id" ref="pways_hr_payroll.menu_hr_payroll_root" />
 	</record> -->
 
-	<record id="pways_hr_payroll.menu_hr_payroll_report" model="ir.ui.menu">
+	<!-- <record id="pways_hr_payroll.menu_hr_payroll_report" model="ir.ui.menu">
 		<field name="parent_id" ref="pways_hr_payroll.menu_hr_payroll_root" />
-	</record>
+	</record> -->
 
 
 	<!-- Menu DATOS MAESTROS -->
