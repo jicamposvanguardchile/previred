@@ -39,9 +39,9 @@
 	<record id="pways_hr_payroll.menu_hr_payslip_run" model="ir.ui.menu">
 		<field name="parent_id" ref="menu_cl_hr_payroll_base" />
 	</record>
-	<record id="pways_hr_payroll.menu_hr_payroll_payslips" model="ir.ui.menu">
+	<!--<record id="pways_hr_payroll.menu_hr_payroll_payslips" model="ir.ui.menu">
 		<field name="parent_id" ref="menu_cl_hr_payroll_base" />
-	</record>
+	</record> -->
 
 	<record id="pways_hr_payroll.menu_hr_payroll_configuration" model="ir.ui.menu">
 		<field name="parent_id" ref="pways_hr_payroll.menu_hr_payroll_root" />
