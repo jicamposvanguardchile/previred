@@ -15,12 +15,12 @@
             <field name='partner_id' ref='sii'/>
         </record>
 	-->
-    <!--
+
 	<record id="hr_struct_cl" model="hr.payroll.structure">
 		<field name="name">Codigo del Trabajo</field>
 		<field name="code">Codigo del Trabajo de Chile</field>
 		<field name="type_id">1</field>
-	</record> -->
+	</record>
 
         <!-- Decimal Precision -->
 
@@ -39,7 +39,7 @@
 	<record id="hr_rule_1" model="hr.salary.rule">
             <field name="name">SUELDO BASE</field>
 	    <field name="sequence" eval="1"/>
-	    <field name="struct_id" ref="hr.payroll.structure"/>
+	    <field name="struct_id" ref="hr_struct_cl"/>
             <field name="code">SUELDO</field> 
 	    <field name="category_id" ref="IMPONIBLE"/>
             <field name="condition_select">none</field>
