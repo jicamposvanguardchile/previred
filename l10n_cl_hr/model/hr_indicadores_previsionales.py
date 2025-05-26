@@ -97,7 +97,7 @@ class hr_indicadores_previsionales(models.Model):
     tope_imponible_seguro_cesantia = fields.Float( 'Tope Imponible Seguro Cesantía', readonly=True, states=STATES,
         help="Tope Imponible Seguro de Cesantía")
     uf  = fields.Float('UF', states=STATES, help="UF fin de Mes")
-    utm = fields.Float('UTM', readonly=True, states=STATES, help="UTM Fin de Mes")
+    utm = fields.Float('UTM',  readonly=True, states=STATES, help="UTM Fin de Mes")
     uta = fields.Float('UTA', readonly=True, states=STATES, help="UTA Fin de Mes")
     uf_otros = fields.Float( 'UF Otros', readonly=True, states=STATES, help="UF Seguro Complementario")
     mutualidad_id = fields.Many2one('hr.mutual', 'MUTUAL', readonly=True, states=STATES)
@@ -158,7 +158,7 @@ class hr_indicadores_previsionales(models.Model):
     def update_document(self):
         #self.update_date = datetime.today()
         try:
-            url = 'https://www.previred.com/indicadores-previsionales/'
+            url = 'https://www.previred.com/web/previred/indicadores-previsionales'
             _logger.info('url %s'%(url))
             page = urlopen(url)
             html_bytes = page.read()
@@ -174,7 +174,7 @@ class hr_indicadores_previsionales(models.Model):
         try:
             new_ind = self._hrIndPrevired()
             # UF
-            self.uf = new_ind['UF']
+            self.uf = new_ind['UF'][new_ind['MES_UTM']]
 
             # 1 UTM
             self.utm = new_ind['UTM']
@@ -255,6 +255,7 @@ class hr_indicadores_previsionales(models.Model):
             'UF':{},
             'UTM':0.0,
             'UTA':[],
+            'MES_UTM':' ',
             'RENTAS_TOPE_AFP':[],
             'RENTAS_TOPE_IPS':[],
             'RENTAS_TOPE_SEGURO':[],
@@ -482,6 +483,7 @@ class hr_indicadores_previsionales(models.Model):
                                     uta = re_monto_patron.findall(str(td))[0]
 
                                 cont = cont + 1
+                            indicadores['MES_UTM'] = mes
                             indicadores['UTM'] = locale.atof(utm)
                             indicadores['UTA'] = locale.atof(uta)
 
