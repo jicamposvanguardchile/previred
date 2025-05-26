@@ -175,7 +175,6 @@ class hr_indicadores_previsionales(models.Model):
             new_ind = self._hrIndPrevired()
             # UF
             self.uf = new_ind['UF'][new_ind['MES_UTM']]
-            _logger.info('self.uf %s'%(self.uf))
 
             # 1 UTM
             self.utm = new_ind['UTM']
@@ -250,7 +249,7 @@ class hr_indicadores_previsionales(models.Model):
     def _hrIndPrevired(self):
         page = requests.get(URL_PREVIRED)
         if page.status_code != 200:
-            return None;
+            return None
 
         indicadores = {
             'UF':{},
