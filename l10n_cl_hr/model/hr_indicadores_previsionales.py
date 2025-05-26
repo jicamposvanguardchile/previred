@@ -255,7 +255,7 @@ class hr_indicadores_previsionales(models.Model):
             'UF':{},
             'UTM':0.0,
             'UTA':[],
-            'MES_UTM':'2',
+            'MES_UTM':2,
             'RENTAS_TOPE_AFP':[],
             'RENTAS_TOPE_IPS':[],
             'RENTAS_TOPE_SEGURO':[],
