@@ -102,7 +102,7 @@ class hr_indicadores_previsionales(models.Model):
     uf_otros = fields.Float( 'UF Otros', readonly=True, states=STATES, help="UF Seguro Complementario")
     mutualidad_id = fields.Many2one('hr.mutual', 'MUTUAL', readonly=True, states=STATES)
     ccaf_id = fields.Many2one('hr.ccaf', 'CCAF', readonly=True, states=STATES)
-    month = fields.Selection(MONTH_LIST, string='Mes', required=True, readonly=True, states=STATES)
+    month = fields.Selection(MONTH_LIST, string='Mes', required=True, states=STATES)
     year = fields.Integer('Año', required=True, default=datetime.now().strftime('%Y'), readonly=True, states=STATES)
     gratificacion_legal = fields.Boolean('Gratificación L. Manual', readonly=True, states=STATES)
     mutual_seguridad_bool = fields.Boolean('Mutual Seguridad', default=True, readonly=True, states=STATES)
