@@ -846,6 +846,7 @@ else:
 COTIZACION ACC. TRABAJO ISL
 
 	<!-- Rule Inputs -->
+    <!--
         <record id="hr_rule_input_horas_ext_50" model="hr.payslip.input.type">
             <field name="code">HEX50</field>
             <field name="name">HORAS EXTRA ART 32</field>
@@ -889,7 +890,7 @@ COTIZACION ACC. TRABAJO ISL
         <record id="hr_rule_input_anticipo_sueldo" model="hr.payslip.input.type">
             <field name="code">ASUE</field>
             <field name="name">ANTICIPO DE SUELDO</field>
-	</record>
+	</record> -->
 
  <!-- Estructura Inputs -->
 	<!--
