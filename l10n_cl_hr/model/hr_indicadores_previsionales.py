@@ -174,7 +174,7 @@ class hr_indicadores_previsionales(models.Model):
         try:
             new_ind = self._hrIndPrevired()
             # UF
-            self.uf = new_ind['UF'][new_ind['MES_UTM']]
+            self.uf = new_ind['UF']
 
             # 1 UTM
             self.utm = new_ind['UTM']
