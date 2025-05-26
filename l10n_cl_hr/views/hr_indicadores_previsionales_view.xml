@@ -194,13 +194,13 @@
 	<!-- deprecado 
 	act_window id="hr_indicadores_previsionales_action"
 		name="Indicadores Previsionales" res_model="hr.indicadores"
-		view_mode="tree,form" 
+		view_mode="list,form" 
 	-->
 
 	<record id="hr_indicadores_previsionales_action" model="ir.actions.act_window">
 		<field name="name">Indicadores Previsionales</field>
 		<field name="res_model">hr.indicadores</field>
-		<field name="view_mode">tree,form</field>
+		<field name="view_mode">list,form</field>
 	</record>
 
 
@@ -215,7 +215,7 @@
 	<record id="hr_isapre_action" model="ir.actions.act_window">
 		<field name="name">Isapres</field>
 		<field name="res_model">hr.isapre</field>
-		<field name="view_mode">tree,form</field>
+		<field name="view_mode">list,form</field>
 	</record>
 
 	<menuitem id="hr_isapres_menu"
@@ -229,7 +229,7 @@
 	<record id="hr_ccaf_action" model="ir.actions.act_window">
 		<field name="name">CCAF</field>
 		<field name="res_model">hr.ccaf</field>
-		<field name="view_mode">tree,form</field>
+		<field name="view_mode">list,form</field>
 	</record>
 
 	<menuitem id="hr_ccaf_menu"
@@ -243,7 +243,7 @@
 	<record id="hr_mutual_action" model="ir.actions.act_window">
 		<field name="name">Mutualidad</field>
 		<field name="res_model">hr.mutual</field>
-		<field name="view_mode">tree,form</field>
+		<field name="view_mode">list,form</field>
 	</record>
 
 	<menuitem id="hr_mutual_menu"
@@ -257,7 +257,7 @@
 	<record id="hr_apv_action" model="ir.actions.act_window">
 		<field name="name">Institución Autorizada APV</field>
 		<field name="res_model">hr.apv</field>
-		<field name="view_mode">tree,form</field>
+		<field name="view_mode">list,form</field>
 	</record>
 
 	<menuitem id="hr_apv_menu"

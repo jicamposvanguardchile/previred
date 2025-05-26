@@ -31,7 +31,7 @@
 
 
 		<act_window id="hr_afp_action" name="Fondos de Pensión"
-			res_model="hr.afp" view_mode="tree,form" />
+			res_model="hr.afp" view_mode="list,form" />
 
 		<!--<menuitem id="hr_afp_menu" parent="menu_hr_payroll_configuration"
 			action="hr_afp_action" sequence="14" />-->

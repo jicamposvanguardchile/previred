@@ -33,7 +33,7 @@
 		<field name="name">Previred</field>
 		<field name="type">ir.actions.act_window</field>
 		<field name="res_model">wizard.export.csv.previred</field>
-		<field name="view_mode">tree,form</field>
+		<field name="view_mode">list,form</field>
 		<field name="view_id" ref="wizard_export_csv_previred_form_view" />
 		<field name="target">new</field>
 	</record>
