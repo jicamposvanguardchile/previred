@@ -158,7 +158,7 @@ class hr_indicadores_previsionales(models.Model):
     def update_document(self):
         #self.update_date = datetime.today()
         try:
-            url = 'https://www.previred.com/web/previred/indicadores-previsionales'
+            url = 'https://www.previred.com/indicadores-previsionales/'
             _logger.info('url %s'%(url))
             page = urlopen(url)
             html_bytes = page.read()
