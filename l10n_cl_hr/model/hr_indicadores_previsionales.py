@@ -174,7 +174,8 @@ class hr_indicadores_previsionales(models.Model):
         try:
             new_ind = self._hrIndPrevired()
             # UF
-            self.uf = new_ind['UF'][new_ind['MES_UTM']]
+            mes = new_ind.get('MES_UTM') or 'MES_DESCONOCIDO'
+            self.uf = new_ind['UF'].get(mes, 0.0)
 
             # 1 UTM
             self.utm = new_ind['UTM']
@@ -255,7 +256,7 @@ class hr_indicadores_previsionales(models.Model):
             'UF':{},
             'UTM':0.0,
             'UTA':[],
-            'MES_UTM':0.0,
+            'MES_UTM':'',
             'RENTAS_TOPE_AFP':[],
             'RENTAS_TOPE_IPS':[],
             'RENTAS_TOPE_SEGURO':[],
@@ -476,14 +477,17 @@ class hr_indicadores_previsionales(models.Model):
                             cont = 0
                             for td in tr.find_all('td'):
                                 if cont == 0:
-                                    mes = td.get_text().split(' ')[0].upper()
+                                    mes = td.get_text().strip().capitalize()
                                 elif cont == 1:
                                     utm = re_monto_patron.findall(str(td))[0]
                                 elif cont == 2:
                                     uta = re_monto_patron.findall(str(td))[0]
 
                                 cont = cont + 1
-                            indicadores['MES_UTM'] = mes
+                            if mes:
+                                indicadores['MES_UTM'] = mes
+                            else:
+                                indicadores['MES_UTM'] = 'MES_DESCONOCIDO'
                             indicadores['UTM'] = locale.atof(utm)
                             indicadores['UTA'] = locale.atof(uta)
 
