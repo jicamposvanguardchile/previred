@@ -255,7 +255,6 @@ class hr_indicadores_previsionales(models.Model):
             'UF':{},
             'UTM':0.0,
             'UTA':[],
-            'MES_UTM':' ',
             'RENTAS_TOPE_AFP':[],
             'RENTAS_TOPE_IPS':[],
             'RENTAS_TOPE_SEGURO':[],
@@ -483,7 +482,6 @@ class hr_indicadores_previsionales(models.Model):
                                     uta = re_monto_patron.findall(str(td))[0]
 
                                 cont = cont + 1
-                            indicadores['MES_UTM'] = utm
                             indicadores['UTM'] = locale.atof(utm)
                             indicadores['UTA'] = locale.atof(uta)
 
