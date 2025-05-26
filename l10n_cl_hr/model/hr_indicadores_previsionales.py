@@ -96,7 +96,7 @@ class hr_indicadores_previsionales(models.Model):
     tope_imponible_salud = fields.Float( 'Tope Imponible Salud', readonly=True, states=STATES,)
     tope_imponible_seguro_cesantia = fields.Float( 'Tope Imponible Seguro Cesantía', readonly=True, states=STATES,
         help="Tope Imponible Seguro de Cesantía")
-    uf  = fields.Float('UF', required=True, readonly=True, states=STATES, help="UF fin de Mes")
+    uf  = fields.Float('UF', required=True, states=STATES, help="UF fin de Mes")
     utm = fields.Float('UTM', required=True, readonly=True, states=STATES, help="UTM Fin de Mes")
     uta = fields.Float('UTA', readonly=True, states=STATES, help="UTA Fin de Mes")
     uf_otros = fields.Float( 'UF Otros', readonly=True, states=STATES, help="UF Seguro Complementario")
