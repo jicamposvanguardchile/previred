@@ -210,7 +210,7 @@
 
 	<!-- deprecado 
 	<act_window id="hr_isapre_action" name="Isapres"
-		res_model="hr.isapre" view_mode="tree,form" />
+		res_model="hr.isapre" view_mode="list,form" />
 	-->
 	<record id="hr_isapre_action" model="ir.actions.act_window">
 		<field name="name">Isapres</field>
@@ -224,7 +224,7 @@
 
 	<!-- deprecado 
 	<act_window id="hr_ccaf_action" name="CCAF"
-		res_model="hr.ccaf" view_mode="tree,form" />
+		res_model="hr.ccaf" view_mode="list,form" />
 	-->
 	<record id="hr_ccaf_action" model="ir.actions.act_window">
 		<field name="name">CCAF</field>
@@ -238,7 +238,7 @@
 
 	<!-- deprecado 
 	<act_window id="hr_mutual_action" name="Mutualidad"
-		res_model="hr.mutual" view_mode="tree,form" />
+		res_model="hr.mutual" view_mode="list,form" />
 	-->
 	<record id="hr_mutual_action" model="ir.actions.act_window">
 		<field name="name">Mutualidad</field>
@@ -252,7 +252,7 @@
 
 	<!-- deprecado 
 	<act_window id="hr_apv_action"
-		name="Institución Autorizada APV" res_model="hr.apv" view_mode="tree,form" />
+		name="Institución Autorizada APV" res_model="hr.apv" view_mode="list,form" />
 	-->
 	<record id="hr_apv_action" model="ir.actions.act_window">
 		<field name="name">Institución Autorizada APV</field>
