@@ -476,14 +476,14 @@ class hr_indicadores_previsionales(models.Model):
                             cont = 0
                             for td in tr.find_all('td'):
                                 if cont == 0:
-                                    mes = td.get_text().strip(' ')[0].upper()
+                                    mes = td.get_text().split(' ')[0].upper()
                                 elif cont == 1:
                                     utm = re_monto_patron.findall(str(td))[0]
                                 elif cont == 2:
                                     uta = re_monto_patron.findall(str(td))[0]
 
                                 cont = cont + 1
-                            indicadores['MES_UTM'] = mes
+                            indicadores['MES_UTM'] = utm
                             indicadores['UTM'] = locale.atof(utm)
                             indicadores['UTA'] = locale.atof(uta)
 
