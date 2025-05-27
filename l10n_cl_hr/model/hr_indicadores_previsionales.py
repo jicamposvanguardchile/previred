@@ -8,6 +8,7 @@ from datetime import datetime
 import logging
 import requests
 import re
+import unicodedata
 
 import locale
 
@@ -291,6 +292,19 @@ class hr_indicadores_previsionales(models.Model):
             'COTIZACION_TRAB_MENOS_PESADO':[],
         }
 
+
+            
+        def extraer_monto(texto):
+            extraccion = re.search(r'\$\s*(\d{1,3}(?:[\.\,]\d{3})*(?:[\.,]\d{2})?)', texto)
+            if not extraccion:
+                extraccion = re.search(r'(\d{1,3}(?:[\.\,]\d{3})*(?:[\.,]\d{2}))', texto)
+            if not extraccion:
+                extraccion = re.search(r'(\d+(?:[\.,]\d+)?)\s*%', texto)
+            _logger.info('extraccion %s'%(extraccion))
+            if extraccion:
+                return float(extraccion.group(1).replace('.', '').replace(',', '.').replace('$', '').replace('%', ''))
+            return 0
+        
         re_monto_patron     = re.compile(r'(?:\$\s*)(\d{1,3}(?:\.\d{3})*(?:,\d+)?)|-')
         re_monto_porcentaje = re.compile(r'>\s*((?:\d+)(?:,\d+)?)\s*%\s*(?:R\.I\.)?\s*<')
 
@@ -299,15 +313,18 @@ class hr_indicadores_previsionales(models.Model):
         div_journal = soup.find_all('div',class_='journal-content-article')
         for div in div_journal:
             s = div.find_all(class_='encabezado_tabla_ind')
-            for f in s:
+            for encabezado in s:
+                titulo = encabezado.get_text().strip().upper()
                 #print('-'+f.get_text()+'-')
-                if f.get_text() == 'VALOR UF':
-                    #print(div)
+                if titulo == 'VALOR UF':
                     for tr in div.find_all('tr'):
-                        if f.get_text().strip() != tr.get_text().strip():
-                            b = re.findall(r'al\s+(\d+)\s+de\s+(\w+)\s+(\d+)',str(tr),re.IGNORECASE)
-                            uf = re_monto_patron.findall(str(tr))
-                            indicadores['UF'][b[0][1].upper()] = locale.atof(uf[0])
+                        texto = tr.get_text()
+                        fecha_match = re.search(r'al\s+(\d+)\s+de\s+(\w+)\s+(\d+)', texto, re.IGNORECASE)
+                        if fecha_match:
+                            mes = fecha_match.group(2).upper()
+                            valor_match = re_monto_patron.search(texto)
+                            if valor_match:
+                                indicadores['UF'][mes] = extraer_valor(valor_match.group(1))
                 elif f.get_text() == 'RENTAS TOPES IMPONIBLES':
                     for tr in div.find_all('tr'):
                         if f.get_text().strip() != tr.get_text().strip():
