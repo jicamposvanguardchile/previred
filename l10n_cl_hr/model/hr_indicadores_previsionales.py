@@ -219,35 +219,35 @@ class hr_indicadores_previsionales(models.Model):
             self.asignacion_familiar_tercer  = new_ind.get['ASIGNACION_FAMILIAR_C', [0.0]][1]
 
             # 8 TASA COTIZACIÓN OBLIGATORIO AFP
-            self.tasa_afp_capital           = new_ind['TASA_CAPITAL'][0]
-            self.tasa_sis_capital           = new_ind['TASA_CAPITAL'][1]
-            self.tasa_independiente_capital = new_ind['TASA_CAPITAL'][2]
+            self.tasa_afp_capital           = new_ind.get['TASA_CAPITAL', [0.0]][0]
+            self.tasa_sis_capital           = new_ind.get['TASA_CAPITAL', [0.0]][1]
+            self.tasa_independiente_capital = new_ind.get['TASA_CAPITAL', [0.0]][2]
 
-            self.tasa_afp_cuprum           = new_ind['TASA_CUPRUM'][0]
-            self.tasa_sis_cuprum           = new_ind['TASA_CUPRUM'][1]
-            self.tasa_independiente_cuprum = new_ind['TASA_CUPRUM'][2]
+            self.tasa_afp_cuprum           = new_ind.get['TASA_CUPRUM', [0.0]][0]
+            self.tasa_sis_cuprum           = new_ind.get['TASA_CUPRUM', [0.0]][1]
+            self.tasa_independiente_cuprum = new_ind.get['TASA_CUPRUM', [0.0]][2]
 
-            self.tasa_afp_habitat           = new_ind['TASA_HABITAT'][0]
-            self.tasa_sis_habitat           = new_ind['TASA_HABITAT'][1]
-            self.tasa_independiente_habitat = new_ind['TASA_HABITAT'][2]
+            self.tasa_afp_habitat           = new_ind.get['TASA_HABITAT', [0.0]][0]
+            self.tasa_sis_habitat           = new_ind.get['TASA_HABITAT', [0.0]][1]
+            self.tasa_independiente_habitat = new_ind.get['TASA_HABITAT', [0.0]][2]
 
-            self.tasa_afp_planvital           = new_ind['TASA_PLANVITAL'][0]
-            self.tasa_sis_planvital           = new_ind['TASA_PLANVITAL'][1]
-            self.tasa_independiente_planvital = new_ind['TASA_PLANVITAL'][2]
+            self.tasa_afp_planvital           = new_ind.get['TASA_PLANVITAL', [0.0]][0]
+            self.tasa_sis_planvital           = new_ind.get['TASA_PLANVITAL', [0.0]][1]
+            self.tasa_independiente_planvital = new_ind.get['TASA_PLANVITAL', [0.0]][2]
 
-            self.tasa_afp_provida           = new_ind['TASA_PROVIDA'][0]
-            self.tasa_sis_provida           = new_ind['TASA_PROVIDA'][1]
-            self.tasa_independiente_provida = new_ind['TASA_PROVIDA'][2]
+            self.tasa_afp_provida           = new_ind.get['TASA_PROVIDA', [0.0]][0]
+            self.tasa_sis_provida           = new_ind.get['TASA_PROVIDA', [0.0]][1]
+            self.tasa_independiente_provida = new_ind.get['TASA_PROVIDA', [0.0]][2]
 
-            self.tasa_afp_modelo           = new_ind['TASA_MODELO'][0]
-            self.tasa_sis_modelo           = new_ind['TASA_MODELO'][1]
-            self.tasa_independiente_modelo = new_ind['TASA_MODELO'][2]
+            self.tasa_afp_modelo           = new_ind.get['TASA_MODELO', [0.0]][0]
+            self.tasa_sis_modelo           = new_ind.get['TASA_MODELO', [0.0]][1]
+            self.tasa_independiente_modelo = new_ind.get['TASA_MODELO', [0.0]][2]
 
-            self.tasa_afp_uno           = new_ind['TASA_UNO'][0]
-            self.tasa_sis_uno           = new_ind['TASA_UNO'][1]
-            self.tasa_independiente_uno = new_ind['TASA_UNO'][2]
-        except ValueError:
-            return ""
+            self.tasa_afp_uno           = new_ind.get['TASA_UNO', [0.0]][0]
+            self.tasa_sis_uno           = new_ind.get['TASA_UNO', [0.0]][1]
+            self.tasa_independiente_uno = new_ind.get['TASA_UNO', [0.0]][2]
+        except Exception as e:
+            _logger.error(f"Error actualizando indicadores previsionales: {e}")
 
 
 
