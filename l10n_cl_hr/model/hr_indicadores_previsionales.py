@@ -173,14 +173,19 @@ class hr_indicadores_previsionales(models.Model):
             return round(cad / self.uf, 2)
         try:
             new_ind = self._hrIndPrevired()
+            mes = new_ind.get('MES_UTM') or ''
+            uf_mes = new_ind.get('UF', {}).get(mes)
+            if not mes or uf_mes is None:
+                raise ValueError(f"Mes UTM no encontrado o no existe UF para el mes '{mes}'")
+        
             # UF
-            self.uf = new_ind['UF'][new_ind['MES_UTM']]
+            self.uf = uf_mes
 
             # 1 UTM
-            self.utm = new_ind['UTM']
+            self.utm = new_ind.get['UTM', 0.0]
 
             # 1 UTA
-            self.uta = new_ind['UTA']
+            self.uta = new_ind.get['UTA', 0.0]
 
             # 3 RENTAS TOPES IMPONIBLES (UF)
             self.tope_imponible_afp             = new_ind['RENTAS_TOPE_AFP'][0] if new_ind.get('RENTAS_TOPE_AFP') else 0.0
