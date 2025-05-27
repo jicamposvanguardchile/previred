@@ -204,19 +204,19 @@ class hr_indicadores_previsionales(models.Model):
             self.deposito_convenido = new_ind.get['DEPOSITO_CONVENIDO_TOPE_ANUAL', [0.0]][0]
 
             # 6 SEGURO DE CESANTÍA (AFC)
-            self.contrato_plazo_indefinido_empleador      = new_ind['SEGURO_CESANTIA_PLAZO_INDEF'][0]
-            self.contrato_plazo_indefinido_trabajador     = new_ind['SEGURO_CESANTIA_PLAZO_INDEF'][1]
-            self.contrato_plazo_fijo_empleador            = new_ind['SEGURO_CESANTIA_PLAZO_FIJO']
-            self.contrato_plazo_indefinido_empleador_otro = new_ind['SEGURO_CESANTIA_11_ANNOS']
+            self.contrato_plazo_indefinido_empleador      = new_ind.get['SEGURO_CESANTIA_PLAZO_INDEF', [0.0]][0]
+            self.contrato_plazo_indefinido_trabajador     = new_ind.get['SEGURO_CESANTIA_PLAZO_INDEF', [0.0]][1]
+            self.contrato_plazo_fijo_empleador            = new_ind.get['SEGURO_CESANTIA_PLAZO_FIJO', 0.0]
+            self.contrato_plazo_indefinido_empleador_otro = new_ind.get['SEGURO_CESANTIA_11_ANNOS', 0.0]
 
             # 7 ASIGNACIÓN FAMILIAR
-            self.asignacion_familiar_monto_a = new_ind['ASIGNACION_FAMILIAR_A'][0]
-            self.asignacion_familiar_monto_b = new_ind['ASIGNACION_FAMILIAR_B'][0]
-            self.asignacion_familiar_monto_c = new_ind['ASIGNACION_FAMILIAR_C'][0]
+            self.asignacion_familiar_monto_a = new_ind.get['ASIGNACION_FAMILIAR_A', [0.0]][0]
+            self.asignacion_familiar_monto_b = new_ind.get['ASIGNACION_FAMILIAR_B', [0.0]][0]
+            self.asignacion_familiar_monto_c = new_ind.get['ASIGNACION_FAMILIAR_C', [0.0]][0]
 
-            self.asignacion_familiar_primer  = new_ind['ASIGNACION_FAMILIAR_A'][1]
-            self.asignacion_familiar_segundo = new_ind['ASIGNACION_FAMILIAR_B'][1]
-            self.asignacion_familiar_tercer  = new_ind['ASIGNACION_FAMILIAR_C'][1]
+            self.asignacion_familiar_primer  = new_ind.get['ASIGNACION_FAMILIAR_A', [0.0]][1]
+            self.asignacion_familiar_segundo = new_ind.get['ASIGNACION_FAMILIAR_B', [0.0]][1]
+            self.asignacion_familiar_tercer  = new_ind.get['ASIGNACION_FAMILIAR_C', [0.0]][1]
 
             # 8 TASA COTIZACIÓN OBLIGATORIO AFP
             self.tasa_afp_capital           = new_ind['TASA_CAPITAL'][0]
