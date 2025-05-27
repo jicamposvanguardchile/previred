@@ -484,10 +484,8 @@ class hr_indicadores_previsionales(models.Model):
                                     uta = re_monto_patron.findall(str(td))[0]
 
                                 cont = cont + 1
-                            if mes:
-                                indicadores['MES_UTM'] = mes
-                            else:
-                                indicadores['MES_UTM'] = 'MES_DESCONOCIDO'
+
+                            indicadores['MES_UTM'] = mes
                             indicadores['UTM'] = locale.atof(utm)
                             indicadores['UTA'] = locale.atof(uta)
 
