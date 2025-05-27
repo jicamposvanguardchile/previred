@@ -324,93 +324,82 @@ class hr_indicadores_previsionales(models.Model):
                             mes = fecha_match.group(2).upper()
                             valor_match = re_monto_patron.search(texto)
                             if valor_match:
-                                indicadores['UF'][mes] = extraer_valor(valor_match.group(1))
-                elif f.get_text() == 'RENTAS TOPES IMPONIBLES':
-                    for tr in div.find_all('tr'):
-                        if f.get_text().strip() != tr.get_text().strip():
-                            b = re.findall(r'ara\s+afiliados\s+a\s+una\s+AFP\s+\(((?:\d+)(?:,\d+)?)\s+UF\)',str(tr),re.IGNORECASE)
-                            if b:
-                                valor_clp = re_monto_patron.findall(str(tr))
-                                indicadores['RENTAS_TOPE_AFP'] = [locale.atof(b[0]), locale.atof(valor_clp[0])]
+                                indicadores['UF'][mes] = extraer_monto(valor_match.group(1))
 
-                            b = re.findall(r'ara\s+afiliados\s+al\s+IPS\s+\(ex\s+INP\)\s+\(((?:\d+)(?:,\d+)?)\s+UF\)',str(tr),re.IGNORECASE)
-                            if b:
-                                valor_clp = re_monto_patron.findall(str(tr))
-                                indicadores['RENTAS_TOPE_IPS'] = [locale.atof(b[0]), locale.atof(valor_clp[0])]
-                            b = re.findall(r'ara\s+seguro\s+de\s+Cesantía\s+\(((?:\d+)(?:,\d+)?)\s+UF\)',str(tr),re.IGNORECASE)
-                            if b:
-                                valor_clp = re_monto_patron.findall(str(tr))
-                                indicadores['RENTAS_TOPE_SEGURO'] = [locale.atof(b[0]), locale.atof(valor_clp[0])]
-                elif f.get_text() == 'RENTAS MÍNIMAS IMPONIBLES':
+                elif titulo == 'VALORES UTM Y UTA':
                     for tr in div.find_all('tr'):
-                        if f.get_text().strip() != tr.get_text().strip():
-                            b = re.findall(r'Trab.\s+Dependientes\s+e\s+Independientes',str(tr),re.IGNORECASE)
-                            if b:
-                                valor_clp = re_monto_patron.findall(str(tr))
-                                indicadores['RENTAS_MINIMA_DEP_INDEP'] = [locale.atof(valor_clp[0])]
-                            b = re.findall(r'Menores\s+de\s+18\s+y\s+Mayores\s+de\s+65',str(tr),re.IGNORECASE)
-                            if b:
-                                valor_clp = re_monto_patron.findall(str(tr))
-                                indicadores['RENTAS_MINIMA_18_Y_65'] = [locale.atof(valor_clp[0])]
-                            b = re.findall(r'Trabajadores\s+de\s+Casa\s+Particular',str(tr),re.IGNORECASE)
-                            if b:
-                                valor_clp = re_monto_patron.findall(str(tr))
-                                indicadores['RENTAS_MINIMA_CASA_PARTICULAR'] = [locale.atof(valor_clp[0])]
-                            b = re.findall(r'Para\s+fines\s+no\s+remuneracionales',str(tr),re.IGNORECASE)
-                            if b:
-                                valor_clp = re_monto_patron.findall(str(tr))
-                                indicadores['RENTAS_MINIMA_NO_REMU'] = [locale.atof(valor_clp[0])]
-                elif f.get_text() == 'AHORRO PREVISIONAL VOLUNTARIO (APV)':
+                        celdas = tr.find_all('td')
+                        if len(celdas) >= 3:
+                            mes_utm = celdas[0].get_text().strip().upper()
+                            utm = extraer_monto(celdas[1].get_text())
+                            uta = extraer_monto(celdas[2].get_text())
+                            indicadores['MES_UTM'] = mes_utm
+                            indicadores['UTM'] = utm
+                            indicadores['UTA'] = uta                
+
+                elif 'RENTAS TOPES IMPONIBLES' in titulo:
                     for tr in div.find_all('tr'):
-                        if f.get_text().strip() != tr.get_text().strip():
-                            b = re.findall(r'Tope\s+Mensual\s+\(((?:\d+)(?:,\d+)?)\s+UF\)',str(tr),re.IGNORECASE)
-                            if b:
-                                valor_clp = re_monto_patron.findall(str(tr))
-                                indicadores['APV_TOPE_MENSUAL'] = [locale.atof(b[0]), locale.atof(valor_clp[0])]
-                            b = re.findall(r'Tope\s+Anual\s+\(((?:\d+)(?:,\d+)?)\s+UF\)',str(tr),re.IGNORECASE)
-                            if b:
-                                valor_clp = re_monto_patron.findall(str(tr))
-                                indicadores['APV_TOPE_ANUAL'] = [locale.atof(b[0]), locale.atof(valor_clp[0])]
-                elif f.get_text() == 'DEPÓSITO CONVENIDO':
+                        texto = tr.get_text().strip().lower()
+                        valores = re_monto_patron.findall(tr.get_text())
+                        if 'afp' in texto and valores:
+                            indicadores['RENTAS_TOPE_AFP'] = [extraer_monto(valores[0])]
+                        elif 'ips' in texto and valores:
+                            indicadores['RENTAS_TOPE_IPS'] = [extraer_monto(valores[0])]
+                        elif 'cesantia' in texto and valores:
+                            indicadores['RENTAS_TOPE_SEGURO'] = [extraer_monto(valores[0])]
+
+                elif 'RENTAS MÍNIMAS' in titulo or 'RENTAS MINIMAS' in titulo:
                     for tr in div.find_all('tr'):
-                        if f.get_text().strip() != tr.get_text().strip():
-                            b = re.findall(r'Tope\s+Anual\s+\(((?:\d+)(?:,\d+)?)\s+UF\)',str(tr),re.IGNORECASE)
-                            if b:
-                                valor_clp = re_monto_patron.findall(str(tr))
-                                indicadores['DEPOSITO_CONVENIDO_TOPE_ANUAL'] = [locale.atof(b[0]), locale.atof(valor_clp[0])]
-                elif f.get_text() == 'SEGURO DE CESANTÍA (AFC)':
+                        texto = tr.get_text().strip().lower()
+                        valores = re_monto_patron.findall(tr.get_text())
+                        if 'dependientes' in texto and valores:
+                            indicadores['RENTAS_MINIMA_DEP_INDEP'] = [extraer_monto(valores[0])]
+                        elif 'menores de 18' in texto and valores:
+                            indicadores['RENTAS_MINIMA_18_Y_65'] = [extraer_monto(valores[0])]
+                        elif 'casa particular' in texto and valores:
+                            indicadores['RENTAS_MINIMA_CASA_PARTICULAR'] = [extraer_monto(valores[0])]
+                        elif 'no remuneracionales' in texto and valores:
+                            indicadores['RENTAS_MINIMA_NO_REMU'] = [extraer_monto(valores[0])]
+
+                elif 'AHORRO PREVISIONAL VOLUNTARIO (APV)' in titulo:
                     for tr in div.find_all('tr'):
-                        if f.get_text().strip() != tr.get_text().strip():
-                            b = re.findall(r'Plazo\s+Indefinido\s*<',str(tr),re.IGNORECASE)
-                            if b:
-                                valor_clp = re_monto_porcentaje.findall(str(tr))
-                                indicadores['SEGURO_CESANTIA_PLAZO_INDEF']=[locale.atof(valor_clp[0]),locale.atof(valor_clp[1])]
-                            b = re.findall(r'Plazo\s+Fijo\s*<',str(tr),re.IGNORECASE)
-                            if b:
-                                valor_clp = re_monto_porcentaje.findall(str(tr))
-                                indicadores['SEGURO_CESANTIA_PLAZO_FIJO'] = locale.atof(valor_clp[0])
-                            b = re.findall(r'Plazo\s+Indefinido\s+11\s+a',str(tr),re.IGNORECASE)
-                            if b:
-                                valor_clp = re_monto_porcentaje.findall(str(tr))
-                                indicadores['SEGURO_CESANTIA_11_ANNOS'] = locale.atof(valor_clp[0])
-                            b = re.findall(r'Trabajador\s+de\s+Casa\s+Particular',str(tr),re.IGNORECASE)
-                            if b:
-                                valor_clp = re_monto_porcentaje.findall(str(tr))
-                                indicadores['SEGURO_CESANTIA_CASA_PARTICULAR'] = locale.atof(valor_clp[0])
-                elif f.get_text() == 'DISTRIBUCIÓN DEL 7% SALUD, PARA EMPLEADORES AFILIADOS A CCAF (*)':
+                        texto = tr.get_text().strip().lower()
+                        valores = re_monto_patron.findall(tr.get_text())
+                        if 'mensual' in texto and valores:
+                            indicadores['APV_TOPE_MENSUAL'] = [extraer_monto(valores[0])]
+                        elif 'anual' in texto and valores:
+                            indicadores['APV_TOPE_ANUAL'] = [extraer_monto(valores[0])]
+
+                elif 'DEPÓSITO CONVENIDO' in titulo:
                     for tr in div.find_all('tr'):
-                        if f.get_text().strip() != tr.get_text().strip():
-                            b = re.findall(r'>\s*CCAF\s*<',str(tr),re.IGNORECASE)
-                            if b:
-                                valor_clp = re_monto_porcentaje.findall(str(tr))
-                                indicadores['DISTRIBUCION_7P_CCAF'] = valor_clp
-                            b = re.findall(r'>\s*FONASA\s*<',str(tr),re.IGNORECASE)
-                            if b:
-                                valor_clp = re_monto_porcentaje.findall(str(tr))
-                                indicadores['DISTRIBUCION_7P_FONASA'] = valor_clp
-                elif f.get_text() == 'TASA COTIZACIÓN OBLIGATORIO AFP':
+                        valores = re_monto_patron.findall(tr.get_text())
+                        if valores:
+                            indicadores['DEPOSITO_CONVENIDO_TOPE_ANUAL'] = [extraer_monto(valores[0])]
+
+                elif 'SEGURO DE CESANTÍA (AFC)' in titulo:
                     for tr in div.find_all('tr'):
-                        if f.get_text().strip() != tr.get_text().strip():
+                        texto = tr.get_text().strip().lower()
+                        valores = re.findall(r'(\d+,\d+)\s*%', texto)
+                        if 'indefinido' in texto and len(valores) >= 2:
+                            indicadores['SEGURO_CESANTIA_PLAZO_INDEF'] = [float(v.replace(',', '.')) for v in valores]
+                        elif 'plazo fijo' in texto and valores:
+                            indicadores['SEGURO_CESANTIA_PLAZO_FIJO'] = [float(valores[0].replace(',', '.'))]
+                        elif '11 anos' in texto and valores:
+                            indicadores['SEGURO_CESANTIA_11_ANNOS'] = [float(valores[0].replace(',', '.'))]
+                        elif 'casa particular' in texto and valores:
+                            indicadores['SEGURO_CESANTIA_CASA_PARTICULAR'] = [float(valores[0].replace(',', '.'))]
+                elif 'DISTRIBUCIÓN DEL 7% SALUD, PARA EMPLEADORES AFILIADOS A CCAF (*)' in titulo:
+                    for tr in div.find_all('tr'):
+                        texto = tr.get_text().strip().lower()
+                        porcentajes = re_monto_porcentaje.findall(texto)
+                        if 'ccaf' in texto and porcentajes:
+                            indicadores['DISTRIBUCION_7P_CCAF'] = [float(p.replace(',', '.')) for p in porcentajes]
+                        elif 'fonasa' in texto and porcentajes:
+                            indicadores['DISTRIBUCION_7P_FONASA'] = [float(p.replace(',', '.')) for p in porcentajes]
+
+                elif 'TASA COTIZACIÓN OBLIGATORIO AFP' in titulo:
+                    for tr in div.find_all('tr'):
+                        if titulo().strip() != tr.get_text().strip():
                             b = re.findall(r'>\s*Capital\s*<',str(tr),re.IGNORECASE)
                             if b:
                                 valor_clp = re_monto_porcentaje.findall(str(tr))
@@ -479,6 +468,18 @@ class hr_indicadores_previsionales(models.Model):
                             if b:
                                 valor_clp = re_monto_patron.findall(str(tr))
                                 #indicadores['ASIGNACION_FAMILIAR_D'] = [locale.atof(valor_clp[0])]
+                elif 'TRABAJOS PESADOS' in titulo or 'TRABAJO PESADO' in titulo:
+                    for tr in div.find_all('tr')[1:]:
+                        celdas = tr.find_all('td')
+                        if len(celdas) >= 3:
+                            puesto = celdas[0].get_text(strip=True).upper()
+                            empleador = extraer_monto(celdas[1].get_text(strip=True))
+                            trabajador = extraer_monto(celdas[2].get_text(strip=True))
+                            if 'MENOS PESADO' in puesto:
+                                indicadores['COTIZACION_TRAB_MENOS_PESADO'] = [empleador, trabajador]
+                            else:
+                                indicadores['COTIZACION_TRAB_PESADO'] = [empleador, trabajador]
+
                 elif f.get_text().strip() == 'COTIZACIÓN PARA TRABAJOS PESADOS':
                     for tr in div.find_all('tr'):
                         if f.get_text().strip() != tr.get_text().strip():
