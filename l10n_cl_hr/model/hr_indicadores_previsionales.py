@@ -188,20 +188,20 @@ class hr_indicadores_previsionales(models.Model):
             self.uta = new_ind.get['UTA', 0.0]
 
             # 3 RENTAS TOPES IMPONIBLES (UF)
-            self.tope_imponible_afp             = new_ind['RENTAS_TOPE_AFP'][0] if new_ind.get('RENTAS_TOPE_AFP') else 0.0
-            self.tope_imponible_ips             = new_ind['RENTAS_TOPE_IPS'][0] 
-            self.tope_imponible_seguro_cesantia = new_ind['RENTAS_TOPE_SEGURO'][0] 
+            self.tope_imponible_afp             = new_ind.get['RENTAS_TOPE_AFP', [0.0]][0]
+            self.tope_imponible_ips             = new_ind.get['RENTAS_TOPE_IPS', [0.0]][0] 
+            self.tope_imponible_seguro_cesantia = new_ind.get['RENTAS_TOPE_SEGURO', [0.0]][0] 
 
             # 4 RENTAS MINIMAS IMPONIBLES
-            self.sueldo_minimo      = new_ind['RENTAS_MINIMA_DEP_INDEP'][0]
-            self.sueldo_minimo_otro = new_ind['RENTAS_MINIMA_18_Y_65'][0]
+            self.sueldo_minimo      = new_ind.get['RENTAS_MINIMA_DEP_INDEP', [0.0]][0]
+            self.sueldo_minimo_otro = new_ind.get['RENTAS_MINIMA_18_Y_65', [0.0]][0]
 
             # Ahorro Previsional Voluntario (UF)
-            self.tope_mensual_apv = new_ind['APV_TOPE_MENSUAL'][0]
-            self.tope_anual_apv   = new_ind['APV_TOPE_ANUAL'][0]
+            self.tope_mensual_apv = new_ind.get['APV_TOPE_MENSUAL'[0.0]][0]
+            self.tope_anual_apv   = new_ind.get['APV_TOPE_ANUAL'[0.0]][0]
 
             # 5 DEPÓSITO CONVENIDO (UF)
-            self.deposito_convenido = new_ind['DEPOSITO_CONVENIDO_TOPE_ANUAL'][0]
+            self.deposito_convenido = new_ind.get['DEPOSITO_CONVENIDO_TOPE_ANUAL', [0.0]][0]
 
             # 6 SEGURO DE CESANTÍA (AFC)
             self.contrato_plazo_indefinido_empleador      = new_ind['SEGURO_CESANTIA_PLAZO_INDEF'][0]
