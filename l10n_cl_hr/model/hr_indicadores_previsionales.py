@@ -169,8 +169,7 @@ class hr_indicadores_previsionales(models.Model):
                 pure.append(float((re.search("[\d\.,]+", item)[0]).replace('.','').replace(',','.')))
         except ValueError:
             return ""
-        def uf_convert(cad):
-            return round(cad / self.uf, 2)
+
         try:
             new_ind = self._hrIndPrevired()
             mes = new_ind.get('MES_UTM') or ''
