@@ -488,7 +488,4 @@ class hr_indicadores_previsionales(models.Model):
                             indicadores['MES_UTM'] = mes
                             indicadores['UTM'] = locale.atof(utm)
                             indicadores['UTA'] = locale.atof(uta)
-
         return indicadores
-
-
