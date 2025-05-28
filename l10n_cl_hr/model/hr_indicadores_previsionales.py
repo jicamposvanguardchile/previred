@@ -159,7 +159,7 @@ class hr_indicadores_previsionales(models.Model):
     def update_document(self):
         #self.update_date = datetime.today()
         try:
-            url = 'https://www.previred.com/web/previred/indicadores-previsionales'
+            url = 'https://www.previred.com/indicadores-previsionales/'
             _logger.info('url %s'%(url))
             page = urlopen(url)
             html_bytes = page.read()
@@ -456,7 +456,7 @@ class hr_indicadores_previsionales(models.Model):
                             tramo = celdas[0].get_text(strip=True).upper()
                             monto = extraer_monto(celdas[1].get_text(strip=True))
                             limite = extraer_monto(celdas[0].get_text(strip=True).split()[-1])
-                            if 'A' in tramo:
+                            if   'A' in tramo:
                                 indicadores['ASIGNACION_FAMILIAR_A'] = [monto, limite]
                             elif 'B' in tramo:
                                 indicadores['ASIGNACION_FAMILIAR_B'] = [monto, limite]
