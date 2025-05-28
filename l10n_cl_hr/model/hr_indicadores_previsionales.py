@@ -370,43 +370,58 @@ class hr_indicadores_previsionales(models.Model):
             if 'plazo indefinido' in texto and not indicadores['SEGURO_CESANTIA_PLAZO_INDEF']:
                 celdas = fila.find_all('td')
                 if len(celdas) >= 3:
-                    empleador = extraer_porcentaje(celdas[1].get_text(strip=True))
-                    trabajador = extraer_porcentaje(celdas[2].get_text(strip=True))
-                    indicadores['SEGURO_CESANTIA_PLAZO_INDEF'] = [empleador, trabajador]
+                    porcentaje = extraer_monto(celdas[1].get_text(strip=True))  # Solo empleador
+                    indicadores['SEGURO_CESANTIA_PLAZO_INDEF'] = porcentaje
 
             if 'plazo fijo' in texto and not indicadores['SEGURO_CESANTIA_PLAZO_FIJO']:
                 celdas = fila.find_all('td')
                 if len(celdas) >= 2:
-                    porcentaje = extraer_porcentaje(celdas[1].get_text(strip=True))
-                    indicadores['SEGURO_CESANTIA_PLAZO_FIJO'] = [porcentaje]
+                    porcentaje = extraer_monto(celdas[1].get_text(strip=True))
+                    indicadores['SEGURO_CESANTIA_PLAZO_FIJO'] = porcentaje
 
             if '11 años' in texto and not indicadores['SEGURO_CESANTIA_11_ANNOS']:
                 celdas = fila.find_all('td')
                 if len(celdas) >= 2:
-                    porcentaje = extraer_porcentaje(celdas[1].get_text(strip=True))
-                    indicadores['SEGURO_CESANTIA_11_ANNOS'] = [porcentaje]
-            # Asignación Familiar
-            if 'tramo a' in texto and not indicadores['ASIGNACION_FAMILIAR_A']:
-                monto = extraer_monto(texto_raw)
-                limite = extraer_monto(texto_raw.split()[-1])
-                indicadores['ASIGNACION_FAMILIAR_A'] = [monto, limite]
-            if 'tramo b' in texto and not indicadores['ASIGNACION_FAMILIAR_B']:
-                monto = extraer_monto(texto_raw)
-                limite = extraer_monto(texto_raw.split()[-1])
-                indicadores['ASIGNACION_FAMILIAR_B'] = [monto, limite]
-            if 'tramo c' in texto and not indicadores['ASIGNACION_FAMILIAR_C']:
-                monto = extraer_monto(texto_raw)
-                limite = extraer_monto(texto_raw.split()[-1])
-                indicadores['ASIGNACION_FAMILIAR_C'] = [monto, limite]
-            if 'tramo d' in texto and not indicadores['ASIGNACION_FAMILIAR_D']:
-                monto = extraer_monto(texto_raw)
-                limite = extraer_monto(texto_raw.split()[-1])
-                indicadores['ASIGNACION_FAMILIAR_D'] = [monto, limite]
+                    porcentaje = extraer_monto(celdas[1].get_text(strip=True))
+                    indicadores['SEGURO_CESANTIA_11_ANNOS'] = porcentaje
 
+            if 'casa particular' in texto and not indicadores['SEGURO_CESANTIA_CASA_PARTICULAR']:
+                celdas = fila.find_all('td')
+                if len(celdas) >= 2:
+                    porcentaje = extraer_monto(celdas[1].get_text(strip=True))
+                    indicadores['SEGURO_CESANTIA_CASA_PARTICULAR'] = porcentaje
+            
             # CCAF y FONASA
             if 'ccaf' in texto and not indicadores['DISTRIBUCION_7P_CCAF']:
                 indicadores['DISTRIBUCION_7P_CCAF'] = [extraer_monto(texto_raw)]
             if 'fonasa' in texto and not indicadores['DISTRIBUCION_7P_FONASA']:
                 indicadores['DISTRIBUCION_7P_FONASA'] = [extraer_monto(texto_raw)]
             
+            # Asignacion Familiar
+            if 'tramo a' in texto and not indicadores['ASIGNACION_FAMILIAR_A']:
+                indicadores['ASIGNACION_FAMILIAR_A'] = extraer_monto(texto_raw)
+
+            if 'tramo b' in texto and not indicadores['ASIGNACION_FAMILIAR_B']:
+                indicadores['ASIGNACION_FAMILIAR_B'] = extraer_monto(texto_raw)
+
+            if 'tramo c' in texto and not indicadores['ASIGNACION_FAMILIAR_C']:
+                indicadores['ASIGNACION_FAMILIAR_C'] = extraer_monto(texto_raw)
+
+            if 'tramo d' in texto and not indicadores['ASIGNACION_FAMILIAR_D']:
+                indicadores['ASIGNACION_FAMILIAR_D'] = extraer_monto(texto_raw)
+            
+            # Trabajo Pesado
+            if 'trabajo pesado' in texto and not indicadores['COTIZACION_TRAB_PESADO']:
+                celdas = fila.find_all('td')
+                if len(celdas) >= 2:
+                    porcentaje = extraer_porcentaje(celdas[1].get_text(strip=True))
+                    indicadores['COTIZACION_TRAB_PESADO'] = porcentaje
+
+            # Trabajo Menos Pesado
+            if 'trabajos menos pesados' in texto and not indicadores['COTIZACION_TRAB_MENOS_PESADO']:
+                celdas = fila.find_all('td')
+                if len(celdas) >= 2:
+                    porcentaje = extraer_porcentaje(celdas[1].get_text(strip=True))
+                    indicadores['COTIZACION_TRAB_MENOS_PESADO'] = porcentaje
+
         return indicadores
