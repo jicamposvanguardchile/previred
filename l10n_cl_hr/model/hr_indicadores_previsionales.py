@@ -318,6 +318,7 @@ class hr_indicadores_previsionales(models.Model):
             return texto.strip()
 
         soup = BeautifulSoup(page.content, "html.parser")
+        indicadores['mes'] = MONTH_LIST
 
         tablas = soup.find_all('table')
         for tabla in tablas:
