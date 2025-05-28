@@ -312,6 +312,9 @@ class hr_indicadores_previsionales(models.Model):
             if match:
                 return match.group(1).replace(',', '.') + '%'
             return texto.strip()
+        
+        re_monto_patron     = re.compile(r'(?:\$\s*)(\d{1,3}(?:\.\d{3})*(?:,\d+)?)|-')
+        re_monto_porcentaje = re.compile(r'>\s*((?:\d+)(?:,\d+)?)\s*%\s*(?:R\.I\.)?\s*<')
 
         soup = BeautifulSoup(page.content, "html.parser")
 
