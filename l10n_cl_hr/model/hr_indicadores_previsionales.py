@@ -367,6 +367,7 @@ class hr_indicadores_previsionales(models.Model):
             if 'deposito convenido' in texto and not indicadores['DEPOSITO_CONVENIDO_TOPE_ANUAL']:
                 indicadores['DEPOSITO_CONVENIDO_TOPE_ANUAL'] = [extraer_monto(texto_raw)]
             
+            # Seguro Cesantia
             if 'plazo indefinido' in texto and not indicadores['SEGURO_CESANTIA_PLAZO_INDEF']:
                 celdas = fila.find_all('td')
                 if len(celdas) >= 3:
