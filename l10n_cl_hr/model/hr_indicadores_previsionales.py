@@ -190,7 +190,7 @@ class hr_indicadores_previsionales(models.Model):
             self.uta = new_ind['UTA', 0.0]
 
             # 3 RENTAS TOPES IMPONIBLES (UF)
-            self.tope_imponible_afp             = new_ind['RENTAS_TOPE_AFP']
+            self.tope_imponible_afp             = new_ind['RENTAS_TOPE_AFP'][0]
             self.tope_imponible_ips             = new_ind['RENTAS_TOPE_IPS', [0.0]][0] 
             self.tope_imponible_seguro_cesantia = new_ind['RENTAS_TOPE_SEGURO', [0.0]][0] 
 
@@ -262,7 +262,7 @@ class hr_indicadores_previsionales(models.Model):
             'UF':0,
             'UTM':0,
             'UTA':0,
-            'MES_UTM':'',
+            'MES_UTM':0,
             'RENTAS_TOPE_AFP':[],
             'RENTAS_TOPE_IPS':0,
             'RENTAS_TOPE_SEGURO':0,
@@ -335,7 +335,7 @@ class hr_indicadores_previsionales(models.Model):
                 if ('uta' in texto or 'mayo 2025' in texto) and indicadores['UTA'] == 0:
                     indicadores['UTA'] = extraer_monto(texto_raw)  
 
-                if ('mes' in texto or 'Al 31 de mayo del 2025' in texto) and indicadores['MES_UTM'] == '':
+                if ('mes' in texto or 'Al 31 de mayo del 2025' in texto) and indicadores['MES_UTM'] == 0:
                     indicadores['MES_UTM'] = extraer_monto(texto_raw)
                 
                 if 'para afiliados a una afp' in texto and indicadores['RENTAS_TOPE_AFP'] == 0:
