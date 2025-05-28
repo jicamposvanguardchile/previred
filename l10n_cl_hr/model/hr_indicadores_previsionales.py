@@ -307,8 +307,11 @@ class hr_indicadores_previsionales(models.Model):
                 return float(extraccion.group(1).replace('.', '').replace(',', '.').replace('$', '').replace('%', ''))
             return 0
         
-        re_monto_patron     = re.compile(r'(?:\$\s*)(\d{1,3}(?:\.\d{3})*(?:,\d+)?)|-')
-        re_monto_porcentaje = re.compile(r'>\s*((?:\d+)(?:,\d+)?)\s*%\s*(?:R\.I\.)?\s*<')
+        def extraer_porcentaje(texto):
+            match = re.search(r'(\d{1,2},\d{1,2})\s*%', texto)
+            if match:
+                return match.group(1).replace(',', '.') + '%'
+            return texto.strip()
 
         soup = BeautifulSoup(page.content, "html.parser")
 
