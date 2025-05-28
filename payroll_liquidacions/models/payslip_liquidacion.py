@@ -111,7 +111,7 @@ class HrPayslip(models.Model):
                     datos['fonasa'] = extraer_monto(texto_raw)
 
         datos['mes'] = 202505
-        indicador = self.env['hr.indicadores'].create(datos)
+        indicador = self.env['hr.indicadores2'].create(datos)
 
         #tablas = soup.find_all('table')
 

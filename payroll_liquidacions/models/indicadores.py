@@ -2,7 +2,7 @@
 from odoo import models, api, fields
 
 class Indicadores(models.Model):
-    _name = "hr.indicadores"
+    _name = "hr.indicadores2"
     asignacion_familiar_ids =fields.One2many("hr.asignacion.familiar", "indicador_id")
     seguro_cesantia_ids =fields.One2many("hr.seguro.cesantia", "seguro_id")
     cotizacion_afp_ids = fields.One2many("hr.cotizacion.obligatoria.afp", "indicador_afp_id")
