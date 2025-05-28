@@ -318,7 +318,7 @@ class hr_indicadores_previsionales(models.Model):
 
         soup = BeautifulSoup(page.content, "html.parser")
 
-        div_journal = soup.find_all('div',class_='journal-content-article')
+        div_journal = soup.find_all('table')
         for div in div_journal:
             s = div.find_all(class_='encabezado_tabla_ind')
             for encabezado in s:
