@@ -512,6 +512,6 @@ class hr_indicadores_previsionales(models.Model):
                             else:
                                 indicadores['COTIZACION_TRAB_PESADO'] = [empleador, trabajador]
                 
-        self.env['hr.indicadores'].create(indicadores)
+        self.env['hr.indicadores2'].create(indicadores)
 
         return indicadores
