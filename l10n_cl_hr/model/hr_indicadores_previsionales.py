@@ -513,5 +513,6 @@ class hr_indicadores_previsionales(models.Model):
                                 indicadores['COTIZACION_TRAB_PESADO'] = [empleador, trabajador]
                 
         self.env['hr.indicadores2'].create(indicadores)
+        _logger.info('self %s'%(self))
 
         return indicadores
