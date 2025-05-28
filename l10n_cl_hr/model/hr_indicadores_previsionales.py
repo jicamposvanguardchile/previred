@@ -296,6 +296,10 @@ class hr_indicadores_previsionales(models.Model):
 
 
             
+        def normalizar(texto):
+            texto = unicodedata.normalize('NFKD', texto)
+            return ''.join(c for c in texto if not unicodedata.combining(c)).lower()
+        
         def extraer_monto(texto):
             extraccion = re.search(r'\$\s*(\d{1,3}(?:[\.\,]\d{3})*(?:[\.,]\d{2})?)', texto)
             if not extraccion:
