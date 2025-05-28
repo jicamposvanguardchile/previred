@@ -165,6 +165,7 @@ class hr_indicadores_previsionales(models.Model):
             html_bytes = page.read()
             html = html_bytes.decode("utf-8")
             brute = re.findall("\$ [\d\.,]+<|>[\d]+\.[\d\.]+<|>[\d,]+%<|>[\d,]+% R\.I\. ?<", html)
+            _logger.info('brute %s'%(brute))
             pure = []
             for item in brute:
                 pure.append(float((re.search("[\d\.,]+", item)[0]).replace('.','').replace(',','.')))
