@@ -325,8 +325,8 @@ class hr_indicadores_previsionales(models.Model):
                 texto_raw = fila.get_text(strip=True)
                 texto = normalizar(texto_raw)
 
-                if ('uf' in texto or 'Al 31 de mayo del 2025' in texto) and indicadores['UF'] == 0:
-                    indicadores['UF'] = extraer_monto(texto_raw)
+                if ('uf mayo' in texto or '31 de mayo del' in texto) and not indicadores['UF'].get('MAYO'):
+                    indicadores['UF']['MAYO'] = extraer_monto(texto_raw)
                 
                 if ('utm' in texto or 'mayo 2025' in texto) and indicadores['UTM'] == 0:
                     indicadores['UTM'] = extraer_monto(texto_raw)
@@ -337,8 +337,8 @@ class hr_indicadores_previsionales(models.Model):
                 if ('mes' in texto or 'Al 31 de mayo del 2025' in texto) and indicadores['MES_UTM'] == 0:
                     indicadores['MES_UTM'] = extraer_monto(texto_raw)
                 
-                if 'para afiliados a una afp' in texto and indicadores['RENTAS_TOPE_AFP'] == 0:
-                    indicadores['RENTAS_TOPE_AFP'] = extraer_monto(texto_raw)
+                if 'afiliados a una afp' in texto and not indicadores['RENTAS_TOPE_AFP']:
+                   indicadores['RENTAS_TOPE_AFP'] = [extraer_monto(texto_raw)]
                 
                 if ('ips' in texto or 'para afiliados a ips' in texto) and indicadores['RENTAS_TOPE_IPS'] == 0:
                     indicadores['RENTAS_TOPE_IPS'] = extraer_monto(texto_raw)
