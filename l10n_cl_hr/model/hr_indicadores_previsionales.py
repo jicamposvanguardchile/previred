@@ -449,25 +449,22 @@ class hr_indicadores_previsionales(models.Model):
                                         locale.atof(valor_clp[0]),
                                         locale.atof(valor_clp[1]),
                                         locale.atof(valor_clp[2])]
-                elif f.get_text() == 'ASIGNACIÓN FAMILIAR':
-                    for tr in div.find_all('tr'):
-                        if f.get_text().strip() != tr.get_text().strip():
-                            b = re.findall(r'>\s*1\s+\(\s*A\s*\)\s*<',str(tr),re.IGNORECASE)
-                            if b:
-                                valor_clp = re_monto_patron.findall(str(tr))
-                                indicadores['ASIGNACION_FAMILIAR_A'] = [locale.atof(valor_clp[0]),locale.atof(valor_clp[-1])]
-                            b = re.findall(r'>\s*2\s+\(\s*B\s*\)\s*<',str(tr),re.IGNORECASE)
-                            if b:
-                                valor_clp = re_monto_patron.findall(str(tr))
-                                indicadores['ASIGNACION_FAMILIAR_B'] = [locale.atof(valor_clp[0]),locale.atof(valor_clp[-1])]
-                            b = re.findall(r'>\s*3\s+\(\s*C\s*\)\s*<',str(tr),re.IGNORECASE)
-                            if b:
-                                valor_clp = re_monto_patron.findall(str(tr))
-                                indicadores['ASIGNACION_FAMILIAR_C'] = [locale.atof(valor_clp[0]),locale.atof(valor_clp[-1])]
-                            b = re.findall(r'>\s*4\s+\(\s*D\s*\)\s*<',str(tr),re.IGNORECASE)
-                            if b:
-                                valor_clp = re_monto_patron.findall(str(tr))
-                                #indicadores['ASIGNACION_FAMILIAR_D'] = [locale.atof(valor_clp[0])]
+                elif 'ASIGNACIÓN FAMILIAR' in titulo:
+                    for tr in div.find_all('tr')[1:]:
+                        celdas = tr.find_all('td')
+                        if len(celdas) >= 2:
+                            tramo = celdas[0].get_text(strip=True).upper()
+                            monto = extraer_monto(celdas[1].get_text(strip=True))
+                            limite = extraer_monto(celdas[0].get_text(strip=True).split()[-1])
+                            if 'A' in tramo:
+                                indicadores['ASIGNACION_FAMILIAR_A'] = [monto, limite]
+                            elif 'B' in tramo:
+                                indicadores['ASIGNACION_FAMILIAR_B'] = [monto, limite]
+                            elif 'C' in tramo:
+                                indicadores['ASIGNACION_FAMILIAR_C'] = [monto, limite]
+                            elif 'D' in tramo:
+                                indicadores['ASIGNACION_FAMILIAR_D'] = [monto, limite]                
+                
                 elif 'TRABAJOS PESADOS' in titulo or 'TRABAJO PESADO' in titulo:
                     for tr in div.find_all('tr')[1:]:
                         celdas = tr.find_all('td')
@@ -480,33 +477,4 @@ class hr_indicadores_previsionales(models.Model):
                             else:
                                 indicadores['COTIZACION_TRAB_PESADO'] = [empleador, trabajador]
 
-                elif f.get_text().strip() == 'COTIZACIÓN PARA TRABAJOS PESADOS':
-                    for tr in div.find_all('tr'):
-                        if f.get_text().strip() != tr.get_text().strip():
-                            b = re.findall(r'>\s*Trabajo\s+pesado\s*<',str(tr),re.IGNORECASE)
-                            if b:
-                                valor_clp = re_monto_porcentaje.findall(str(tr))
-                                indicadores['COTIZACION_TRAB_PESADO'] = valor_clp
-                            b = re.findall(r'>\s*Trabajo\s+menos\s+pesado\s*<',str(tr),re.IGNORECASE)
-                            if b:
-                                valor_clp = re_monto_porcentaje.findall(str(tr))
-                                indicadores['COTIZACION_TRAB_MENOS_PESADO'] = valor_clp
-                elif f.get_text().strip() == 'VALOR UTM UTA':
-                    for tr in div.find_all('tr'):
-                        if f.get_text().strip() != tr.get_text().strip():
-                            #print(str(tr))
-                            cont = 0
-                            for td in tr.find_all('td'):
-                                if cont == 0:
-                                    mes = td.get_text().strip().capitalize()
-                                elif cont == 1:
-                                    utm = re_monto_patron.findall(str(td))[0]
-                                elif cont == 2:
-                                    uta = re_monto_patron.findall(str(td))[0]
-
-                                cont = cont + 1
-
-                            indicadores['MES_UTM'] = mes
-                            indicadores['UTM'] = locale.atof(utm)
-                            indicadores['UTA'] = locale.atof(uta)
         return indicadores
