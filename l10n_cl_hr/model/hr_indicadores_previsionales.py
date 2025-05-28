@@ -319,8 +319,33 @@ class hr_indicadores_previsionales(models.Model):
 
         soup = BeautifulSoup(page.content, "html.parser")
 
-        div_journal = soup.find_all('table')
-        for div in div_journal:
+        tablas = soup.find_all('table')
+        for tabla in tablas:
+            for fila in tabla.find_all('tr'):
+                texto_raw = fila.get_text(strip=True)
+                texto = normalizar(texto_raw)
+
+                if ('uf' in texto or 'Al 31 de mayo del 2025' in texto) and indicadores['UF'] == 0:
+                    indicadores['UF'] = extraer_monto(texto_raw)
+                
+                if ('utm' in texto or 'mayo 2025' in texto) and indicadores['UTM'] == 0:
+                    indicadores['UTM'] = extraer_monto(texto_raw)
+
+                if ('uta' in texto or 'mayo 2025' in texto) and indicadores['UTA'] == 0:
+                    indicadores['UTA'] = extraer_monto(texto_raw)  
+
+                if ('mes' in texto or 'Al 31 de mayo del 2025' in texto) and indicadores['MES_UTM'] == '':
+                    indicadores['MES_UTM'] = extraer_monto(texto_raw)
+                
+                if 'para afiliados a una afp' in texto and indicadores['RENTAS_TOPE_AFP'] == 0:
+                    indicadores['RENTAS_TOPE_AFP'] = extraer_monto(texto_raw)
+                
+                if ('ips' in texto or 'para afiliados a ips' in texto) and indicadores['RENTAS_TOPE_IPS'] == 0:
+                    indicadores['RENTAS_TOPE_IPS'] = extraer_monto(texto_raw)
+
+                if 'cesantia' in texto and indicadores['RENTAS_TOPE_SEGURO'] == 0:
+                    indicadores['RENTAS_TOPE_SEGURO'] = extraer_monto(texto_raw)
+
             s = div.find_all(class_='encabezado_tabla_ind')
             for encabezado in s:
                 titulo = encabezado.get_text().strip().upper()
