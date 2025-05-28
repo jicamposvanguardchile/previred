@@ -174,6 +174,7 @@ class hr_indicadores_previsionales(models.Model):
 
         try:
             new_ind = self._hrIndPrevired()
+            _logger.info('new_ind %s'%(new_ind))
             mes = new_ind.get('MES_UTM') or ''
             uf_mes = new_ind.get('UF', {}).get(mes)
             if not mes or uf_mes is None:
