@@ -93,7 +93,7 @@ class hr_indicadores_previsionales(models.Model):
     tope_anual_apv = fields.Float( 'Tope Anual APV', readonly=True, states=STATES, help="Tope Anual APV")
     tope_mensual_apv = fields.Float( 'Tope Mensual APV', readonly=True, states=STATES, help="Tope Mensual APV")
     tope_imponible_afp = fields.Float( 'Tope imponible AFP', readonly=True, states=STATES, help="Tope Imponible AFP")
-    tope_imponible_ips = fields.Float( 'Tope Imponible IPS', readonly=True, states=STATES, help="Tope Imponible IPS")
+    tope_imponible_ips = fields.Float( 'Tope imponible IPS', readonly=True, states=STATES, help="Tope Imponible IPS")
     tope_imponible_salud = fields.Float( 'Tope Imponible Salud', readonly=True, states=STATES,)
     tope_imponible_seguro_cesantia = fields.Float( 'Tope Imponible Seguro Cesantía', readonly=True, states=STATES,
         help="Tope Imponible Seguro de Cesantía")
