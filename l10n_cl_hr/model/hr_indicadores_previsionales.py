@@ -411,7 +411,7 @@ class hr_indicadores_previsionales(models.Model):
                 if '3 (c)' in texto and indicadores['ASIGNACION_FAMILIAR_C'] == 0:
                     indicadores['ASIGNACION_FAMILIAR_C'] = extraer_monto(texto_raw)
 
-                if 'tramo d' in texto and indicadores['ASIGNACION_FAMILIAR_D']:
+                if '4 (d)' in texto and indicadores['ASIGNACION_FAMILIAR_D'] == 0:
                     indicadores['ASIGNACION_FAMILIAR_D'] = extraer_monto(texto_raw)
                 
                 # Trabajo Pesado
