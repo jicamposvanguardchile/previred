@@ -398,7 +398,7 @@ class hr_indicadores_previsionales(models.Model):
                 # CCAF y FONASA
                 if 'ccaf' in texto and indicadores['DISTRIBUCION_7P_CCAF'] == 0:
                     indicadores['DISTRIBUCION_7P_CCAF'] = extraer_monto(texto_raw)
-                if 'fonasa' in texto and indicadores['DISTRIBUCION_7P_FONASA']:
+                if 'fonasa' in texto and indicadores['DISTRIBUCION_7P_FONASA'] == 0:
                     indicadores['DISTRIBUCION_7P_FONASA'] = extraer_monto(texto_raw)
                 
                 # Asignacion Familiar
