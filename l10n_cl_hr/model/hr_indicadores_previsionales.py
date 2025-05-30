@@ -333,10 +333,10 @@ class hr_indicadores_previsionales(models.Model):
             _logger.info('texto %s'%(texto))
 
             # UTM y UTA
-            if 'utm mayo' in texto and indicadores['UTM'] == 0:
+            if 'utm' in texto and indicadores['UTM'] == 0:
                 indicadores['UTM'] = extraer_monto(texto_raw)
-                indicadores['MES_UTM'] = 'MAYO'
-            if 'uta mayo' in texto and indicadores['UTA'] == 0:
+                indicadores['MES_UTM'] = ''
+            if 'uta' in texto and indicadores['UTA'] == 0:
                 indicadores['UTA'] = extraer_monto(texto_raw)
 
             # Topes
