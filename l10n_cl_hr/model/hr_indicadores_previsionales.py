@@ -309,6 +309,7 @@ class hr_indicadores_previsionales(models.Model):
             return 0
         
         def extraer_porcentaje(texto):
+            return ''
             match = re.search(r'(\d{1,2},\d{1,2})\s*%', texto)
             if match:
                 return match.group(1).replace(',', '.') + '%'
