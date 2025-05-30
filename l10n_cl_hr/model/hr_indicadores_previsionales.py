@@ -371,7 +371,7 @@ class hr_indicadores_previsionales(models.Model):
                     indicadores['DEPOSITO_CONVENIDO_TOPE_ANUAL'] = extraer_monto(texto_raw)
                 
                 # Seguro Cesantia
-                if 'plazo indefinido' in texto and indicadores['SEGURO_CESANTIA_PLAZO_INDEF']:
+                if 'plazo indefinido' in texto and indicadores['SEGURO_CESANTIA_PLAZO_INDEF'] == 0:
                     celdas = fila.find_all('td')
                     if len(celdas) >= 3:
                         porcentaje = extraer_monto(celdas[1].get_text(strip=True))
