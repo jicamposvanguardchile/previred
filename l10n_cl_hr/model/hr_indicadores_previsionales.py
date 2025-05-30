@@ -402,7 +402,7 @@ class hr_indicadores_previsionales(models.Model):
                     indicadores['DISTRIBUCION_7P_FONASA'] = extraer_monto(texto_raw)
                 
                 # Asignacion Familiar
-                if 'tramo a' in texto and indicadores['ASIGNACION_FAMILIAR_A']:
+                if '1 (a)' in texto and indicadores['ASIGNACION_FAMILIAR_A'] == 0:
                     indicadores['ASIGNACION_FAMILIAR_A'] = extraer_monto(texto_raw)
 
                 if 'tramo b' in texto and indicadores['ASIGNACION_FAMILIAR_B']:
