@@ -317,10 +317,10 @@ class hr_indicadores_previsionales(models.Model):
         soup = BeautifulSoup(page.content, "html.parser")
 
         tablas = soup.find_all('table')
-        _logger.info('tablas %s'%(tablas))
+        #_logger.info('tablas %s'%(tablas))
         for tabla in tablas:
             for fila in tabla.find_all('tr'):
-                _logger.info('fila %s' %(fila))
+                #_logger.info('fila %s' %(fila))
                 texto_raw = fila.get_text(strip=True)
                 texto = normalizar(texto_raw)
 
@@ -330,8 +330,8 @@ class hr_indicadores_previsionales(models.Model):
 
                 if ('uf mayo' in texto or 'al 31 de mayo del 2025' in texto):
                     indicadores['UF'] = extraer_monto(texto_raw)
-                _logger.info('texto_raw %s'%(texto_raw))
-                _logger.info('texto %s'%(texto))
+                #_logger.info('texto_raw %s'%(texto_raw))
+                #_logger.info('texto %s'%(texto))
 
                 # UTM y UTA
                 if 'utm' in texto:
