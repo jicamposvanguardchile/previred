@@ -258,7 +258,7 @@ class hr_indicadores_previsionales(models.Model):
             'UF':0,
             'UTM':0,
             'UTA':0,
-            'MES_UTM':' ',
+            'MES_UTM':'',
             'RENTAS_TOPE_AFP':0,
             'RENTAS_TOPE_IPS':0,
             'RENTAS_TOPE_SEGURO':0,
@@ -317,7 +317,7 @@ class hr_indicadores_previsionales(models.Model):
 
         tablas = soup.find_all('table')
         for tabla in tablas:
-            for fila in tabla.find_all('tr'):
+            for fila in tabla.find_all('re'):
                 texto_raw = fila.get_text(strip=True)
                 texto = normalizar(texto_raw)
 
