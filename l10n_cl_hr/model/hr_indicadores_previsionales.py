@@ -327,7 +327,7 @@ class hr_indicadores_previsionales(models.Model):
             #if ('uf abril' in texto or '30 de abril del' in texto):
              #   indicadores['UF']['ABRIL'] = extraer_monto(texto_raw)
 
-            if ('uf mayo' in texto or '31 de mayo del' in texto):
+            if ('uf mayo' in texto or 'al 31 de mayo del 2025' in texto):
                 indicadores['UF'] = extraer_monto(texto_raw)
             _logger.info('texto_raw %s'%(texto_raw))
             _logger.info('texto %s'%(texto))
