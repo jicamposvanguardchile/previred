@@ -320,6 +320,7 @@ class hr_indicadores_previsionales(models.Model):
         _logger.info('tablas %s'%(tablas))
         for tabla in tablas:
             for fila in tabla.find_all('tr'):
+                _logger.info('fila %s' %(fila))
                 texto_raw = fila.get_text(strip=True)
                 texto = normalizar(texto_raw)
 
