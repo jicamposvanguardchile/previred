@@ -331,8 +331,8 @@ class hr_indicadores_previsionales(models.Model):
 
                 if ('uf mayo' in texto or 'al 31 de mayo del 2025' in texto):
                     indicadores['UF'] = extraer_monto(texto_raw)
-                _logger.info('texto_raw %s'%(texto_raw))
-                _logger.info('texto %s'%(texto))
+                #_logger.info('texto_raw %s'%(texto_raw))
+                #_logger.info('texto %s'%(texto))
 
                 if fila.get_text().strip() == 'VALOR UTM UTA':
                     for tr in tabla.find_all('tr'):
@@ -352,6 +352,7 @@ class hr_indicadores_previsionales(models.Model):
                                 indicadores['MES_UTM'] = mes
                                 indicadores['UTM'] = locale.atof(utm)
                                 indicadores['UTA'] = locale.atof(uta)
+                _logger.info('indicadores %s'%(indicadores))
 
                 # UTM y UTA
                 #if 'utm' in texto:
