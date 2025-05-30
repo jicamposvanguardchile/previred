@@ -340,7 +340,7 @@ class hr_indicadores_previsionales(models.Model):
                 indicadores['UTA'] = extraer_monto(texto_raw)
 
             # Topes
-            if 'afiliados a una afp' in texto and not indicadores['RENTAS_TOPE_AFP']:
+            if 'afiliados a una afp' in texto and not indicadores['RENTAS_TOPE_AFP'] == 0:
                 indicadores['RENTAS_TOPE_AFP'] = [extraer_monto(texto_raw)]
             if 'afiliados a ips' in texto and not indicadores['RENTAS_TOPE_IPS']:
                 indicadores['RENTAS_TOPE_IPS'] = [extraer_monto(texto_raw)]
