@@ -377,7 +377,7 @@ class hr_indicadores_previsionales(models.Model):
                         porcentaje = extraer_monto(celdas[1].get_text(strip=True))
                         indicadores['SEGURO_CESANTIA_PLAZO_INDEF'] = porcentaje
 
-                if 'plazo fijo' in texto and indicadores['SEGURO_CESANTIA_PLAZO_FIJO']:
+                if 'plazo fijo' in texto and indicadores['SEGURO_CESANTIA_PLAZO_FIJO'] == 0:
                     celdas = fila.find_all('td')
                     if len(celdas) >= 2:
                         porcentaje = extraer_monto(celdas[1].get_text(strip=True))
