@@ -389,7 +389,7 @@ class hr_indicadores_previsionales(models.Model):
                         porcentaje = extraer_monto(celdas[1].get_text(strip=True))
                         indicadores['SEGURO_CESANTIA_11_ANNOS'] = porcentaje
 
-                if 'casa particular' in texto and indicadores['SEGURO_CESANTIA_CASA_PARTICULAR']:
+                if 'Trabajador de Casa Particular (**)' in texto and indicadores['SEGURO_CESANTIA_CASA_PARTICULAR'] == 0:
                     celdas = fila.find_all('td')
                     if len(celdas) >= 2:
                         porcentaje = extraer_monto(celdas[1].get_text(strip=True))
