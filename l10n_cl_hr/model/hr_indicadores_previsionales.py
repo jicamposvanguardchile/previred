@@ -405,7 +405,7 @@ class hr_indicadores_previsionales(models.Model):
                 if '1 (a)' in texto and indicadores['ASIGNACION_FAMILIAR_A'] == 0:
                     indicadores['ASIGNACION_FAMILIAR_A'] = extraer_monto(texto_raw)
 
-                if 'tramo b' in texto and indicadores['ASIGNACION_FAMILIAR_B']:
+                if '2 (b)' in texto and indicadores['ASIGNACION_FAMILIAR_B'] == 0:
                     indicadores['ASIGNACION_FAMILIAR_B'] = extraer_monto(texto_raw)
 
                 if 'tramo c' in texto and indicadores['ASIGNACION_FAMILIAR_C']:
