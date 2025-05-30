@@ -302,8 +302,8 @@ class hr_indicadores_previsionales(models.Model):
                 extraccion = re.search(r'(\d{1,3}(?:[\.\,]\d{3})*(?:[\.,]\d{2}))', texto)
             if not extraccion:
                 extraccion = re.search(r'(\d+(?:[\.,]\d+)?)\s*%', texto)
-            _logger.info('extraccion %s'%(extraccion))
-            _logger.info('%s'%(float(extraccion.group(1).replace('.', '').replace(',', '.').replace('$', '').replace('%', ''))))
+            #_logger.info('extraccion %s'%(extraccion))
+            #_logger.info('%s'%(float(extraccion.group(1).replace('.', '').replace(',', '.').replace('$', '').replace('%', ''))))
             if extraccion:
                 return float(extraccion.group(1).replace('.', '').replace(',', '.').replace('$', '').replace('%', ''))
             return 0
@@ -330,8 +330,8 @@ class hr_indicadores_previsionales(models.Model):
 
                 if ('uf mayo' in texto or 'al 31 de mayo del 2025' in texto):
                     indicadores['UF'] = extraer_monto(texto_raw)
-                #_logger.info('texto_raw %s'%(texto_raw))
-                #_logger.info('texto %s'%(texto))
+                _logger.info('texto_raw %s'%(texto_raw))
+                _logger.info('texto %s'%(texto))
 
                 # UTM y UTA
                 if 'utm' in texto:
