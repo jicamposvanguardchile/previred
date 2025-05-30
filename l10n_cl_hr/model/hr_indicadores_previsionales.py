@@ -328,15 +328,15 @@ class hr_indicadores_previsionales(models.Model):
              #   indicadores['UF']['ABRIL'] = extraer_monto(texto_raw)
 
             if ('uf mayo' in texto or 'al 31 de mayo del 2025' in texto):
-                indicadores['UF']['MAYO'] = extraer_monto(texto_raw)
+                indicadores['UF'] = extraer_monto(texto_raw)
             _logger.info('texto_raw %s'%(texto_raw))
             _logger.info('texto %s'%(texto))
 
             # UTM y UTA
-            if 'utm' in texto and indicadores['UTM'] == 0:
+            if 'utm' in texto:
                 indicadores['UTM'] = extraer_monto(texto_raw)
                 indicadores['MES_UTM'] = ''
-            if 'uta' in texto and indicadores['UTA'] == 0:
+            if 'uta' in texto:
                 indicadores['UTA'] = extraer_monto(texto_raw)
 
             # Topes
