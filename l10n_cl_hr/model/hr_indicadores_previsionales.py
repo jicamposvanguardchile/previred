@@ -317,7 +317,7 @@ class hr_indicadores_previsionales(models.Model):
 
         tablas = soup.find_all('table')
         for tabla in tablas:
-            for fila in tabla.find_all('re'):
+            for fila in tabla.find_all('tr'):
                 texto_raw = fila.get_text(strip=True)
                 texto = normalizar(texto_raw)
 
