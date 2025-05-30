@@ -347,7 +347,7 @@ class hr_indicadores_previsionales(models.Model):
                     indicadores['RENTAS_TOPE_AFP'] = extraer_monto(texto_raw)
                 if 'para afiliados al ips (ex inp)' in texto and indicadores['RENTAS_TOPE_IPS'] == 0:
                     indicadores['RENTAS_TOPE_IPS'] = extraer_monto(texto_raw)
-                if 'seguro de cesantia' in texto and indicadores['RENTAS_TOPE_SEGURO']:
+                if 'para seguro de cesantia' in texto and indicadores['RENTAS_TOPE_SEGURO'] == 0:
                     indicadores['RENTAS_TOPE_SEGURO'] = extraer_monto(texto_raw)
 
                 # Rentas mínimas
