@@ -177,7 +177,7 @@ class hr_indicadores_previsionales(models.Model):
             _logger.info('new_ind %s'%(new_ind))
         
             # UF
-            self.uf = new_ind['UF'][new_ind['MES_UTM']]
+            self.uf = new_ind.get['UF'][new_ind.get['MES_UTM']]
 
             # 1 UTM
             self.utm = new_ind['UTM']
