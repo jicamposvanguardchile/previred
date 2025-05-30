@@ -16,7 +16,7 @@ locale._override_localeconv["thousands_sep"] = "."
 locale._override_localeconv["decimal_point"] = ","
 
 
-URL_PREVIRED = "https://www.previred.com/web/previred/indicadores-previsionales"
+URL_PREVIRED = "https://www.previred.com/indicadores-previsionales/"
 
 _logger = logging.getLogger(__name__)
 
