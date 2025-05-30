@@ -316,6 +316,7 @@ class hr_indicadores_previsionales(models.Model):
         soup = BeautifulSoup(page.content, "html.parser")
 
         tablas = soup.find_all('table')
+        _logger.info('tablas %s'%(tablas))
         for tabla in tablas:
             for fila in tabla.find_all('tr'):
                 texto_raw = fila.get_text(strip=True)
