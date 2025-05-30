@@ -415,7 +415,7 @@ class hr_indicadores_previsionales(models.Model):
                     indicadores['ASIGNACION_FAMILIAR_D'] = extraer_monto(texto_raw)
                 
                 # Trabajo Pesado
-                if 'trabajo pesado' in texto and indicadores['COTIZACION_TRAB_PESADO']:
+                if 'trabajo pesado' in texto and indicadores['COTIZACION_TRAB_PESADO'] == 0:
                     celdas = fila.find_all('td')
                     if len(celdas) >= 2:
                         porcentaje = extraer_porcentaje(celdas[1].get_text(strip=True))
