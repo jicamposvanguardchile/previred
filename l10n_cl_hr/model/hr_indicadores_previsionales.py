@@ -204,8 +204,8 @@ class hr_indicadores_previsionales(models.Model):
             # 6 SEGURO DE CESANTÍA (AFC)
             self.contrato_plazo_indefinido_empleador      = new_ind['SEGURO_CESANTIA_PLAZO_INDEF'][0]
             self.contrato_plazo_indefinido_trabajador     = new_ind['SEGURO_CESANTIA_PLAZO_INDEF'][1]
-            self.contrato_plazo_fijo_empleador            = new_ind['SEGURO_CESANTIA_PLAZO_FIJO'][1]
-            self.contrato_plazo_indefinido_empleador_otro = new_ind['SEGURO_CESANTIA_11_ANNOS'][1]
+            self.contrato_plazo_fijo_empleador            = new_ind['SEGURO_CESANTIA_PLAZO_FIJO']
+            self.contrato_plazo_indefinido_empleador_otro = new_ind['SEGURO_CESANTIA_11_ANNOS']
 
             # 7 ASIGNACIÓN FAMILIAR
             self.asignacion_familiar_monto_a = new_ind['ASIGNACION_FAMILIAR_A'][0]
@@ -383,7 +383,7 @@ class hr_indicadores_previsionales(models.Model):
                         porcentaje = extraer_monto(celdas[1].get_text(strip=True))
                         indicadores['SEGURO_CESANTIA_PLAZO_FIJO'] = porcentaje
 
-                if 'Plazo Indefinido 11 años o más (*)' in texto and indicadores['SEGURO_CESANTIA_11_ANNOS'] == 0:
+                if 'plazo indefinido 11 años o mms (*)' in texto and indicadores['SEGURO_CESANTIA_11_ANNOS'] == 0:
                     celdas = fila.find_all('td')
                     if len(celdas) >= 2:
                         porcentaje = extraer_monto(celdas[1].get_text(strip=True))
