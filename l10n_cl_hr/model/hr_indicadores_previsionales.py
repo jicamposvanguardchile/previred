@@ -351,7 +351,7 @@ class hr_indicadores_previsionales(models.Model):
                     indicadores['RENTAS_TOPE_SEGURO'] = extraer_monto(texto_raw)
 
                 # Rentas mínimas
-                if 'dependientes e independientes' in texto and indicadores['RENTAS_MINIMA_DEP_INDEP']:
+                if 'trab dependientes e independientes' in texto and indicadores['RENTAS_MINIMA_DEP_INDEP'] == 0:
                     indicadores['RENTAS_MINIMA_DEP_INDEP'] = extraer_monto(texto_raw)
                 if 'menores de 18 y mayores de 65' in texto and indicadores['RENTAS_MINIMA_18_Y_65']:
                     indicadores['RENTAS_MINIMA_18_Y_65'] = extraer_monto(texto_raw)
