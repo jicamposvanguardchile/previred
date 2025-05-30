@@ -396,7 +396,7 @@ class hr_indicadores_previsionales(models.Model):
                         indicadores['SEGURO_CESANTIA_CASA_PARTICULAR'] = porcentaje
                 
                 # CCAF y FONASA
-                if 'ccaf' in texto and indicadores['DISTRIBUCION_7P_CCAF']:
+                if 'ccaf' in texto and indicadores['DISTRIBUCION_7P_CCAF'] == 0:
                     indicadores['DISTRIBUCION_7P_CCAF'] = extraer_monto(texto_raw)
                 if 'fonasa' in texto and indicadores['DISTRIBUCION_7P_FONASA']:
                     indicadores['DISTRIBUCION_7P_FONASA'] = extraer_monto(texto_raw)
