@@ -176,7 +176,7 @@ class hr_indicadores_previsionales(models.Model):
             new_ind = self._hrIndPrevired()
             _logger.info('new_ind %s'%(new_ind))
             mes = new_ind('MES_UTM') or ''
-            uf_mes = new_ind.get('UF', {})(mes)
+            uf_mes = new_ind('UF', {})(mes)
             if not mes or uf_mes is None:
                 raise ValueError(f"Mes UTM no encontrado o no existe UF para el mes '{mes}'")
         
@@ -191,8 +191,8 @@ class hr_indicadores_previsionales(models.Model):
 
             # 3 RENTAS TOPES IMPONIBLES (UF)
             self.tope_imponible_afp             = new_ind['RENTAS_TOPE_AFP'][0]
-            self.tope_imponible_ips             = new_ind.get['RENTAS_TOPE_IPS', [0.0]][0] 
-            self.tope_imponible_seguro_cesantia = new_ind.get['RENTAS_TOPE_SEGURO', [0.0]][0] 
+            self.tope_imponible_ips             = new_ind['RENTAS_TOPE_IPS'][0] 
+            self.tope_imponible_seguro_cesantia = new_ind['RENTAS_TOPE_SEGURO'][0] 
 
             # 4 RENTAS MINIMAS IMPONIBLES
             self.sueldo_minimo      = new_ind.get['RENTAS_MINIMA_DEP_INDEP', [0.0]][0]
@@ -262,7 +262,7 @@ class hr_indicadores_previsionales(models.Model):
             'UF':0,
             'UTM':0,
             'UTA':0,
-            'MES_UTM':0,
+            'MES_UTM':' ',
             'RENTAS_TOPE_AFP':0,
             'RENTAS_TOPE_IPS':0,
             'RENTAS_TOPE_SEGURO':0,
