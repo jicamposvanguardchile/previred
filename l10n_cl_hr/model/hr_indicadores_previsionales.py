@@ -326,10 +326,10 @@ class hr_indicadores_previsionales(models.Model):
                 texto = normalizar(texto_raw)
 
                  # UF
-            if ('uf abril' in texto or '30 de abril del' in texto) and not indicadores['UF'].get('ABRIL'):
+            if ('uf abril' in texto or '30 de abril del' in texto) and indicadores['UF'].get('ABRIL'):
                 indicadores['UF']['ABRIL'] = extraer_monto(texto_raw)
 
-            if ('uf mayo' in texto or '31 de mayo del' in texto) and not indicadores['UF'].get('MAYO'):
+            if ('uf mayo' in texto or '31 de mayo del' in texto) and indicadores['UF'].get('MAYO'):
                 indicadores['UF']['MAYO'] = extraer_monto(texto_raw)
 
             # UTM y UTA
@@ -343,83 +343,83 @@ class hr_indicadores_previsionales(models.Model):
             if 'afiliados a una afp' in texto and indicadores['RENTAS_TOPE_AFP'] == 0:
                 indicadores['RENTAS_TOPE_AFP'] = extraer_monto(texto_raw)
             if 'afiliados a ips' in texto and indicadores['RENTAS_TOPE_IPS']:
-                indicadores['RENTAS_TOPE_IPS'] = [extraer_monto(texto_raw)]
+                indicadores['RENTAS_TOPE_IPS'] = extraer_monto(texto_raw)
             if 'seguro de cesantia' in texto and indicadores['RENTAS_TOPE_SEGURO']:
-                indicadores['RENTAS_TOPE_SEGURO'] = [extraer_monto(texto_raw)]
+                indicadores['RENTAS_TOPE_SEGURO'] = extraer_monto(texto_raw)
 
             # Rentas mínimas
             if 'dependientes e independientes' in texto and indicadores['RENTAS_MINIMA_DEP_INDEP']:
-                indicadores['RENTAS_MINIMA_DEP_INDEP'] = [extraer_monto(texto_raw)]
+                indicadores['RENTAS_MINIMA_DEP_INDEP'] = extraer_monto(texto_raw)
             if 'menores de 18 y mayores de 65' in texto and indicadores['RENTAS_MINIMA_18_Y_65']:
-                indicadores['RENTAS_MINIMA_18_Y_65'] = [extraer_monto(texto_raw)]
-            if 'casa particular' in texto and not indicadores['RENTAS_MINIMA_CASA_PARTICULAR']:
-                indicadores['RENTAS_MINIMA_CASA_PARTICULAR'] = [extraer_monto(texto_raw)]
-            if 'no remuneracionales' in texto and not indicadores['RENTAS_MINIMA_NO_REMU']:
-                indicadores['RENTAS_MINIMA_NO_REMU'] = [extraer_monto(texto_raw)]
+                indicadores['RENTAS_MINIMA_18_Y_65'] = extraer_monto(texto_raw)
+            if 'casa particular' in texto and indicadores['RENTAS_MINIMA_CASA_PARTICULAR']:
+                indicadores['RENTAS_MINIMA_CASA_PARTICULAR'] = extraer_monto(texto_raw)
+            if 'no remuneracionales' in texto and indicadores['RENTAS_MINIMA_NO_REMU']:
+                indicadores['RENTAS_MINIMA_NO_REMU'] = extraer_monto(texto_raw)
 
             # APV
-            if 'apv mensual' in texto and not indicadores['APV_TOPE_MENSUAL']:
-                indicadores['APV_TOPE_MENSUAL'] = [extraer_monto(texto_raw)]
-            if 'apv anual' in texto and not indicadores['APV_TOPE_ANUAL']:
-                indicadores['APV_TOPE_ANUAL'] = [extraer_monto(texto_raw)]
+            if 'apv mensual' in texto and indicadores['APV_TOPE_MENSUAL']:
+                indicadores['APV_TOPE_MENSUAL'] = extraer_monto(texto_raw)
+            if 'apv anual' in texto and indicadores['APV_TOPE_ANUAL']:
+                indicadores['APV_TOPE_ANUAL'] = extraer_monto(texto_raw)
 
             # Depósito Convenido
-            if 'deposito convenido' in texto and not indicadores['DEPOSITO_CONVENIDO_TOPE_ANUAL']:
-                indicadores['DEPOSITO_CONVENIDO_TOPE_ANUAL'] = [extraer_monto(texto_raw)]
+            if 'deposito convenido' in texto and indicadores['DEPOSITO_CONVENIDO_TOPE_ANUAL']:
+                indicadores['DEPOSITO_CONVENIDO_TOPE_ANUAL'] = extraer_monto(texto_raw)
             
             # Seguro Cesantia
-            if 'plazo indefinido' in texto and not indicadores['SEGURO_CESANTIA_PLAZO_INDEF']:
+            if 'plazo indefinido' in texto and indicadores['SEGURO_CESANTIA_PLAZO_INDEF']:
                 celdas = fila.find_all('td')
                 if len(celdas) >= 3:
                     porcentaje = extraer_monto(celdas[1].get_text(strip=True))  # Solo empleador
                     indicadores['SEGURO_CESANTIA_PLAZO_INDEF'] = porcentaje
 
-            if 'plazo fijo' in texto and not indicadores['SEGURO_CESANTIA_PLAZO_FIJO']:
+            if 'plazo fijo' in texto and indicadores['SEGURO_CESANTIA_PLAZO_FIJO']:
                 celdas = fila.find_all('td')
                 if len(celdas) >= 2:
                     porcentaje = extraer_monto(celdas[1].get_text(strip=True))
                     indicadores['SEGURO_CESANTIA_PLAZO_FIJO'] = porcentaje
 
-            if '11 años' in texto and not indicadores['SEGURO_CESANTIA_11_ANNOS']:
+            if '11 años' in texto and indicadores['SEGURO_CESANTIA_11_ANNOS']:
                 celdas = fila.find_all('td')
                 if len(celdas) >= 2:
                     porcentaje = extraer_monto(celdas[1].get_text(strip=True))
                     indicadores['SEGURO_CESANTIA_11_ANNOS'] = porcentaje
 
-            if 'casa particular' in texto and not indicadores['SEGURO_CESANTIA_CASA_PARTICULAR']:
+            if 'casa particular' in texto and indicadores['SEGURO_CESANTIA_CASA_PARTICULAR']:
                 celdas = fila.find_all('td')
                 if len(celdas) >= 2:
                     porcentaje = extraer_monto(celdas[1].get_text(strip=True))
                     indicadores['SEGURO_CESANTIA_CASA_PARTICULAR'] = porcentaje
             
             # CCAF y FONASA
-            if 'ccaf' in texto and not indicadores['DISTRIBUCION_7P_CCAF']:
-                indicadores['DISTRIBUCION_7P_CCAF'] = [extraer_monto(texto_raw)]
-            if 'fonasa' in texto and not indicadores['DISTRIBUCION_7P_FONASA']:
-                indicadores['DISTRIBUCION_7P_FONASA'] = [extraer_monto(texto_raw)]
+            if 'ccaf' in texto and indicadores['DISTRIBUCION_7P_CCAF']:
+                indicadores['DISTRIBUCION_7P_CCAF'] = extraer_monto(texto_raw)
+            if 'fonasa' in texto and indicadores['DISTRIBUCION_7P_FONASA']:
+                indicadores['DISTRIBUCION_7P_FONASA'] = extraer_monto(texto_raw)
             
             # Asignacion Familiar
-            if 'tramo a' in texto and not indicadores['ASIGNACION_FAMILIAR_A']:
+            if 'tramo a' in texto and indicadores['ASIGNACION_FAMILIAR_A']:
                 indicadores['ASIGNACION_FAMILIAR_A'] = extraer_monto(texto_raw)
 
-            if 'tramo b' in texto and not indicadores['ASIGNACION_FAMILIAR_B']:
+            if 'tramo b' in texto and indicadores['ASIGNACION_FAMILIAR_B']:
                 indicadores['ASIGNACION_FAMILIAR_B'] = extraer_monto(texto_raw)
 
-            if 'tramo c' in texto and not indicadores['ASIGNACION_FAMILIAR_C']:
+            if 'tramo c' in texto and indicadores['ASIGNACION_FAMILIAR_C']:
                 indicadores['ASIGNACION_FAMILIAR_C'] = extraer_monto(texto_raw)
 
-            if 'tramo d' in texto and not indicadores['ASIGNACION_FAMILIAR_D']:
+            if 'tramo d' in texto and indicadores['ASIGNACION_FAMILIAR_D']:
                 indicadores['ASIGNACION_FAMILIAR_D'] = extraer_monto(texto_raw)
             
             # Trabajo Pesado
-            if 'trabajo pesado' in texto and not indicadores['COTIZACION_TRAB_PESADO']:
+            if 'trabajo pesado' in texto and indicadores['COTIZACION_TRAB_PESADO']:
                 celdas = fila.find_all('td')
                 if len(celdas) >= 2:
                     porcentaje = extraer_porcentaje(celdas[1].get_text(strip=True))
                     indicadores['COTIZACION_TRAB_PESADO'] = porcentaje
 
             # Trabajo Menos Pesado
-            if 'trabajos menos pesados' in texto and not indicadores['COTIZACION_TRAB_MENOS_PESADO']:
+            if 'trabajos menos pesados' in texto and indicadores['COTIZACION_TRAB_MENOS_PESADO']:
                 celdas = fila.find_all('td')
                 if len(celdas) >= 2:
                     porcentaje = extraer_porcentaje(celdas[1].get_text(strip=True))
