@@ -344,7 +344,7 @@ class hr_indicadores_previsionales(models.Model):
                 # Topes
                 if 'afiliados a una afp' in texto and indicadores['RENTAS_TOPE_AFP'] == 0:
                     indicadores['RENTAS_TOPE_AFP'] = extraer_monto(texto_raw)
-                if 'afiliados a ips' in texto and indicadores['RENTAS_TOPE_IPS']:
+                if 'afiliados a ips' in texto and indicadores['RENTAS_TOPE_IPS'] == 0:
                     indicadores['RENTAS_TOPE_IPS'] = extraer_monto(texto_raw)
                 if 'seguro de cesantia' in texto and indicadores['RENTAS_TOPE_SEGURO']:
                     indicadores['RENTAS_TOPE_SEGURO'] = extraer_monto(texto_raw)
@@ -373,7 +373,7 @@ class hr_indicadores_previsionales(models.Model):
                 if 'plazo indefinido' in texto and indicadores['SEGURO_CESANTIA_PLAZO_INDEF']:
                     celdas = fila.find_all('td')
                     if len(celdas) >= 3:
-                        porcentaje = extraer_monto(celdas[1].get_text(strip=True))  # Solo empleador
+                        porcentaje = extraer_monto(celdas[1].get_text(strip=True))
                         indicadores['SEGURO_CESANTIA_PLAZO_INDEF'] = porcentaje
 
                 if 'plazo fijo' in texto and indicadores['SEGURO_CESANTIA_PLAZO_FIJO']:
