@@ -338,7 +338,7 @@ class hr_indicadores_previsionales(models.Model):
                 # UTM y UTA
                 if 'utm' in texto:
                     indicadores['UTM'] = extraer_monto(texto_raw)
-                    indicadores['MES_UTM'] = mes
+                    indicadores['MES_UTM'] = 'mes'
                 if 'uta' in texto:
                     indicadores['UTA'] = extraer_monto(texto_raw)
 
