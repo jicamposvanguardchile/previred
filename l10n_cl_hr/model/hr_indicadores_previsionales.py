@@ -383,13 +383,13 @@ class hr_indicadores_previsionales(models.Model):
                         porcentaje = extraer_monto(celdas[1].get_text(strip=True))
                         indicadores['SEGURO_CESANTIA_PLAZO_FIJO'] = porcentaje
 
-                if 'Plazo Indefinido 11 años o más(*)' in texto and indicadores['SEGURO_CESANTIA_11_ANNOS'] == 0:
+                if 'Plazo Indefinido 11 años o más (*)' in texto and indicadores['SEGURO_CESANTIA_11_ANNOS'] == 0:
                     celdas = fila.find_all('td')
                     if len(celdas) >= 2:
                         porcentaje = extraer_monto(celdas[1].get_text(strip=True))
                         indicadores['SEGURO_CESANTIA_11_ANNOS'] = porcentaje
 
-                if ('Trabajador de Casa Particular (**)' in texto or 'trabajador de casa particular(**)' in texto)and indicadores['SEGURO_CESANTIA_CASA_PARTICULAR'] == 0:
+                if 'Trabajador de Casa Particular (**)' in texto and indicadores['SEGURO_CESANTIA_CASA_PARTICULAR'] == 0:
                     celdas = fila.find_all('td')
                     if len(celdas) >= 2:
                         porcentaje = extraer_monto(celdas[1].get_text(strip=True))
@@ -422,7 +422,7 @@ class hr_indicadores_previsionales(models.Model):
                         indicadores['COTIZACION_TRAB_PESADO'] = porcentaje
 
                 # Trabajo Menos Pesado
-                if 'trabajos menos pesados' in texto and indicadores['COTIZACION_TRAB_MENOS_PESADO']:
+                if 'trabajos menos pesado' in texto and indicadores['COTIZACION_TRAB_MENOS_PESADO'] == 0:
                     celdas = fila.find_all('td')
                     if len(celdas) >= 2:
                         porcentaje = extraer_porcentaje(celdas[1].get_text(strip=True))
