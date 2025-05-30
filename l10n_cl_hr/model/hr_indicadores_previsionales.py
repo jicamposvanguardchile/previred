@@ -341,7 +341,7 @@ class hr_indicadores_previsionales(models.Model):
 
             # Topes
             if 'afiliados a una afp' in texto and indicadores['RENTAS_TOPE_AFP'] == 0:
-                indicadores['RENTAS_TOPE_AFP'] = [extraer_monto(texto_raw)]
+                indicadores['RENTAS_TOPE_AFP'] = extraer_monto(texto_raw)
             if 'afiliados a ips' in texto and indicadores['RENTAS_TOPE_IPS']:
                 indicadores['RENTAS_TOPE_IPS'] = [extraer_monto(texto_raw)]
             if 'seguro de cesantia' in texto and indicadores['RENTAS_TOPE_SEGURO']:
