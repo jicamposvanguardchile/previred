@@ -340,17 +340,17 @@ class hr_indicadores_previsionales(models.Model):
                 indicadores['UTA'] = extraer_monto(texto_raw)
 
             # Topes
-            if 'afiliados a una afp' in texto and not indicadores['RENTAS_TOPE_AFP'] == 0:
+            if 'afiliados a una afp' in texto and indicadores['RENTAS_TOPE_AFP'] == 0:
                 indicadores['RENTAS_TOPE_AFP'] = [extraer_monto(texto_raw)]
-            if 'afiliados a ips' in texto and not indicadores['RENTAS_TOPE_IPS']:
+            if 'afiliados a ips' in texto and indicadores['RENTAS_TOPE_IPS']:
                 indicadores['RENTAS_TOPE_IPS'] = [extraer_monto(texto_raw)]
-            if 'seguro de cesantia' in texto and not indicadores['RENTAS_TOPE_SEGURO']:
+            if 'seguro de cesantia' in texto and indicadores['RENTAS_TOPE_SEGURO']:
                 indicadores['RENTAS_TOPE_SEGURO'] = [extraer_monto(texto_raw)]
 
             # Rentas mínimas
             if 'dependientes e independientes' in texto and indicadores['RENTAS_MINIMA_DEP_INDEP']:
                 indicadores['RENTAS_MINIMA_DEP_INDEP'] = [extraer_monto(texto_raw)]
-            if 'menores de 18 y mayores de 65' in texto and not indicadores['RENTAS_MINIMA_18_Y_65']:
+            if 'menores de 18 y mayores de 65' in texto and indicadores['RENTAS_MINIMA_18_Y_65']:
                 indicadores['RENTAS_MINIMA_18_Y_65'] = [extraer_monto(texto_raw)]
             if 'casa particular' in texto and not indicadores['RENTAS_MINIMA_CASA_PARTICULAR']:
                 indicadores['RENTAS_MINIMA_CASA_PARTICULAR'] = [extraer_monto(texto_raw)]
