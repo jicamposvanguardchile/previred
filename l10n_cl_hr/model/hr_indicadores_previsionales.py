@@ -355,7 +355,7 @@ class hr_indicadores_previsionales(models.Model):
                     indicadores['RENTAS_MINIMA_DEP_INDEP'] = extraer_monto(texto_raw)
                 if 'menores de 18 y mayores de 65' in texto and indicadores['RENTAS_MINIMA_18_Y_65'] == 0: 
                     indicadores['RENTAS_MINIMA_18_Y_65'] = extraer_monto(texto_raw)
-                if 'casa particular' in texto and indicadores['RENTAS_MINIMA_CASA_PARTICULAR']:
+                if 'trabajadores de casa particular' in texto and indicadores['RENTAS_MINIMA_CASA_PARTICULAR'] == 0:
                     indicadores['RENTAS_MINIMA_CASA_PARTICULAR'] = extraer_monto(texto_raw)
                 if 'no remuneracionales' in texto and indicadores['RENTAS_MINIMA_NO_REMU']:
                     indicadores['RENTAS_MINIMA_NO_REMU'] = extraer_monto(texto_raw)
