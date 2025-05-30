@@ -328,6 +328,7 @@ class hr_indicadores_previsionales(models.Model):
 
             if ('uf mayo' in texto or '31 de mayo del' in texto):
                 indicadores['UF']['MAYO'] = extraer_monto(texto_raw)
+            _logger.info('indicadores %s'%(indicadores))
 
             # UTM y UTA
             if 'utm mayo' in texto and indicadores['UTM'] == 0:
