@@ -367,7 +367,7 @@ class hr_indicadores_previsionales(models.Model):
                     indicadores['APV_TOPE_ANUAL'] = extraer_monto(texto_raw)
 
                 # Depósito Convenido
-                if 'deposito convenido' in texto and indicadores['DEPOSITO_CONVENIDO_TOPE_ANUAL']:
+                if 'tope anual' in texto and indicadores['DEPOSITO_CONVENIDO_TOPE_ANUAL'] == 0:
                     indicadores['DEPOSITO_CONVENIDO_TOPE_ANUAL'] = extraer_monto(texto_raw)
                 
                 # Seguro Cesantia
