@@ -334,37 +334,18 @@ class hr_indicadores_previsionales(models.Model):
                 #_logger.info('texto_raw %s'%(texto_raw))
                 #_logger.info('texto %s'%(texto))
 
-                if fila.get_text().strip() == 'VALOR UTM UTA':
-                    for tr in tabla.find_all('tr'):
-                            if fila.get_text().strip() != tr.get_text().strip():
-                                #print(str(tr))
-                                cont = 0
-                                for td in tr.find_all('td'):
-                                    if cont == 0:
-                                        mes = td.get_text().strip().capitalize()
-                                    elif cont == 1:
-                                        utm = extraer_monto.findall(str(td))[0]
-                                    elif cont == 2:
-                                        uta = extraer_monto.findall(str(td))[0]
-
-                                    cont = cont + 1
-
-                                indicadores['MES_UTM'] = mes
-                                indicadores['UTM'] = locale.atof(utm)
-                                indicadores['UTA'] = locale.atof(uta)
-                _logger.info('indicadores %s'%(indicadores))
 
                 # UTM y UTA
-                #if 'utm' in texto:
-                #    indicadores['UTM'] = extraer_monto(texto_raw)
-                #    indicadores['MES_UTM'] = mes
-                #if 'uta' in texto:
-                #    indicadores['UTA'] = extraer_monto(texto_raw)
+                if 'utm' in texto:
+                    indicadores['UTM'] = extraer_monto(texto_raw)
+                    indicadores['MES_UTM'] = mes
+                if 'uta' in texto:
+                    indicadores['UTA'] = extraer_monto(texto_raw)
 
                 # Topes
                 if 'afiliados a una afp' in texto and indicadores['RENTAS_TOPE_AFP'] == 0:
                     indicadores['RENTAS_TOPE_AFP'] = extraer_monto(texto_raw)
-                if 'afiliados a ips  (ex inp)' in texto and indicadores['RENTAS_TOPE_IPS'] == 0:
+                if 'afiliados a ips (ex inp)' in texto and indicadores['RENTAS_TOPE_IPS'] == 0:
                     indicadores['RENTAS_TOPE_IPS'] = extraer_monto(texto_raw)
                 if 'seguro de cesantia' in texto and indicadores['RENTAS_TOPE_SEGURO']:
                     indicadores['RENTAS_TOPE_SEGURO'] = extraer_monto(texto_raw)
