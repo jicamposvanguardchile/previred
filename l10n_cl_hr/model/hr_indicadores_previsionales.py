@@ -361,9 +361,9 @@ class hr_indicadores_previsionales(models.Model):
                     indicadores['RENTAS_MINIMA_NO_REMU'] = extraer_monto(texto_raw)
 
                 # APV
-                if 'apv mensual' in texto and indicadores['APV_TOPE_MENSUAL']:
+                if 'tope mensual' in texto and indicadores['APV_TOPE_MENSUAL'] == 0:
                     indicadores['APV_TOPE_MENSUAL'] = extraer_monto(texto_raw)
-                if 'apv anual' in texto and indicadores['APV_TOPE_ANUAL']:
+                if 'tope anual' in texto and indicadores['APV_TOPE_ANUAL'] == 0:
                     indicadores['APV_TOPE_ANUAL'] = extraer_monto(texto_raw)
 
                 # Depósito Convenido
