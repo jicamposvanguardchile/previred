@@ -323,11 +323,11 @@ class hr_indicadores_previsionales(models.Model):
                 texto = normalizar(texto_raw)
 
                  # UF
-            if ('uf abril' in texto or '30 de abril del' in texto):
-                indicadores['UF']['ABRIL'] = extraer_monto(texto_raw)
+            #if ('uf abril' in texto or '30 de abril del' in texto):
+             #   indicadores['UF']['ABRIL'] = extraer_monto(texto_raw)
 
             if ('uf mayo' in texto or '31 de mayo del' in texto):
-                indicadores['UF']['MAYO'] = extraer_monto(texto_raw)
+                indicadores['UF'] = extraer_monto(texto_raw)
             _logger.info('indicadores %s'%(indicadores))
 
             # UTM y UTA
