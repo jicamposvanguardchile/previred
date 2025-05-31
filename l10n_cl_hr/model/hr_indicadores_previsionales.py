@@ -445,6 +445,16 @@ class hr_indicadores_previsionales(models.Model):
                             extraer_monto(celdas[3].get_text(strip=True))
                         ]
                 
+                # Tasa AFP Uno
+                if 'uno' in texto and indicadores['TASA_UNO'] == 0:
+                    celdas = fila.find_all('td')
+                    if len(celdas) >= 4:
+                        indicadores['TASA_UNO'] = [
+                            extraer_monto(celdas[1].get_text(strip=True)),
+                            extraer_monto(celdas[2].get_text(strip=True)),
+                            extraer_monto(celdas[3].get_text(strip=True))
+                        ]
+                
                 # Tasa AFP ProVida
                 if 'provida' in texto and indicadores['TASA_PROVIDA'] == 0:
                     celdas = fila.find_all('td')
