@@ -406,9 +406,9 @@ class hr_indicadores_previsionales(models.Model):
                     celdas = fila.find_all('td')
                     if len(celdas) >= 4:
                         indicadores['TASA_CAPITAL'] = [
-                            extraer_monto(celdas[1].get_text(strip=True)),  # AFP
-                            extraer_monto(celdas[2].get_text(strip=True)),  # SIS
-                            extraer_monto(celdas[3].get_text(strip=True))   # Independiente
+                            extraer_monto(celdas[1].get_text(strip=True)),  
+                            extraer_monto(celdas[2].get_text(strip=True)),  
+                            extraer_monto(celdas[3].get_text(strip=True))   
                         ]
                                 
                 # Asignacion Familiar
