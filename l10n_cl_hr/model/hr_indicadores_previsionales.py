@@ -401,6 +401,16 @@ class hr_indicadores_previsionales(models.Model):
                 if 'fonasa' in texto and indicadores['DISTRIBUCION_7P_FONASA'] == 0:
                     indicadores['DISTRIBUCION_7P_FONASA'] = extraer_monto(texto_raw)
                 
+                # Tasa AFP Capital
+                if 'capital' in texto and indicadores['TASA_CAPITAL'] == 0:
+                    celdas = fila.find_all('td')
+                    if len(celdas) >= 4:
+                        indicadores['TASA_CAPITAL'] = [
+                            extraer_monto(celdas[1].get_text(strip=True)),  # AFP
+                            extraer_monto(celdas[2].get_text(strip=True)),  # SIS
+                            extraer_monto(celdas[3].get_text(strip=True))   # Independiente
+                        ]
+                                
                 # Asignacion Familiar
                 if '1 (a)' in texto and indicadores['ASIGNACION_FAMILIAR_A'] == 0:
                     indicadores['ASIGNACION_FAMILIAR_A'] = extraer_monto(texto_raw)
