@@ -436,7 +436,7 @@ class hr_indicadores_previsionales(models.Model):
                         ]
                 
                 # Tasa AFP PlanVital
-                if 'planvital' in texto and not indicadores['TASA_PLANVITAL']:
+                if 'planvital' in texto and indicadores['TASA_PLANVITAL'] == 0:
                     celdas = fila.find_all('td')
                     if len(celdas) >= 4:
                         indicadores['TASA_PLANVITAL'] = [
