@@ -416,7 +416,7 @@ class hr_indicadores_previsionales(models.Model):
                         ]
                 
                 # Tasa AFP Cuprum
-                if 'curpum' in texto and indicadores ['TASA_CUPRUM'] == 0:
+                if 'cuprum' in texto and not indicadores['TASA_CUPRUM']:
                     celdas = fila.find_all('td')
                     if len(celdas) >= 4:
                         indicadores['TASA_CUPRUM'] = [
