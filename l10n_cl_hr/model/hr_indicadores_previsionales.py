@@ -434,6 +434,16 @@ class hr_indicadores_previsionales(models.Model):
                             extraer_monto(celdas[2].get_text(strip=True)),
                             extraer_monto(celdas[3].get_text(strip=True))
                         ]
+                
+                # Tasa AFP Plan Vita
+                if 'planvital' in texto and indicadores == 0:
+                    celdas = fila.find_all('td')
+                    if len(celdas) >= 4:
+                        indicadores['TASA_PLANVITAL'] = [
+                            extraer_monto(celdas[1].get_text(strip=True)),
+                            extraer_monto(celdas[2].get_text(strip=True)),
+                            extraer_monto(celdas[3].get_text(strip=True))
+                        ]
                                 
                 # Asignacion Familiar
                 if '1 (a)' in texto and indicadores['ASIGNACION_FAMILIAR_A'] == 0:
