@@ -490,7 +490,7 @@ class hr_indicadores_previsionales(models.Model):
                         indicadores['ASIGNACION_FAMILIAR_B'] =[
                             extraer_monto(celdas[1].get_text(strip=True)),
                             extraer_monto(celdas[2].get_text(strip=True)),
-                            extraer_monto(celdas[3].get_text(strip=True))
+                            extraer_monto(celdas[2].get_text(strip=True))
                         ]
 
                 if '3 (c)' in texto and indicadores['ASIGNACION_FAMILIAR_C'] == 0:
