@@ -477,7 +477,12 @@ class hr_indicadores_previsionales(models.Model):
                                 
                 # Asignacion Familiar
                 if '1 (a)' in texto and indicadores['ASIGNACION_FAMILIAR_A'] == 0:
-                    indicadores['ASIGNACION_FAMILIAR_A'] = extraer_monto(texto_raw)
+                    celdas = fila.find_all('td')
+                    if len(celdas) >=3:
+                        indicadores['ASIGNACION_FAMILIAR_A'] =[
+                            extraer_monto(celdas[1].get_text(strip=True)),
+                            extraer_monto(celdas[2].get_text(strip=True))
+                        ]
 
                 if '2 (b)' in texto and indicadores['ASIGNACION_FAMILIAR_B'] == 0:
                     indicadores['ASIGNACION_FAMILIAR_B'] = extraer_monto(texto_raw)
