@@ -492,9 +492,10 @@ class hr_indicadores_previsionales(models.Model):
                 if 'trabajo pesado' in texto and indicadores['COTIZACION_TRAB_PESADO'] == 0:
                     celdas = fila.find_all('td')
                     if len(celdas) >= 3:
-                        empleador = extraer_monto(celdas[1].get_text(strip=True))
-                        trabajador = extraer_monto(celdas[2].get_text(strip=True))
-                        indicadores['COTIZACION_TRAB_PESADO'] = [empleador, trabajador]
+                        indicadores['COTIZACION_TRAB_PESADO'] =[
+                            extraer_monto(celdas[1].get_text(strip=True)),
+                            extraer_monto(celdas[2].get_text(strip=True))
+                        ]
 
                 
 
