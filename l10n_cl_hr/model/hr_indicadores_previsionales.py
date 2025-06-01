@@ -489,18 +489,13 @@ class hr_indicadores_previsionales(models.Model):
                     indicadores['ASIGNACION_FAMILIAR_D'] = extraer_monto(texto_raw)
                 
                 # Cotización trabajo pesado
-                if 'trabajo pesado' in texto and 'menos pesado' not in texto and not indicadores['COTIZACION_TRAB_PESADO']:
+                if 'trabajo pesado' in texto and indicadores['COTIZACION_TRAB_PESADO'] == 0:
                     celdas = fila.find_all('td')
                     if len(celdas) >= 3:
                         empleador = extraer_monto(celdas[1].get_text(strip=True))
                         trabajador = extraer_monto(celdas[2].get_text(strip=True))
                         indicadores['COTIZACION_TRAB_PESADO'] = [empleador, trabajador]
 
-                # Trabajo Menos Pesado
-                if 'trabajos menos pesado' in texto and indicadores['COTIZACION_TRAB_MENOS_PESADO'] == 0:
-                    celdas = fila.find_all('td')
-                    if len(celdas) >= 2:
-                        porcentaje = extraer_porcentaje(celdas[1].get_text(strip=True))
-                        indicadores['COTIZACION_TRAB_MENOS_PESADO'] = porcentaje
+                
 
         return indicadores
