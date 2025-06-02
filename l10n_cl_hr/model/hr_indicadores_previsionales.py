@@ -495,7 +495,7 @@ class hr_indicadores_previsionales(models.Model):
                         ]
 
                 # Asignación Familiar Tramo B
-                if '2 (b)' in texto and not indicadores['ASIGNACION_FAMILIAR_B'] == 0:
+                if '2 (b)' in texto and indicadores['ASIGNACION_FAMILIAR_B'] == 0:
                     celdas = fila.find_all('td')
                     if len(celdas) >= 2:
                         indicadores['ASIGNACION_FAMILIAR_B'] =[
