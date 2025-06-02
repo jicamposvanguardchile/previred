@@ -500,14 +500,24 @@ class hr_indicadores_previsionales(models.Model):
                     if len(celdas) >= 2:
                         indicadores['ASIGNACION_FAMILIAR_B'] =[
                             extraer_monto(celdas[1].get_text(strip=True)),
-                            extraer_monto(celdas[2].get_text(strip=True))
+                            celdas[2].get_text(strip=True)
                         ]
 
                 if '3 (c)' in texto and indicadores['ASIGNACION_FAMILIAR_C'] == 0:
-                    indicadores['ASIGNACION_FAMILIAR_C'] = extraer_monto(texto_raw)
+                    celdas = fila.find_all('td')
+                    if len(celdas) >= 2:
+                        indicadores['ASIGNACION_FAMILIAR_C'] =[
+                            extraer_monto(celdas[1].get_text(strip=True)),
+                            extraer_monto(celdas[2].get_text(strip=True))
+                        ]
 
                 if '4 (d)' in texto and indicadores['ASIGNACION_FAMILIAR_D'] == 0:
-                    indicadores['ASIGNACION_FAMILIAR_D'] = extraer_monto(texto_raw)
+                    celdas = fila.find_all('td')
+                    if len(celdas) >= 2:
+                        indicadores['ASIGNACION_FAMILIAR_D'] =[
+                            extraer_monto(celdas[1].get_text(strip=True)),
+                            extraer_monto(celdas[2].get_text(strip=True))
+                        ]
                 
                 # Cotización trabajo pesado
                 if 'trabajo pesado' in texto and indicadores['COTIZACION_TRAB_PESADO'] == 0:
