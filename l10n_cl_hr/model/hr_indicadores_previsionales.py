@@ -212,11 +212,11 @@ class hr_indicadores_previsionales(models.Model):
 
             # 7 ASIGNACIÓN FAMILIAR
         self.asignacion_familiar_monto_a = new_ind['ASIGNACION_FAMILIAR_A'][0]
-            #self.asignacion_familiar_monto_b = new_ind['ASIGNACION_FAMILIAR_B'][0]
+        self.asignacion_familiar_monto_b = new_ind['ASIGNACION_FAMILIAR_B'][0]
             #self.asignacion_familiar_monto_c = new_ind['ASIGNACION_FAMILIAR_C'][0]
 
         self.asignacion_familiar_primer  = new_ind['ASIGNACION_FAMILIAR_A'][1]
-            #self.asignacion_familiar_segundo = new_ind['ASIGNACION_FAMILIAR_B'][1]
+        self.asignacion_familiar_segundo = new_ind['ASIGNACION_FAMILIAR_B'][1]
             #self.asignacion_familiar_tercer  = new_ind['ASIGNACION_FAMILIAR_C'][1]
 
         # 8 TASA COTIZACIÓN OBLIGATORIO AFP
@@ -495,11 +495,13 @@ class hr_indicadores_previsionales(models.Model):
                         ]
 
                 # Asignación Familiar Tramo B
-                if 'tramo b' in texto and not indicadores['ASIGNACION_FAMILIAR_B']:
+                if 'tramo b' in texto and not indicadores['ASIGNACION_FAMILIAR_B'] == 0:
                     celdas = fila.find_all('td')
                     if len(celdas) >= 2:
-                        monto = extraer_monto(celdas[1].get_text(strip=True))
-                        indicadores['ASIGNACION_FAMILIAR_B'] = [monto]
+                        indicadores['ASIGNACION_FAMILIAR_B'] =[
+                            extraer_monto(celdas[1].get_text(strip=True)),
+                            extraer_monto(celdas[2].get_text(strip=True))
+                        ]
 
                 if '3 (c)' in texto and indicadores['ASIGNACION_FAMILIAR_C'] == 0:
                     indicadores['ASIGNACION_FAMILIAR_C'] = extraer_monto(texto_raw)
