@@ -336,10 +336,10 @@ class hr_indicadores_previsionales(models.Model):
 
 
                 # UTM y UTA
-                if 'utm' in texto and indicadores['UTM'] == 0:
+                if ('mayo 2025' in texto or 'utm' in texto) and indicadores['UTM'] == 0:
                     indicadores['UTM'] = extraer_monto(texto_raw)
                     indicadores['MES_UTM'] = 'mes'
-                if 'uta' in texto:
+                if ('mayo 2025' in texto or 'uta' in texto) and indicadores['UTA'] == 0:
                     indicadores['UTA'] = extraer_monto(texto_raw)
 
                 # Topes
