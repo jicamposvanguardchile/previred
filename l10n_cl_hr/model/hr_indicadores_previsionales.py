@@ -45,9 +45,12 @@ class hr_indicadores_previsionales(models.Model):
         help="Asig Familiar Segundo Tramo")
     asignacion_familiar_tercer = fields.Float('Asignación Familiar Tramo 3', readonly=True, states=STATES,
         help="Asig Familiar Tercer Tramo")
+    asignacion_familiar_cuarto = fields.Float('Asignación Familiar Tramo 4', readonly=True, states=STATES,
+        help="Asig Familiar Cuarto Tramo")
     asignacion_familiar_monto_a = fields.Float( 'Monto Tramo Uno', readonly=True, states=STATES, help="Monto A")
     asignacion_familiar_monto_b = fields.Float( 'Monto Tramo Dos', readonly=True, states=STATES, help="Monto B")
     asignacion_familiar_monto_c = fields.Float( 'Monto Tramo Tres', readonly=True, states=STATES, help="Monto C")
+    asignacion_familiar_monto_d = fields.Float( 'Monto Tramo Cuatro', readonly=True, states=STATES, help="Monto D")
     contrato_plazo_fijo_empleador = fields.Float( 'Contrato Plazo Fijo Empleador', readonly=True, states=STATES,
         help="Contrato Plazo Fijo Empleador")
     contrato_plazo_fijo_trabajador = fields.Float( 'Contrato Plazo Fijo Trabajador', readonly=True, states=STATES,
@@ -214,10 +217,13 @@ class hr_indicadores_previsionales(models.Model):
         self.asignacion_familiar_monto_a = new_ind['ASIGNACION_FAMILIAR_A'][0]
         self.asignacion_familiar_monto_b = new_ind['ASIGNACION_FAMILIAR_B'][0]
         self.asignacion_familiar_monto_c = new_ind['ASIGNACION_FAMILIAR_C'][0]
+        self.asignacion_familiar_monto_d = new_ind['ASIGNACION_FAMILIAR_D'][0]
+
 
         self.asignacion_familiar_primer  = new_ind['ASIGNACION_FAMILIAR_A'][1]
         self.asignacion_familiar_segundo = new_ind['ASIGNACION_FAMILIAR_B'][1]
         self.asignacion_familiar_tercer  = new_ind['ASIGNACION_FAMILIAR_C'][1]
+        self.asignacion_familiar_cuarto  = new_ind['ASIGNACION_FAMILIAR_D'][1]
 
         # 8 TASA COTIZACIÓN OBLIGATORIO AFP
         self.tasa_afp_capital           = new_ind['TASA_CAPITAL'][0]
