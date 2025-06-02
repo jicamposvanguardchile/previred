@@ -102,6 +102,9 @@ class hr_indicadores_previsionales(models.Model):
     tope_imponible_salud = fields.Float( 'Tope Imponible Salud', readonly=True, states=STATES,)
     tope_imponible_seguro_cesantia = fields.Float( 'Tope Imponible Seguro Cesantía', readonly=True, states=STATES,
         help="Tope Imponible Seguro de Cesantía")
+    trabajo_pesado = fields.Float( 'Cotizacion Trabajo Pesado', readonly=True, states=STATES, help="Cotizacion Trabajo Pesado")
+    trabajo_menos_pesado = fields.Float( 'Cotizacion Trabajo Menos Pesado', readonly=True, states=STATES, 
+        help="Cotizacion Trabajo Menos Pesado")
     uf  = fields.Float('UF', states=STATES, help="UF fin de Mes")
     utm = fields.Float('UTM',  readonly=True, states=STATES, help="UTM Fin de Mes")
     uta = fields.Float('UTA', readonly=True, states=STATES, help="UTA Fin de Mes")
@@ -253,6 +256,11 @@ class hr_indicadores_previsionales(models.Model):
         self.tasa_afp_uno           = new_ind['TASA_UNO'][0]
         self.tasa_sis_uno           = new_ind['TASA_UNO'][1]
         self.tasa_independiente_uno = new_ind['TASA_UNO'][2]
+
+        # 9 COTIZACION TRABAJOS PESADOS
+        self.trabajo_pesado         = new_ind['COTIZACION_TRAB_PESADO'][0]
+        self.trabajo_menos_pesado   = new_ind['COTIZACION_TRAB_MENOS_PESADO'][0]
+
         #except Exception as e:
          #   _logger.error(f"Error actualizando indicadores previsionales: {e}")
 
