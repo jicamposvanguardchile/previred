@@ -115,8 +115,8 @@
 										</td>
 									</tr>
 									<tr>
-										<td width="60%">
-											<group col="4" name="Cotizacion Trabajos"
+										<td width="40%">
+											<group col="2" name="Cotizacion Trabajos"
 												string="Cotizacion Trabajos Pesados">
 												<field name="trabajo_pesado" string="C.Trabajo Pesado">
 												</field>
