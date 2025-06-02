@@ -205,7 +205,7 @@ class hr_indicadores_previsionales(models.Model):
         self.contrato_plazo_indefinido_empleador      = new_ind['SEGURO_CESANTIA_PLAZO_INDEF'][0]
         self.contrato_plazo_indefinido_trabajador     = new_ind['SEGURO_CESANTIA_PLAZO_INDEF'][1]
         self.contrato_plazo_fijo_empleador            = new_ind['SEGURO_CESANTIA_PLAZO_FIJO']
-        self.contrato_plazo_indefinido_empleador_otro = new_ind['SEGURO_CESANTIA_11_ANNOS']
+        self.contrato_plazo_indefinido_empleador_otro = new_ind['SEGURO_CESANTIA_11_ANNOS'][0]
 
             # 7 ASIGNACIÓN FAMILIAR
         self.asignacion_familiar_monto_a = new_ind['ASIGNACION_FAMILIAR_A'][0]
