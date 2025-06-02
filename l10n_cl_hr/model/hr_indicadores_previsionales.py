@@ -209,12 +209,12 @@ class hr_indicadores_previsionales(models.Model):
 
             # 7 ASIGNACIÓN FAMILIAR
             self.asignacion_familiar_monto_a = new_ind['ASIGNACION_FAMILIAR_A'][0]
-            self.asignacion_familiar_monto_b = new_ind['ASIGNACION_FAMILIAR_B'][0]
-            self.asignacion_familiar_monto_c = new_ind['ASIGNACION_FAMILIAR_C'][0]
+            #self.asignacion_familiar_monto_b = new_ind['ASIGNACION_FAMILIAR_B'][0]
+            #self.asignacion_familiar_monto_c = new_ind['ASIGNACION_FAMILIAR_C'][0]
 
             self.asignacion_familiar_primer  = new_ind['ASIGNACION_FAMILIAR_A'][1]
-            self.asignacion_familiar_segundo = new_ind['ASIGNACION_FAMILIAR_B'][1]
-            self.asignacion_familiar_tercer  = new_ind['ASIGNACION_FAMILIAR_C'][1]
+            #self.asignacion_familiar_segundo = new_ind['ASIGNACION_FAMILIAR_B'][1]
+            #self.asignacion_familiar_tercer  = new_ind['ASIGNACION_FAMILIAR_C'][1]
 
             # 8 TASA COTIZACIÓN OBLIGATORIO AFP
             self.tasa_afp_capital           = new_ind['TASA_CAPITAL'][0]
