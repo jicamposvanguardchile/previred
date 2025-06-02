@@ -401,7 +401,7 @@ class hr_indicadores_previsionales(models.Model):
                         ]
 
                 #trabajador casa particular
-                if 'Trabajador de Casa Particular (**)' in texto and indicadores['SEGURO_CESANTIA_CASA_PARTICULAR'] == 0:
+                if 'trabajador de casa particular (**)' in texto and indicadores['SEGURO_CESANTIA_CASA_PARTICULAR'] == 0:
                     celdas = fila.find_all('td')
                     if len(celdas) >= 2:
                         indicadores['SEGURO_CESANTIA_CASA_PARTICULAR'] = [
