@@ -388,11 +388,13 @@ class hr_indicadores_previsionales(models.Model):
                         indicadores['SEGURO_CESANTIA_PLAZO_FIJO'] = porcentaje
 
                 #plazo indefinido 11 años
-                if 'plazo indefinido 11 años o mms   ' in texto and indicadores['SEGURO_CESANTIA_11_ANNOS'] == 0:
+                # Seguro Cesantía 11 años
+                if '11 años' in texto and not indicadores['SEGURO_CESANTIA_11_ANNOS']:
                     celdas = fila.find_all('td')
                     if len(celdas) >= 2:
-                        porcentaje = extraer_monto(celdas[1].get_text(strip=True))
-                        indicadores['SEGURO_CESANTIA_11_ANNOS'] = porcentaje
+                        indicadores['SEGURO_CESANTIA_11_ANNOS'] = [
+                            extraer_monto(celdas[1].get_text(strip=True))  # Empleador
+                        ]
 
                 #trabajador casa particular
                 if 'Trabajador de Casa Particular (**)' in texto and indicadores['SEGURO_CESANTIA_CASA_PARTICULAR'] == 0:
