@@ -172,80 +172,80 @@ class hr_indicadores_previsionales(models.Model):
         except ValueError:
             return ""
 
-        try:
-            new_ind = self._hrIndPrevired()
-            _logger.info('new_ind %s'%(new_ind))
+        #try:
+        new_ind = self._hrIndPrevired()
+        _logger.info('new_ind %s'%(new_ind))
         
             # UF
-            self.uf = new_ind['UF'][new_ind['MES_UTM']]
+        self.uf = new_ind['UF'][new_ind['MES_UTM']]
 
             # 1 UTM
-            self.utm = new_ind['UTM']
+        self.utm = new_ind['UTM']
 
             # 1 UTA
-            self.uta = new_ind['UTA', 0.0]
+        self.uta = new_ind['UTA', 0.0]
 
             # 3 RENTAS TOPES IMPONIBLES (UF)
-            self.tope_imponible_afp             = new_ind['RENTAS_TOPE_AFP'][0]
-            self.tope_imponible_ips             = new_ind['RENTAS_TOPE_IPS'][0] 
-            self.tope_imponible_seguro_cesantia = new_ind['RENTAS_TOPE_SEGURO'][0] 
+        self.tope_imponible_afp             = new_ind['RENTAS_TOPE_AFP'][0]
+        self.tope_imponible_ips             = new_ind['RENTAS_TOPE_IPS'][0] 
+        self.tope_imponible_seguro_cesantia = new_ind['RENTAS_TOPE_SEGURO'][0] 
 
             # 4 RENTAS MINIMAS IMPONIBLES
-            self.sueldo_minimo      = new_ind['RENTAS_MINIMA_DEP_INDEP'][0]
-            self.sueldo_minimo_otro = new_ind['RENTAS_MINIMA_18_Y_65'][0]
+        self.sueldo_minimo      = new_ind['RENTAS_MINIMA_DEP_INDEP'][0]
+        self.sueldo_minimo_otro = new_ind['RENTAS_MINIMA_18_Y_65'][0]
 
             # Ahorro Previsional Voluntario (UF)
-            self.tope_mensual_apv = new_ind['APV_TOPE_MENSUAL'][0]
-            self.tope_anual_apv   = new_ind['APV_TOPE_ANUAL'][0]
+        self.tope_mensual_apv = new_ind['APV_TOPE_MENSUAL'][0]
+        self.tope_anual_apv   = new_ind['APV_TOPE_ANUAL'][0]
 
             # 5 DEPÓSITO CONVENIDO (UF)
-            self.deposito_convenido = new_ind['DEPOSITO_CONVENIDO_TOPE_ANUAL'][0]
+        self.deposito_convenido = new_ind['DEPOSITO_CONVENIDO_TOPE_ANUAL'][0]
 
             # 6 SEGURO DE CESANTÍA (AFC)
             #self.contrato_plazo_indefinido_empleador      = new_ind['SEGURO_CESANTIA_PLAZO_INDEF'][0]
             #self.contrato_plazo_indefinido_trabajador     = new_ind['SEGURO_CESANTIA_PLAZO_INDEF'][1]
-            self.contrato_plazo_fijo_empleador            = new_ind['SEGURO_CESANTIA_PLAZO_FIJO']
-            self.contrato_plazo_indefinido_empleador_otro = new_ind['SEGURO_CESANTIA_11_ANNOS']
+        self.contrato_plazo_fijo_empleador            = new_ind['SEGURO_CESANTIA_PLAZO_FIJO']
+        self.contrato_plazo_indefinido_empleador_otro = new_ind['SEGURO_CESANTIA_11_ANNOS']
 
             # 7 ASIGNACIÓN FAMILIAR
-            self.asignacion_familiar_monto_a = new_ind['ASIGNACION_FAMILIAR_A'][0]
+        self.asignacion_familiar_monto_a = new_ind['ASIGNACION_FAMILIAR_A'][0]
             #self.asignacion_familiar_monto_b = new_ind['ASIGNACION_FAMILIAR_B'][0]
             #self.asignacion_familiar_monto_c = new_ind['ASIGNACION_FAMILIAR_C'][0]
 
-            self.asignacion_familiar_primer  = new_ind['ASIGNACION_FAMILIAR_A'][1]
+        self.asignacion_familiar_primer  = new_ind['ASIGNACION_FAMILIAR_A'][1]
             #self.asignacion_familiar_segundo = new_ind['ASIGNACION_FAMILIAR_B'][1]
             #self.asignacion_familiar_tercer  = new_ind['ASIGNACION_FAMILIAR_C'][1]
 
-            # 8 TASA COTIZACIÓN OBLIGATORIO AFP
-            self.tasa_afp_capital           = new_ind['TASA_CAPITAL'][0]
-            self.tasa_sis_capital           = new_ind['TASA_CAPITAL'][1]
-            self.tasa_independiente_capital = new_ind['TASA_CAPITAL'][2]
+        # 8 TASA COTIZACIÓN OBLIGATORIO AFP
+        self.tasa_afp_capital           = new_ind['TASA_CAPITAL'][0]
+        self.tasa_sis_capital           = new_ind['TASA_CAPITAL'][1]
+        self.tasa_independiente_capital = new_ind['TASA_CAPITAL'][2]
 
-            self.tasa_afp_cuprum           = new_ind['TASA_CUPRUM'][0]
-            self.tasa_sis_cuprum           = new_ind['TASA_CUPRUM'][1]
-            self.tasa_independiente_cuprum = new_ind['TASA_CUPRUM'][2]
+        self.tasa_afp_cuprum           = new_ind['TASA_CUPRUM'][0]
+        self.tasa_sis_cuprum           = new_ind['TASA_CUPRUM'][1]
+        self.tasa_independiente_cuprum = new_ind['TASA_CUPRUM'][2]
 
-            self.tasa_afp_habitat           = new_ind['TASA_HABITAT'][0]
-            self.tasa_sis_habitat           = new_ind['TASA_HABITAT'][1]
-            self.tasa_independiente_habitat = new_ind['TASA_HABITAT'][2]
+        self.tasa_afp_habitat           = new_ind['TASA_HABITAT'][0]
+        self.tasa_sis_habitat           = new_ind['TASA_HABITAT'][1]
+        self.tasa_independiente_habitat = new_ind['TASA_HABITAT'][2]
 
-            self.tasa_afp_planvital           = new_ind['TASA_PLANVITAL'][0]
-            self.tasa_sis_planvital           = new_ind['TASA_PLANVITAL'][1]
-            self.tasa_independiente_planvital = new_ind['TASA_PLANVITAL'][2]
+        self.tasa_afp_planvital           = new_ind['TASA_PLANVITAL'][0]
+        self.tasa_sis_planvital           = new_ind['TASA_PLANVITAL'][1]
+        self.tasa_independiente_planvital = new_ind['TASA_PLANVITAL'][2]
 
-            self.tasa_afp_provida           = new_ind['TASA_PROVIDA'][0]
-            self.tasa_sis_provida           = new_ind['TASA_PROVIDA'][1]
-            self.tasa_independiente_provida = new_ind['TASA_PROVIDA'][2]
+        self.tasa_afp_provida           = new_ind['TASA_PROVIDA'][0]
+        self.tasa_sis_provida           = new_ind['TASA_PROVIDA'][1]
+        self.tasa_independiente_provida = new_ind['TASA_PROVIDA'][2]
 
-            self.tasa_afp_modelo           = new_ind['TASA_MODELO'][0]
-            self.tasa_sis_modelo           = new_ind['TASA_MODELO'][1]
-            self.tasa_independiente_modelo = new_ind['TASA_MODELO'][2]
+        self.tasa_afp_modelo           = new_ind['TASA_MODELO'][0]
+        self.tasa_sis_modelo           = new_ind['TASA_MODELO'][1]
+        self.tasa_independiente_modelo = new_ind['TASA_MODELO'][2]
 
-            self.tasa_afp_uno           = new_ind['TASA_UNO'][0]
-            self.tasa_sis_uno           = new_ind   ['TASA_UNO'][1]
-            self.tasa_independiente_uno = new_ind['TASA_UNO'][2]
-        except Exception as e:
-            _logger.error(f"Error actualizando indicadores previsionales: {e}")
+        self.tasa_afp_uno           = new_ind['TASA_UNO'][0]
+        self.tasa_sis_uno           = new_ind['TASA_UNO'][1]
+        self.tasa_independiente_uno = new_ind['TASA_UNO'][2]
+        #except Exception as e:
+         #   _logger.error(f"Error actualizando indicadores previsionales: {e}")
 
 
 
