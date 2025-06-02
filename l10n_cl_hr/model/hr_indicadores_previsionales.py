@@ -191,15 +191,15 @@ class hr_indicadores_previsionales(models.Model):
         self.tope_imponible_seguro_cesantia = new_ind['RENTAS_TOPE_SEGURO'] 
 
             # 4 RENTAS MINIMAS IMPONIBLES
-        self.sueldo_minimo      = new_ind['RENTAS_MINIMA_DEP_INDEP'][0]
-        self.sueldo_minimo_otro = new_ind['RENTAS_MINIMA_18_Y_65'][0]
+        self.sueldo_minimo      = new_ind['RENTAS_MINIMA_DEP_INDEP']
+        self.sueldo_minimo_otro = new_ind['RENTAS_MINIMA_18_Y_65']
 
             # Ahorro Previsional Voluntario (UF)
-        self.tope_mensual_apv = new_ind['APV_TOPE_MENSUAL'][0]
-        self.tope_anual_apv   = new_ind['APV_TOPE_ANUAL'][0]
+        self.tope_mensual_apv = new_ind['APV_TOPE_MENSUAL']
+        self.tope_anual_apv   = new_ind['APV_TOPE_ANUAL']
 
             # 5 DEPÓSITO CONVENIDO (UF)
-        self.deposito_convenido = new_ind['DEPOSITO_CONVENIDO_TOPE_ANUAL'][0]
+        self.deposito_convenido = new_ind['DEPOSITO_CONVENIDO_TOPE_ANUAL']
 
             # 6 SEGURO DE CESANTÍA (AFC)
             #self.contrato_plazo_indefinido_empleador      = new_ind['SEGURO_CESANTIA_PLAZO_INDEF'][0]
