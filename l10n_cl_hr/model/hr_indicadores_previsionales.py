@@ -60,6 +60,8 @@ class hr_indicadores_previsionales(models.Model):
         readonly=True, states=STATES, help="Contrato Plazo Indefinido 11 anos Trabajador")
     contrato_plazo_indefinido_trabajador = fields.Float( 'Contrato Plazo Indefinido Trabajador', readonly=True, states=STATES,
         help="Contrato Plazo Indefinido Trabajador")
+    contrato_particular_trabajador = fields.Float( 'Contrato Casa Particular Trabajador', readonly=True, states=STATES,
+        help="Contrato Casa Particular Trabajador")
     caja_compensacion  = fields.Float( 'Caja Compensación', readonly=True, states=STATES, help="Caja de Compensacion")
     deposito_convenido = fields.Float( 'Deposito Convenido', readonly=True, states=STATES, help="Deposito Convenido")
     fonasa = fields.Float('Fonasa', readonly=True, states=STATES, help="Fonasa")
@@ -206,6 +208,7 @@ class hr_indicadores_previsionales(models.Model):
         self.contrato_plazo_indefinido_trabajador     = new_ind['SEGURO_CESANTIA_PLAZO_INDEF'][1]
         self.contrato_plazo_fijo_empleador            = new_ind['SEGURO_CESANTIA_PLAZO_FIJO']
         self.contrato_plazo_indefinido_empleador_otro = new_ind['SEGURO_CESANTIA_11_ANNOS'][0]
+        self.contrato_particular_trabajador           = new_ind['SEGURO_CESANTIA_CASA_PARTICULAR'][0]
 
             # 7 ASIGNACIÓN FAMILIAR
         self.asignacion_familiar_monto_a = new_ind['ASIGNACION_FAMILIAR_A'][0]
@@ -401,8 +404,10 @@ class hr_indicadores_previsionales(models.Model):
                 if 'Trabajador de Casa Particular (**)' in texto and indicadores['SEGURO_CESANTIA_CASA_PARTICULAR'] == 0:
                     celdas = fila.find_all('td')
                     if len(celdas) >= 2:
-                        porcentaje = extraer_monto(celdas[1].get_text(strip=True))
-                        indicadores['SEGURO_CESANTIA_CASA_PARTICULAR'] = porcentaje
+                        indicadores['SEGURO_CESANTIA_CASA_PARTICULAR'] = [
+                            extraer_monto(celdas[1].get_text(strip=True)),
+                            extraer_monto(celdas[2].get_text(strip=True))
+                        ]
                 
                 # CCAF y FONASA
                 if 'ccaf' in texto and indicadores['DISTRIBUCION_7P_CCAF'] == 0:
