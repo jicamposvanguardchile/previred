@@ -501,40 +501,42 @@ class hr_indicadores_previsionales(models.Model):
                         ]
 
                 # Asignación Familiar Tramo B
-                # Asignación Familiar Tramo B
                 if '2 (b)' in texto and indicadores['ASIGNACION_FAMILIAR_B'] == 0:
                     celdas = fila.find_all('td')
                     if len(celdas) >= 3:
                         texto_tope = celdas[2].get_text(strip=True)
-                        # Reversa la cadena y vuelve a aplicar extraer_monto para tomar el último monto
                         partes = texto_tope.split('$')
                         ultimo_monto = extraer_monto('$' + partes[-1]) if len(partes) > 1 else extraer_monto(texto_tope)
 
                         indicadores['ASIGNACION_FAMILIAR_B'] = [
-                            extraer_monto(celdas[1].get_text(strip=True)),  # monto
-                            ultimo_monto                                    # tope (último valor)
+                            extraer_monto(celdas[1].get_text(strip=True)),  
+                            ultimo_monto                                    
                         ]
 
-                # Asignación Familiar Tramo B
+                # Asignación Familiar Tramo C
                 if '3 (c)' in texto and indicadores['ASIGNACION_FAMILIAR_C'] == 0:
                     celdas = fila.find_all('td')
                     if len(celdas) >= 3:
                         texto_tope = celdas[2].get_text(strip=True)
-                        # Reversa la cadena y vuelve a aplicar extraer_monto para tomar el último monto
                         partes = texto_tope.split('$')
                         ultimo_monto = extraer_monto('$' + partes[-1]) if len(partes) > 1 else extraer_monto(texto_tope)
 
                         indicadores['ASIGNACION_FAMILIAR_C'] = [
-                            extraer_monto(celdas[1].get_text(strip=True)),  # monto
-                            ultimo_monto                                    # tope (último valor)
+                            extraer_monto(celdas[1].get_text(strip=True)),  
+                            ultimo_monto                                    
                         ]
-
+                
+                # Asignación Familiar Trabo D
                 if '4 (d)' in texto and indicadores['ASIGNACION_FAMILIAR_D'] == 0:
                     celdas = fila.find_all('td')
-                    if len(celdas) >= 2:
-                        indicadores['ASIGNACION_FAMILIAR_D'] =[
-                            extraer_monto(celdas[1].get_text(strip=True)),
-                            extraer_monto(celdas[2].get_text(strip=True))
+                    if len(celdas) >= 3:
+                        texto_tope = celdas[2].get_text(strip=True)
+                        partes = texto_tope.split('$')
+                        ultimo_monto = extraer_monto('$' + partes[-1]) if len(partes) > 1 else extraer_monto(texto_tope)
+
+                        indicadores['ASIGNACION_FAMILIAR_D'] = [
+                            extraer_monto(celdas[1].get_text(strip=True)),  
+                            ultimo_monto                                    
                         ]
                 
                 # Cotización trabajo pesado
