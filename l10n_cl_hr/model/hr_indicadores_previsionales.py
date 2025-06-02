@@ -389,7 +389,7 @@ class hr_indicadores_previsionales(models.Model):
 
                 #plazo indefinido 11 años
                 # Seguro Cesantía 11 años
-                if 'plazo indefinido 11 años o mas (*)' in texto and not indicadores['SEGURO_CESANTIA_11_ANNOS'] == 0:
+                if '11 años o mas' in texto and not indicadores['SEGURO_CESANTIA_11_ANNOS'] == 0:
                     celdas = fila.find_all('td')
                     if len(celdas) >= 2:
                         indicadores['SEGURO_CESANTIA_11_ANNOS'] = [
