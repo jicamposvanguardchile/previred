@@ -183,7 +183,7 @@ class hr_indicadores_previsionales(models.Model):
         self.utm = new_ind['UTM']
 
             # 1 UTA
-        self.uta = new_ind['UTA', 0.0]
+        self.uta = new_ind['UTA']
 
             # 3 RENTAS TOPES IMPONIBLES (UF)
         self.tope_imponible_afp             = new_ind['RENTAS_TOPE_AFP'][0]
