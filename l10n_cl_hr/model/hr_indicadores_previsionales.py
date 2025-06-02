@@ -394,7 +394,8 @@ class hr_indicadores_previsionales(models.Model):
                     celdas = fila.find_all('td')
                     if len(celdas) >= 2:
                         indicadores['SEGURO_CESANTIA_11_ANNOS'] = [
-                            extraer_monto(celdas[1].get_text(strip=True))
+                            extraer_monto(celdas[1].get_text(strip=True)),
+                            extraer_monto(celdas[2].get_text(strip=True))
                         ]
 
                 #trabajador casa particular
