@@ -202,8 +202,8 @@ class hr_indicadores_previsionales(models.Model):
         self.deposito_convenido = new_ind['DEPOSITO_CONVENIDO_TOPE_ANUAL']
 
             # 6 SEGURO DE CESANTÍA (AFC)
-            #self.contrato_plazo_indefinido_empleador      = new_ind['SEGURO_CESANTIA_PLAZO_INDEF'][0]
-            #self.contrato_plazo_indefinido_trabajador     = new_ind['SEGURO_CESANTIA_PLAZO_INDEF'][1]
+        self.contrato_plazo_indefinido_empleador      = new_ind['SEGURO_CESANTIA_PLAZO_INDEF'][0]
+        self.contrato_plazo_indefinido_trabajador     = new_ind['SEGURO_CESANTIA_PLAZO_INDEF'][1]
         self.contrato_plazo_fijo_empleador            = new_ind['SEGURO_CESANTIA_PLAZO_FIJO']
         self.contrato_plazo_indefinido_empleador_otro = new_ind['SEGURO_CESANTIA_11_ANNOS']
 
@@ -371,12 +371,14 @@ class hr_indicadores_previsionales(models.Model):
                     indicadores['DEPOSITO_CONVENIDO_TOPE_ANUAL'] = extraer_monto(texto_raw)
                 
                 # Seguro Cesantia
-                # plazo indefinido
-                if 'plazo indefinido' in texto and indicadores['SEGURO_CESANTIA_PLAZO_INDEF'] == 0:
+                # Seguro Cesantía Plazo Indefinido
+                if 'plazo indefinido' in texto and not indicadores['SEGURO_CESANTIA_PLAZO_INDEF']:
                     celdas = fila.find_all('td')
                     if len(celdas) >= 3:
-                        porcentaje = extraer_monto(celdas[1].get_text(strip=True))
-                        indicadores['SEGURO_CESANTIA_PLAZO_INDEF'] = porcentaje
+                        indicadores['SEGURO_CESANTIA_PLAZO_INDEF'] = [
+                            extraer_monto(celdas[1].get_text(strip=True)),  # Empleador
+                            extraer_monto(celdas[2].get_text(strip=True))   # Trabajador
+                        ]
 
                 # plazo fijo
                 if 'plazo fijo' in texto and indicadores['SEGURO_CESANTIA_PLAZO_FIJO'] == 0:
