@@ -76,7 +76,7 @@ class hr_indicadores_previsionales(models.Model):
         help="Sueldo Mínimo para Menores de 18 y Mayores a 65")
     sueldo_minimo_casa_particular = fields.Float('Trabajadores de Casa Particular', readonly=True, state=STATES, 
         help="Sueldo Minimo para Trabajadores de Casa Particular")
-    sueldo_minimo_no_remun = fields.Foat('Para fines no remuneracional', readonly=True, state=STATES, 
+    sueldo_minimo_no_remun = fields.Float('Para fines no remuneracional', readonly=True, state=STATES, 
         help="Sueldo Minimo para Fines no Remuneracionales")
     tasa_afp_cuprum  = fields.Float( 'Cuprum', readonly=True, states=STATES, help="Tasa AFP Cuprum")
     tasa_afp_capital = fields.Float( 'Capital', readonly=True, states=STATES, help="Tasa AFP Capital")
