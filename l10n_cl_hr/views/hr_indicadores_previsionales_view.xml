@@ -162,14 +162,14 @@
 												<field name="trabajo_pesado" 
 													string="C.Trabajo Pesado">
 												</field>
-												<field name="trabajo_pesado_empleador" string="Empleador">
-												</field>
-												<field name="trabajo_pesado_trabajador" string="Trabajador">
-												</field>
 												<field name="trabajo_menos_pesado" 
 													string="C.Trabajo Menos Pesado">
 												</field>
+												<field name="trabajo_pesado_empleador" string="Empleador">
+												</field>
 												<field name="trabajo_menos_pesado_empleador" string="Empleador">
+												</field>
+												<field name="trabajo_pesado_trabajador" string="Trabajador">
 												</field>
 												<field name="trabajo_menos_pesado_trabajador" string="Trabajador">
 												</field>
