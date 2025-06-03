@@ -103,8 +103,16 @@ class hr_indicadores_previsionales(models.Model):
     tope_imponible_seguro_cesantia = fields.Float( 'Tope Imponible Seguro Cesantía', readonly=True, states=STATES,
         help="Tope Imponible Seguro de Cesantía")
     trabajo_pesado = fields.Float( 'Cotizacion Trabajo Pesado', readonly=True, states=STATES, help="Cotizacion Trabajo Pesado")
+    trabajo_pesado_empleador = fields.Float( 'Calificacion Trabajo Pesado Empleador', readonly=True, states=STATES, 
+        help="Cotizacion Trabajo Pesado Empleador")
+    trabajo_pesado_trabajador = fields.Float( 'Trabajo Pesado Trabajador', readonly=True, states=STATES, 
+        help="Cotizacion Trabajo Pesado Trabajador")
     trabajo_menos_pesado = fields.Float( 'Cotizacion Trabajo Menos Pesado', readonly=True, states=STATES, 
         help="Cotizacion Trabajo Menos Pesado")
+    trabajo_menos_pesado_empleador = fields.Float( 'Trabajo Menos Pesado Empleador', readonly=True, states=STATES, 
+        help="Calificacion Trabajo Menos Empleador")
+    trabajo_menos_pesado_trabajador = fields.Float( 'Trabajo Menos Pesado Trabajador', readonly=True, states=STATES, 
+        help="Cotizacion Trabajo Menos Pesado Trabajador")
     uf  = fields.Float('UF', states=STATES, help="UF fin de Mes")
     utm = fields.Float('UTM',  readonly=True, states=STATES, help="UTM Fin de Mes")
     uta = fields.Float('UTA', readonly=True, states=STATES, help="UTA Fin de Mes")
@@ -260,6 +268,15 @@ class hr_indicadores_previsionales(models.Model):
         # 9 COTIZACION TRABAJOS PESADOS
         self.trabajo_pesado         = new_ind['COTIZACION_TRAB_PESADO'][0]
         self.trabajo_menos_pesado   = new_ind['COTIZACION_TRAB_MENOS_PESADO'][0]
+
+        self.trabajo_pesado_empleador = new_ind['COTIZACION_TRAB_PESADO'][1]
+        self.trabajo_menos_pesado_empleador = new_ind['COTIZACION_TRAB_MENOS_PESADO'][1]
+
+        self.trabajo_menos_pesado_trabajador = new_ind['COTIZACION_TRAB_MENOS_PESADO'][2]
+        self.trabajo_pesado_trabajador = new_ind['COTIZACION_TRAB_PESADO'][2]
+
+
+        self.tr
 
         #except Exception as e:
          #   _logger.error(f"Error actualizando indicadores previsionales: {e}")

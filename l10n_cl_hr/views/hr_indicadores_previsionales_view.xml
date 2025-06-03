@@ -115,17 +115,6 @@
 										</td>
 									</tr>
 									<tr>
-										<td width="40%">
-											<group col="2" name="Cotizacion Trabajos"
-												string="Cotizacion Trabajos Pesados">
-												<field name="trabajo_pesado" string="C.Trabajo Pesado">
-												</field>
-												<field name="trabajo_menos_pesado" string="C.Trabajo Menos Pesado">
-												</field>
-											</group>
-										</td>
-									</tr>
-									<tr>
 										<td>
 											<group col="2" name="minimum_rent"
 												string="Rentas Mínimas Imponibles">
@@ -166,6 +155,28 @@
 												</field>
 											</group>
 										</td>
+									</tr>
+									</tr>
+										<td width="40%">
+											<group col="3" name="Cotizacion Trabajos"
+												string="Cotizacion Trabajos Pesados">
+												<field name="trabajo_pesado" 
+													string="C.Trabajo Pesado">
+												</field>
+												<field name="trabajo_pesado_empleador" string="Empleador">
+												</field>
+												<field name="trabajo_pesado_trabajador" string="Trabajador">
+												</field>
+												<field name="trabajo_menos_pesado" 
+													string="C.Trabajo Menos Pesado">
+												</field>
+												<field name="trabajo_menos_pesado_empleador" string="Empleador">
+												</field>
+												<field name="trabajo_menos_pesado_trabajador" string="Trabajador">
+												</field>
+											</group>
+										</td>
+									</tr>
 									</tr>
 								</table>
 							</page>
