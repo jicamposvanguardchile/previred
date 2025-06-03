@@ -118,10 +118,16 @@
 										<td>
 											<group col="2" name="minimum_rent"
 												string="Rentas Mínimas Imponibles">
-												<field name="sueldo_minimo" string="Sueldo Mínimo">
+												<field name="sueldo_minimo_dep_indep" string="T. Dep y Indep">
 												</field>
-												<field name="sueldo_minimo_otro"
-													string="Sueldo Mínimo Otro">
+												<field name="sueldo_minimo_men_18_may_65"
+													string="Men 18 y May 65">
+												</field>
+												<field name="sueldo_minimo_casa_particular"
+													string="Casa Particular">
+												</field>
+												<field name="sueldo_minimo_no_remun" 
+													string="Fines no remun">
 												</field>
 											</group>
 											<group col="2" name="voluntary_saving"
