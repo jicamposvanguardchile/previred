@@ -71,9 +71,13 @@ class hr_indicadores_previsionales(models.Model):
     mutual_seguridad = fields.Float( 'Mutualidad', readonly=True, states=STATES, help="Mutual de Seguridad")
     isl = fields.Float( 'ISL', readonly=True, states=STATES, help="Instituto de Seguridad Laboral")
     pensiones_ips = fields.Float( 'Pensiones IPS', readonly=True, states=STATES, help="Pensiones IPS")
-    sueldo_minimo = fields.Float( 'Trab. Dependientes e Independientes', readonly=True, states=STATES, help="Sueldo Minimo")
-    sueldo_minimo_otro = fields.Float( 'Menores de 18 y Mayores de 65:', readonly=True, states=STATES,
+    sueldo_minimo_dep_indep = fields.Float( 'Trab. Dependientes e Independientes', readonly=True, states=STATES, help="Sueldo Minimo")
+    sueldo_minimo_men_18_may_65 = fields.Float( 'Menores de 18 y Mayores de 65:', readonly=True, states=STATES,
         help="Sueldo Mínimo para Menores de 18 y Mayores a 65")
+    sueldo_minimo_casa_particular = fields.Float('Trabajadores de Casa Particular', readonly=True, state=STATES, 
+        help="Sueldo Minimo para Trabajadores de Casa Particular")
+    sueldo_minimo_no_remun = fields.Foat('Para fines no remuneracional', readonly=True, state=STATES, 
+        help="Sueldo Minimo para Fines no Remuneracionales")
     tasa_afp_cuprum  = fields.Float( 'Cuprum', readonly=True, states=STATES, help="Tasa AFP Cuprum")
     tasa_afp_capital = fields.Float( 'Capital', readonly=True, states=STATES, help="Tasa AFP Capital")
     tasa_afp_provida = fields.Float( 'ProVida', readonly=True, states=STATES, help="Tasa AFP Provida")
@@ -207,8 +211,10 @@ class hr_indicadores_previsionales(models.Model):
         self.tope_imponible_seguro_cesantia = new_ind['RENTAS_TOPE_SEGURO'] 
 
             # 4 RENTAS MINIMAS IMPONIBLES
-        self.sueldo_minimo      = new_ind['RENTAS_MINIMA_DEP_INDEP']
-        self.sueldo_minimo_otro = new_ind['RENTAS_MINIMA_18_Y_65']
+        self.sueldo_minimo_dep_indep        = new_ind['RENTAS_MINIMA_DEP_INDEP']
+        self.sueldo_minimo_men_18_may_65    = new_ind['RENTAS_MINIMA_18_Y_65']
+        self.sueldo_minimo_casa_particular  = new_ind['RENTAS_MINIMA_CASA_PARTICULAR']
+        self.sueldo_minimo_no_remun         = new_ind['RENTAS_MINIMA_NO_REMU']
 
             # Ahorro Previsional Voluntario (UF)
         self.tope_mensual_apv = new_ind['APV_TOPE_MENSUAL']
