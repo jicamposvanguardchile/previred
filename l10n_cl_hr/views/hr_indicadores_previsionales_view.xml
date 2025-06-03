@@ -116,7 +116,7 @@
 									</tr>
 									<tr>
 										<td>
-											<group col="2" name="minimum_rent"
+											<group col="3" name="minimum_rent"
 												string="Rentas Mínimas Imponibles">
 												<field name="sueldo_minimo_dep_indep" string="T. Dep y Indep">
 												</field>
