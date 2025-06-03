@@ -275,9 +275,6 @@ class hr_indicadores_previsionales(models.Model):
         self.trabajo_menos_pesado_trabajador = new_ind['COTIZACION_TRAB_MENOS_PESADO'][2]
         self.trabajo_pesado_trabajador = new_ind['COTIZACION_TRAB_PESADO'][2]
 
-
-        self.tr
-
         #except Exception as e:
          #   _logger.error(f"Error actualizando indicadores previsionales: {e}")
 
