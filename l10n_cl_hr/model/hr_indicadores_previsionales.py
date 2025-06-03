@@ -367,11 +367,14 @@ class hr_indicadores_previsionales(models.Model):
 
 
                 # UTM y UTA
-                if ('mayo 2025' in texto or 'utm' in texto) and indicadores['UTM'] == 0:
-                    indicadores['UTM'] = extraer_monto(texto_raw)
-                    indicadores['MES_UTM'] = 'mes'
-                if ('mayo 2025' in texto or 'uta' in texto) and indicadores['UTA'] == 0:
-                    indicadores['UTA'] = extraer_monto(texto_raw)
+                if 'mayo 2025' in texto:
+                    celdas = fila.find_all('td')
+                    if len(celdas) >= 3:
+                        if indicadores['UTM'] == 0:
+                            indicadores['UTM'] = extraer_monto(celdas[1].get_text(strip=True))
+                            indicadores['MES_UTM'] = 'MAYO'
+                        if indicadores['UTA'] == 0:
+                            indicadores['UTA'] = extraer_monto(celdas[2].get_text(strip=True))
 
                 # Topes
                 if 'afiliados a una afp' in texto and indicadores['RENTAS_TOPE_AFP'] == 0:
