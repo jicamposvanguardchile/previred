@@ -46,21 +46,20 @@
             <field name="amount_select">code</field>
             <field name="amount_python_compute"><![CDATA[
                 result = 0.0
-                tope = 0.0
-                if contract.contract_type_id and contract.contract_type_id.name == 'Sueldo Empresarial':
-                    if payslip.indicadores_id:
-                        tope_afp = payslip.indicadores_id.tope_imponible_afp or 0.0
-                        uf = payslip.indicadores_id.uf or 0.0
-                        tope = tope_afp * uf
-                        if contract.wage >= tope:
-                            result = contract.wage
-                        else:
-                            result = (contract.wage / 30.0) * worked_days.WORK100.number_of_days
+                if contract.contract_type_id and contract.contract_type_id.name == 'Sueldo Empresarial' and payslip.indicadores_id:
+                    tope_afp = payslip.indicadores_id.tope_imponible_afp or 0.0
+                    uf = payslip.indicadores_id.uf or 0.0
+                    tope = tope_afp * uf
+                    if contract.wage >= tope:
+                        result = contract.wage
                     else:
-                        result = (contract.wage / 30.0) * worked_days.WORK100.number_of_days
+                        dias = worked_days.get('WORK100') and worked_days['WORK100'].number_of_days or 0.0
+                        result = (contract.wage / 30.0) * dias
                 else:
-                    result = (contract.wage / 30.0) * worked_days.WORK100.number_of_days
-                        ]]></field>
+                    dias = worked_days.get('WORK100') and worked_days['WORK100'].number_of_days or 0.0
+                    result = (contract.wage / 30.0) * dias
+                    ]]>
+            </field>
         </record>
 
 
