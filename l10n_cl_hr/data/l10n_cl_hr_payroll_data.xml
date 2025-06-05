@@ -55,7 +55,7 @@ if contract.contract_type_id.name == 'Sueldo Empresarial' and payslip.indicadore
     else:
         result = round((contract.wage / 30.0) * worked_days.WORK100.number_of_days)
 else:
-    result = round((contract.wage / 30.0) * worked_days.WORK100.number_of_days)</field>
+    result = round((contract.wage / 30.0) * worked_days.WORK100.number_of_das)</field>
         </record>
 
 
