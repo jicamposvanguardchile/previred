@@ -44,10 +44,11 @@
 	    <field name="category_id" ref="IMPONIBLE"/>
             <field name="condition_select">none</field>
             <field name="amount_select">code</field>
-            <field name="amount_python_compute"><![CDATA[ if (contract.contract_type_id.name == 'Sueldo Empresarial') and ( contract.wage >=round(payslip.indicadores_id.tope_imponible_afp*payslip.indicadores_id.uf)):
-    result = contract.wage
-else:
-    result = round((contract.wage / 30) * worked_days.WORK100.number_of_days) ]]> </field>
+            <field name="amount_python_compute"><![CDATA[
+        if (contract.contract_type_id.name == 'Sueldo Empresarial') and (contract.wage >= round(payslip.indicadores_id.tope_imponible_afp * payslip.indicadores_id.uf)):
+            result = contract.wage
+        else:
+            result = round((contract.wage / 30) * worked_days.WORK100.number_of_days)]]></field>
         </record>
 
 
