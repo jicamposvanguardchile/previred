@@ -30,10 +30,10 @@
 		</record>
 
 
-		<act_window id="l10_cl_hr.hr_afp_action" name="Fondos de Pensión"
+		<act_window id="l10n_cl_hr.hr_afp_action" name="Fondos de Pensión"
 			res_model="hr.afp" view_mode="list,form" />
 
 		<menuitem id="hr_afp_menu" parent="pways_hr_payroll.menu_hr_payroll_configuration"
-			action="hr_afp_action" sequence="14" />
+			action="l10n_cl_hr.hr_afp_action" sequence="14" />
 	</data>
 </odoo>
