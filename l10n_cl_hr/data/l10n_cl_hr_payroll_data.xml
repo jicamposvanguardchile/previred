@@ -68,7 +68,9 @@ else:
             <field name="code">ALSB</field>
             <field name="category_id" ref="IMPONIBLE"/>
             <field name="condition_select">python</field>
-            <field name="condition_python">contract and payslip and payslip.indicadores_id and payslip.indicadores_id.sueldo_minimo > contract.wage</field>
+            <field name="condition_python">
+            contract and payslip and payslip.indicadores_id and (payslip.indicadores_id.sueldo_minimo or 0.0) &gt; (contract.wage or 0.0)
+            </field>
             <field name="amount_select">code</field>
             <field name="amount_python_compute">result = round(((payslip.indicadores_id.sueldo_minimo - contract.wage) / 30.0) * worked_days.WORK100.number_of_days)</field>
         </record>
