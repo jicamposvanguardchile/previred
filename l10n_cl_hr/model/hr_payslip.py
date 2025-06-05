@@ -14,7 +14,7 @@ class HrPayslip(models.Model):
     _description = 'Pay Slip'
     
     indicadores_id = fields.Many2one('hr.indicadores', string='Indicadores',
-        readonly=True, states={'draft': [('readonly', False)]},
+        states={'draft': [('readonly', False)]},
         help='Defines Previred Forecast Indicators')
     movimientos_personal = fields.Selection([('0', 'Sin Movimiento en el Mes'),
      ('1', 'Contratación a plazo indefinido'),
