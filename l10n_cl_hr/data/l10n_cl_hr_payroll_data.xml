@@ -44,17 +44,19 @@
 	    <field name="category_id" ref="IMPONIBLE"/>
             <field name="condition_select">none</field>
             <field name="amount_select">code</field>
-            <field name="amount_python_compute">result = 0.0
-            if contract.contract_type_id.name == 'Sueldo Empresarial' and payslip.indicadores_id:
-                tope_afp = payslip.indicadores_id.tope_imponible_afp
-                uf = payslip.indicadores_id.uf
-                tope = tope_afp * uf
-                if contract.wage >= round(tope):
-                    result = contract.wage
+            <field name="amount_python_compute"><![CDATA[
+                result = 0.0
+                if contract.contract_type_id.name == 'Sueldo Empresarial' and payslip.indicadores_id:
+                    tope_afp = payslip.indicadores_id.tope_imponible_afp
+                    uf = payslip.indicadores_id.uf
+                    tope = tope_afp * uf
+                    if contract.wage >= round(tope):
+                        result = contract.wage
+                    else:
+                        result = round((contract.wage / 30.0) * worked_days.WORK100.number_of_days)
                 else:
                     result = round((contract.wage / 30.0) * worked_days.WORK100.number_of_days)
-            else:
-                result = round((contract.wage / 30.0) * worked_days.WORK100.number_of_days)</field>
+                        ]]></field>
         </record>
 
 
