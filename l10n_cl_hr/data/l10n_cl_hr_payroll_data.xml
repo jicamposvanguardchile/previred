@@ -376,8 +376,8 @@ if inputs.HEX50:
 DEVENGABLE=round(contract.wage+contract.otros_imp+amount)
 
 GRATI=round(DEVENGABLE * 25 / 100 )
-if GRATI > (4.75 * payslip.indicadores_id.sueldo_minimo /12):
-    GRATI = round (4.75 * payslip.indicadores_id.sueldo_minimo / 12)
+if GRATI > (4.75 * payslip.indicadores_id.sueldo_minimo_dep_indep /12):
+    GRATI = round (4.75 * payslip.indicadores_id.sueldo_minimo_dep_indep / 12)
 else:
     GRATI = GRATI
 
