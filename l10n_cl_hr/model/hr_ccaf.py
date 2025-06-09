@@ -7,3 +7,4 @@ class hr_ccaf(models.Model):
     
     codigo = fields.Char('Codigo', required=True)
     name = fields.Char('Nombre', required=True)
+    descripcion = fields.Char('Descripcion')
