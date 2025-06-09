@@ -117,16 +117,16 @@ class hr_indicadores_previsionales(models.Model):
         help="Calificacion Trabajo Menos Empleador")
     trabajo_menos_pesado_trabajador = fields.Float( 'Trabajo Menos Pesado Trabajador',  
         help="Cotizacion Trabajo Menos Pesado Trabajador")
-    uf  = fields.Float('UF', states=STATES, help="UF fin de Mes")
+    uf  = fields.Float('UF', help="UF fin de Mes")
     utm = fields.Float('UTM',   help="UTM Fin de Mes")
     uta = fields.Float('UTA',  help="UTA Fin de Mes")
     uf_otros = fields.Float( 'UF Otros',  help="UF Seguro Complementario")
-    mutualidad_id = fields.Many2one('hr.mutual', 'MUTUAL', readonly=True, states=STATES)
-    ccaf_id = fields.Many2one('hr.ccaf', 'CCAF', readonly=True, states=STATES)
-    month = fields.Selection(MONTH_LIST, string='Mes',  states=STATES)
-    year = fields.Integer('Año',  default=datetime.now().strftime('%Y'), readonly=True, states=STATES)
-    gratificacion_legal = fields.Boolean('Gratificación L. Manual', readonly=True, states=STATES)
-    mutual_seguridad_bool = fields.Boolean('Mutual Seguridad', default=True, readonly=True, states=STATES)
+    mutualidad_id = fields.Many2one('hr.mutual', 'MUTUAL')
+    ccaf_id = fields.Many2one('hr.ccaf', 'CCAF' )
+    month = fields.Selection(MONTH_LIST, string='Mes' )
+    year = fields.Integer('Año',  default=datetime.now().strftime('%Y'))
+    gratificacion_legal = fields.Boolean('Gratificación L. Manual')
+    mutual_seguridad_bool = fields.Boolean('Mutual Seguridad', default=True)
     ipc = fields.Float('IPC',    help="Indice de Precios al Consumidor (IPC)")
     
     def action_done(self):
