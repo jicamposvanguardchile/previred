@@ -33,9 +33,9 @@
 		groups="hr_contract.group_hr_contract_manager" />
 
 	<!-- mover menus de nominas y registros de nominas a un menu principal -->
-	<record id="pways_hr_payroll.menu_hr_payroll_employee_payslips_to_pay" model="ir.ui.menu">
+	<!--<record id="pways_hr_payroll.menu_hr_payroll_employee_payslips_to_pay" model="ir.ui.menu">
 		<field name="parent_id" ref="menu_cl_hr_payroll_base" />
-	</record>
+	</record> -->
 	<record id="pways_hr_payroll.menu_hr_payslip_run" model="ir.ui.menu">
 		<field name="parent_id" ref="menu_cl_hr_payroll_base" />
 	</record>
