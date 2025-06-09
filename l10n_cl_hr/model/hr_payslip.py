@@ -14,7 +14,6 @@ class HrPayslip(models.Model):
     _description = 'Pay Slip'
     
     indicadores_id = fields.Many2one('hr.indicadores', string='Indicadores',
-        states={'draft': [('readonly', False)]},
         help='Defines Previred Forecast Indicators')
     movimientos_personal = fields.Selection([('0', 'Sin Movimiento en el Mes'),
      ('1', 'Contratación a plazo indefinido'),
@@ -34,7 +33,7 @@ class HrPayslip(models.Model):
 
     #compute='_compute_parameters', store=True, readonly=True, copy=True,
     parameters_ids = fields.One2many('hr.payslip.cl.parameters', 'payslip_id', string='Parámetros Nómina CL',
-            store=True, copy=True, states={'draft': [('readonly', False)], 'verify': [('readonly', False)]})
+            store=True, copy=True)
 
 
     #@api.onchange('employee_id', 'contract_id', 'struct_id', 'date_from', 'date_to')
