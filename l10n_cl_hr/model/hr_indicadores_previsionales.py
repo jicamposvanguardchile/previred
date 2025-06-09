@@ -65,7 +65,7 @@ class hr_indicadores_previsionales(models.Model):
         help="Contrato Plazo Indefinido Trabajador")
     contrato_particular_trabajador = fields.Float( 'Contrato Casa Particular Trabajador', readonly=True, states=STATES,
         help="Contrato Casa Particular Trabajador")
-    caja_compensacion  = fields.Float( 'Caja Compensación', readonly=True, states=STATES, help="Caja de Compensacion")
+    caja_compensacion  = fields.Float( 'Caja Compensación', states=STATES, help="Caja de Compensacion")
     deposito_convenido = fields.Float( 'Deposito Convenido', readonly=True, states=STATES, help="Deposito Convenido")
     fonasa = fields.Float('Fonasa', readonly=True, states=STATES, help="Fonasa")
     mutual_seguridad = fields.Float( 'Mutualidad', readonly=True, states=STATES, help="Mutual de Seguridad")
