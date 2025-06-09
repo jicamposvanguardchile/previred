@@ -43,7 +43,7 @@ Chilean Payroll & Human Resources.
         #'data/hr_work_entry.xml',
         'data/hr_salary_rule_category.xml',
         'data/hr_centros_costos.xml',
-        'data/l10n_cl_hr_indicadores.xml',
+        #'data/l10n_cl_hr_indicadores.xml',
         'data/l10n_cl_hr_isapre.xml',
         'data/l10n_cl_hr_afp.xml',
         'data/l10n_cl_hr_mutual.xml',
