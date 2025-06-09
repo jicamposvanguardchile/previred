@@ -58,7 +58,7 @@ Chilean Payroll & Human Resources.
         'data/l10n_cl_hr_payroll_data.xml',
         'security/ir.model.access.csv',
     ],
-    'demo': ['demo/l10n_cl_hr_payroll_demo.xml'],
+    #'demo': ['demo/l10n_cl_hr_payroll_demo.xml'],
     'installable': True,
     'application': True,
     'auto_install': False

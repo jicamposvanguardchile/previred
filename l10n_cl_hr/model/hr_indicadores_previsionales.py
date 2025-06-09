@@ -39,95 +39,95 @@ class hr_indicadores_previsionales(models.Model):
         ('draft','Borrador'),
         ('done','Validado'),
         ], string=u'Estado', readonly=True, default='draft')
-    asignacion_familiar_primer = fields.Float('Asignación Familiar Tramo 1', readonly=True, states=STATES,
+    asignacion_familiar_primer = fields.Float('Asignación Familiar Tramo 1',
         help="Asig Familiar Primer Tramo")
-    asignacion_familiar_segundo = fields.Float('Asignación Familiar Tramo 2', readonly=True, states=STATES,
+    asignacion_familiar_segundo = fields.Float('Asignación Familiar Tramo 2', 
         help="Asig Familiar Segundo Tramo")
-    asignacion_familiar_tercer = fields.Float('Asignación Familiar Tramo 3', readonly=True, states=STATES,
+    asignacion_familiar_tercer = fields.Float('Asignación Familiar Tramo 3', 
         help="Asig Familiar Tercer Tramo")
-    asignacion_familiar_cuarto = fields.Float('Asignación Familiar Tramo 4', readonly=True, states=STATES,
+    asignacion_familiar_cuarto = fields.Float('Asignación Familiar Tramo 4', 
         help="Asig Familiar Cuarto Tramo")
-    asignacion_familiar_monto_a = fields.Float( 'Monto Tramo Uno', readonly=True, states=STATES, help="Monto A")
-    asignacion_familiar_monto_b = fields.Float( 'Monto Tramo Dos', readonly=True, states=STATES, help="Monto B")
-    asignacion_familiar_monto_c = fields.Float( 'Monto Tramo Tres', readonly=True, states=STATES, help="Monto C")
-    asignacion_familiar_monto_d = fields.Float( 'Monto Tramo Cuatro', readonly=True, states=STATES, help="Monto D")
-    contrato_plazo_fijo_empleador = fields.Float( 'Contrato Plazo Fijo Empleador', readonly=True, states=STATES,
+    asignacion_familiar_monto_a = fields.Float( 'Monto Tramo Uno',  help="Monto A")
+    asignacion_familiar_monto_b = fields.Float( 'Monto Tramo Dos',  help="Monto B")
+    asignacion_familiar_monto_c = fields.Float( 'Monto Tramo Tres',  help="Monto C")
+    asignacion_familiar_monto_d = fields.Float( 'Monto Tramo Cuatro',  help="Monto D")
+    contrato_plazo_fijo_empleador = fields.Float( 'Contrato Plazo Fijo Empleador', 
         help="Contrato Plazo Fijo Empleador")
-    contrato_plazo_fijo_trabajador = fields.Float( 'Contrato Plazo Fijo Trabajador', readonly=True, states=STATES,
+    contrato_plazo_fijo_trabajador = fields.Float( 'Contrato Plazo Fijo Trabajador',
         help="Contrato Plazo Fijo Trabajador")    
-    contrato_plazo_indefinido_empleador = fields.Float( 'Contrato Plazo Indefinido Empleador', readonly=True, states=STATES,
+    contrato_plazo_indefinido_empleador = fields.Float( 'Contrato Plazo Indefinido Empleador', 
         help="Contrato Plazo Fijo")
     contrato_plazo_indefinido_empleador_otro = fields.Float( 'Contrato Plazo Indefinido Empleador 11 anos o mas', 
-        readonly=True, states=STATES, help="Contrato Plazo Indefinido 11 anos Empleador")
+        help="Contrato Plazo Indefinido 11 anos Empleador")
     contrato_plazo_indefinido_trabajador_otro = fields.Float( 'Contrato Plazo Indefinido Trabajador 11 anos o mas', 
-        readonly=True, states=STATES, help="Contrato Plazo Indefinido 11 anos Trabajador")
-    contrato_plazo_indefinido_trabajador = fields.Float( 'Contrato Plazo Indefinido Trabajador', readonly=True, states=STATES,
+        help="Contrato Plazo Indefinido 11 anos Trabajador")
+    contrato_plazo_indefinido_trabajador = fields.Float( 'Contrato Plazo Indefinido Trabajador', 
         help="Contrato Plazo Indefinido Trabajador")
-    contrato_particular_trabajador = fields.Float( 'Contrato Casa Particular Trabajador', readonly=True, states=STATES,
+    contrato_particular_trabajador = fields.Float( 'Contrato Casa Particular Trabajador',
         help="Contrato Casa Particular Trabajador")
-    caja_compensacion  = fields.Float( 'Caja Compensación', states=STATES, help="Caja de Compensacion")
-    deposito_convenido = fields.Float( 'Deposito Convenido', readonly=True, states=STATES, help="Deposito Convenido")
-    fonasa = fields.Float('Fonasa', readonly=True, states=STATES, help="Fonasa")
-    mutual_seguridad = fields.Float( 'Mutualidad', readonly=True, states=STATES, help="Mutual de Seguridad")
-    isl = fields.Float( 'ISL', readonly=True, states=STATES, help="Instituto de Seguridad Laboral")
-    pensiones_ips = fields.Float( 'Pensiones IPS', readonly=True, states=STATES, help="Pensiones IPS")
-    sueldo_minimo_dep_indep = fields.Float( 'Trab. Dependientes e Independientes', readonly=True, states=STATES, help="Sueldo Minimo")
-    sueldo_minimo_men_18_may_65 = fields.Float( 'Menores de 18 y Mayores de 65:', readonly=True, states=STATES,
+    caja_compensacion  = fields.Float( 'Caja Compensación', help="Caja de Compensacion")
+    deposito_convenido = fields.Float( 'Deposito Convenido', help="Deposito Convenido")
+    fonasa = fields.Float('Fonasa', help="Fonasa")
+    mutual_seguridad = fields.Float( 'Mutualidad', help="Mutual de Seguridad")
+    isl = fields.Float( 'ISL', help="Instituto de Seguridad Laboral")
+    pensiones_ips = fields.Float( 'Pensiones IPS',  help="Pensiones IPS")
+    sueldo_minimo_dep_indep = fields.Float( 'Trab. Dependientes e Independientes',  help="Sueldo Minimo")
+    sueldo_minimo_men_18_may_65 = fields.Float( 'Menores de 18 y Mayores de 65:', 
         help="Sueldo Mínimo para Menores de 18 y Mayores a 65")
-    sueldo_minimo_casa_particular = fields.Float('Trabajadores de Casa Particular', readonly=True, state=STATES, 
+    sueldo_minimo_casa_particular = fields.Float('Trabajadores de Casa Particular',  
         help="Sueldo Minimo para Trabajadores de Casa Particular")
-    sueldo_minimo_no_remun = fields.Float('Para fines no remuneracional', readonly=True, state=STATES, 
+    sueldo_minimo_no_remun = fields.Float('Para fines no remuneracional',  
         help="Sueldo Minimo para Fines no Remuneracionales")
-    tasa_afp_cuprum  = fields.Float( 'Cuprum', readonly=True, states=STATES, help="Tasa AFP Cuprum")
-    tasa_afp_capital = fields.Float( 'Capital', readonly=True, states=STATES, help="Tasa AFP Capital")
-    tasa_afp_provida = fields.Float( 'ProVida', readonly=True, states=STATES, help="Tasa AFP Provida")
-    tasa_afp_modelo  = fields.Float( 'Modelo', readonly=True, states=STATES, help="Tasa AFP Modelo")
-    tasa_afp_planvital = fields.Float( 'PlanVital', readonly=True, states=STATES, help="Tasa AFP PlanVital")
+    tasa_afp_cuprum  = fields.Float( 'Cuprum', help="Tasa AFP Cuprum")
+    tasa_afp_capital = fields.Float( 'Capital', help="Tasa AFP Capital")
+    tasa_afp_provida = fields.Float( 'ProVida', help="Tasa AFP Provida")
+    tasa_afp_modelo  = fields.Float( 'Modelo', help="Tasa AFP Modelo")
+    tasa_afp_planvital = fields.Float( 'PlanVital', help="Tasa AFP PlanVital")
     tasa_afp_habitat = fields.Float( 'Habitat',  help="Tasa AFP Habitat")
     tasa_afp_uno = fields.Float( 'Uno', help="Tasa AFP Uno")
-    tasa_sis_cuprum  = fields.Float('SIS', readonly=True, states=STATES, help="Tasa SIS Cuprum")
-    tasa_sis_capital = fields.Float( 'SIS', readonly=True, states=STATES, help="Tasa SIS Capital")
-    tasa_sis_provida = fields.Float( 'SIS', readonly=True, states=STATES, help="Tasa SIS Provida")
-    tasa_sis_planvital = fields.Float( 'SIS', readonly=True, states=STATES, help="Tasa SIS PlanVital")
-    tasa_sis_habitat = fields.Float( 'SIS', readonly=True, states=STATES, help="Tasa SIS Habitat")
+    tasa_sis_cuprum  = fields.Float('SIS', help="Tasa SIS Cuprum")
+    tasa_sis_capital = fields.Float( 'SIS', help="Tasa SIS Capital")
+    tasa_sis_provida = fields.Float( 'SIS', help="Tasa SIS Provida")
+    tasa_sis_planvital = fields.Float( 'SIS', help="Tasa SIS PlanVital")
+    tasa_sis_habitat = fields.Float( 'SIS', help="Tasa SIS Habitat")
     tasa_sis_modelo  = fields.Float( 'SIS',  help="Tasa SIS Modelo")
     tasa_sis_uno = fields.Float( 'SIS', help="Tasa SIS Uno")
-    tasa_independiente_cuprum = fields.Float( 'SIS', readonly=True, states=STATES, help="Tasa Independientes Cuprum")
-    tasa_independiente_capital = fields.Float( 'SIS', readonly=True, states=STATES, help="Tasa Independientes Capital")
-    tasa_independiente_provida = fields.Float( 'SIS', readonly=True, states=STATES, help="Tasa Independientes Provida")
-    tasa_independiente_planvital = fields.Float( 'SIS', readonly=True, states=STATES, help="Tasa Independientes PlanVital")
-    tasa_independiente_habitat = fields.Float( 'SIS', readonly=True, states=STATES, help="Tasa Independientes Habitat")
+    tasa_independiente_cuprum = fields.Float( 'SIS',  help="Tasa Independientes Cuprum")
+    tasa_independiente_capital = fields.Float( 'SIS',  help="Tasa Independientes Capital")
+    tasa_independiente_provida = fields.Float( 'SIS',  help="Tasa Independientes Provida")
+    tasa_independiente_planvital = fields.Float( 'SIS',  help="Tasa Independientes PlanVital")
+    tasa_independiente_habitat = fields.Float( 'SIS',  help="Tasa Independientes Habitat")
     tasa_independiente_modelo = fields.Float( 'SIS',  help="Tasa Independientes Modelo")
     tasa_independiente_uno = fields.Float( 'SIS', help="Tasa Independientes Uno")
-    tope_anual_apv = fields.Float( 'Tope Anual APV', readonly=True, states=STATES, help="Tope Anual APV")
-    tope_mensual_apv = fields.Float( 'Tope Mensual APV', readonly=True, states=STATES, help="Tope Mensual APV")
-    tope_imponible_afp = fields.Float( 'Tope imponible AFP', readonly=True, states=STATES, help="Tope Imponible AFP")
-    tope_imponible_ips = fields.Float( 'Tope imponible IPS', readonly=True, states=STATES, help="Tope Imponible IPS")
-    tope_imponible_salud = fields.Float( 'Tope Imponible Salud', readonly=True, states=STATES,)
-    tope_imponible_seguro_cesantia = fields.Float( 'Tope Imponible Seguro Cesantía', readonly=True, states=STATES,
+    tope_anual_apv = fields.Float( 'Tope Anual APV',  help="Tope Anual APV")
+    tope_mensual_apv = fields.Float( 'Tope Mensual APV',  help="Tope Mensual APV")
+    tope_imponible_afp = fields.Float( 'Tope imponible AFP',  help="Tope Imponible AFP")
+    tope_imponible_ips = fields.Float( 'Tope imponible IPS',  help="Tope Imponible IPS")
+    tope_imponible_salud = fields.Float( 'Tope Imponible Salud', )
+    tope_imponible_seguro_cesantia = fields.Float( 'Tope Imponible Seguro Cesantía', 
         help="Tope Imponible Seguro de Cesantía")
-    trabajo_pesado = fields.Float( 'Cotizacion Trabajo Pesado', readonly=True, states=STATES, help="Cotizacion Trabajo Pesado")
-    trabajo_pesado_empleador = fields.Float( 'Calificacion Trabajo Pesado Empleador', readonly=True, states=STATES, 
+    trabajo_pesado = fields.Float( 'Cotizacion Trabajo Pesado',  help="Cotizacion Trabajo Pesado")
+    trabajo_pesado_empleador = fields.Float( 'Calificacion Trabajo Pesado Empleador',  
         help="Cotizacion Trabajo Pesado Empleador")
-    trabajo_pesado_trabajador = fields.Float( 'Trabajo Pesado Trabajador', readonly=True, states=STATES, 
+    trabajo_pesado_trabajador = fields.Float( 'Trabajo Pesado Trabajador',  
         help="Cotizacion Trabajo Pesado Trabajador")
-    trabajo_menos_pesado = fields.Float( 'Cotizacion Trabajo Menos Pesado', readonly=True, states=STATES, 
+    trabajo_menos_pesado = fields.Float( 'Cotizacion Trabajo Menos Pesado',  
         help="Cotizacion Trabajo Menos Pesado")
-    trabajo_menos_pesado_empleador = fields.Float( 'Trabajo Menos Pesado Empleador', readonly=True, states=STATES, 
+    trabajo_menos_pesado_empleador = fields.Float( 'Trabajo Menos Pesado Empleador',  
         help="Calificacion Trabajo Menos Empleador")
-    trabajo_menos_pesado_trabajador = fields.Float( 'Trabajo Menos Pesado Trabajador', readonly=True, states=STATES, 
+    trabajo_menos_pesado_trabajador = fields.Float( 'Trabajo Menos Pesado Trabajador',  
         help="Cotizacion Trabajo Menos Pesado Trabajador")
     uf  = fields.Float('UF', states=STATES, help="UF fin de Mes")
-    utm = fields.Float('UTM',  readonly=True, states=STATES, help="UTM Fin de Mes")
-    uta = fields.Float('UTA', readonly=True, states=STATES, help="UTA Fin de Mes")
-    uf_otros = fields.Float( 'UF Otros', readonly=True, states=STATES, help="UF Seguro Complementario")
+    utm = fields.Float('UTM',   help="UTM Fin de Mes")
+    uta = fields.Float('UTA',  help="UTA Fin de Mes")
+    uf_otros = fields.Float( 'UF Otros',  help="UF Seguro Complementario")
     mutualidad_id = fields.Many2one('hr.mutual', 'MUTUAL', readonly=True, states=STATES)
     ccaf_id = fields.Many2one('hr.ccaf', 'CCAF', readonly=True, states=STATES)
     month = fields.Selection(MONTH_LIST, string='Mes',  states=STATES)
     year = fields.Integer('Año',  default=datetime.now().strftime('%Y'), readonly=True, states=STATES)
     gratificacion_legal = fields.Boolean('Gratificación L. Manual', readonly=True, states=STATES)
     mutual_seguridad_bool = fields.Boolean('Mutual Seguridad', default=True, readonly=True, states=STATES)
-    ipc = fields.Float('IPC',   readonly=True, states=STATES, help="Indice de Precios al Consumidor (IPC)")
+    ipc = fields.Float('IPC',    help="Indice de Precios al Consumidor (IPC)")
     
     def action_done(self):
         self.write({'state': 'done'})
