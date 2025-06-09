@@ -178,19 +178,20 @@ class hr_indicadores_previsionales(models.Model):
 
     def update_document(self):
         #self.update_date = datetime.today()
-        try:
-            url = 'https://www.previred.com/indicadores-previsionales/'
-            _logger.info('url %s'%(url))
-            page = urlopen(url)
-            html_bytes = page.read()
-            html = html_bytes.decode("utf-8")
-            brute = re.findall("\$ [\d\.,]+<|>[\d]+\.[\d\.]+<|>[\d,]+%<|>[\d,]+% R\.I\. ?<", html)
-            _logger.info('brute %s'%(brute))
-            pure = []
-            for item in brute:
-                pure.append(float((re.search("[\d\.,]+", item)[0]).replace('.','').replace(',','.')))
-        except ValueError:
-            return ""
+        #try:
+        
+        #    url = 'https://www.previred.com/indicadores-previsionales/'
+         #   _logger.info('url %s'%(url))
+          #  page = urlopen(url)
+           # html_bytes = page.read()
+            #html = html_bytes.decode("utf-8")
+            #brute = re.findall("\$ [\d\.,]+<|>[\d]+\.[\d\.]+<|>[\d,]+%<|>[\d,]+% R\.I\. ?<", html)
+            #_logger.info('brute %s'%(brute))
+            #pure = []
+            #for item in brute:
+            #    pure.append(float((re.search("[\d\.,]+", item)[0]).replace('.','').replace(',','.')))
+        #except ValueError:
+        #    return ""
 
         #try:
         new_ind = self._hrIndPrevired()
