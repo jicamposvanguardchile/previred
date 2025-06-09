@@ -90,7 +90,6 @@ class HrPayslip(models.Model):
             #payslip.update({'parameters_ids':[(0,0,values)]})
 
     
-    @api.model
     def create(self, vals):
         #JCR revisar. 
         if 'parameters_ids' in self.env.context:
