@@ -5,7 +5,7 @@ class hr_payslip_run(models.Model):
     _inherit = 'hr.payslip.run'
     _description = 'Payslip Run'
 
-    indicadores_id = fields.Many2one('hr.indicadores', 'Indicadores', states={'draft': [('readonly', False)]}, readonly=True, required=True)
+    indicadores_id = fields.Many2one('hr.indicadores', 'Indicadores', required=True)
     movimientos_personal = fields.Selection([('0', 'Sin Movimiento en el Mes'),
      ('1', 'Contratación a plazo indefinido'),
      ('2', 'Retiro'),
