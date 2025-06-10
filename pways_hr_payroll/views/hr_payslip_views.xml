@@ -359,7 +359,7 @@
 			<form string="Payslips Batches">
 			<header>
 				<button name="close_payslip_run" type="object" string="Close" invisible="state != 'draft'" class="oe_highlight"/>
-				<button name="%(action_hr_payslip_by_employees)d" type="action" invisible="state != 'draft'" string="Generate Payslips" class="oe_highlight"/>
+				<button name="%(action_hr_payslip_by_employees)d" type="action" invisible="state != 'draft'" string="Generate Payslipss" class="oe_highlight"/>
 				<button string="Set to Draft" name="draft_payslip_run" type="object" invisible="state != 'close'"/>
 				<field name="state" widget="statusbar"/>
 			</header>
