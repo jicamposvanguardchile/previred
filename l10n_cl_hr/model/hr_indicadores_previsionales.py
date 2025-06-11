@@ -350,10 +350,9 @@ class hr_indicadores_previsionales(models.Model):
             if not extraccion:
                 extraccion = re.search(r'(\d+(?:[\.,]\d+)?)\s*%', texto)
             #_logger.info('extraccion %s'%(extraccion))
-            
+            #_logger.info('%s'%(float(extraccion.group(1).replace('.', '').replace(',', '.').replace('$', '').replace('%', ''))))
             if extraccion:
                 return float(extraccion.group(1).replace('.', '').replace(',', '.').replace('$', '').replace('%', ''))
-            _logger.info('%s'%(float(extraccion.group(1).replace('.', '').replace(',', '.').replace('$', '').replace('%', ''))))
             return 0
         
         def extraer_porcentaje(texto):
@@ -607,6 +606,7 @@ class hr_indicadores_previsionales(models.Model):
         soup_ipc = BeautifulSoup(page_ipc.content, "html.parser")
 
         tablas_ipc = soup_ipc.find_all('table')
+        _logger.info('tablas_ipc %s'%(tablas_ipc))
 
         for tabla in tablas_ipc:
             for fila in tabla.find_all('tr'):
