@@ -17,7 +17,7 @@ locale._override_localeconv["decimal_point"] = ","
 
 
 URL_PREVIRED = "https://www.previred.com/indicadores-previsionales/"
-URL_BCENTRAL = "https://www.bcentral.cl/inicio"
+URL_BCENTRAL = "https://si3.bcentral.cl/indicadoressiete/secure/Serie.aspx?gcode=IPC&param=UQBSAEYAYwAxAFIARABYADAALQBqAHAAWABKAHEAcQBzAHAAQgB4ADcATwBHAGIAMgBfAEwATgBOAHIAWQA1ACMAZwBsAC4AeABtAEwATQBsAHcAdQBvAGQARwBQAGUARQBvAG0ASwB4AEQAbABTAGgARgAxAGUAQgBxAHkAcwA5AG8ARQAzAGgAMQBPAFQARgBSAEwASABZAE0ARgBKAFoAMwBmAHYATgBoAGMANQBpAE8ANwBFAGMAJAA="
 
 _logger = logging.getLogger(__name__)
 
