@@ -614,4 +614,4 @@ class hr_indicadores_previsionales(models.Model):
                         break
                 
 
-        return indicadores
+            return indicadores
