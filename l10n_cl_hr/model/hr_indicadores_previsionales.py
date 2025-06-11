@@ -609,18 +609,14 @@ class hr_indicadores_previsionales(models.Model):
         #_logger.info('tablas %s'%(tablas))
 
         # Buscar tabla de IPC
-        tabla_ipc = soup_ipc.find("table", {"id": "gr"})
-        if tabla_ipc:
-            for fila in tabla_ipc.find_all("tr"):
-                celdas = fila.find_all("td")
-                if celdas:
-                    anio = celdas[0].get_text(strip=True)
-                    if anio == '2025':
-                        # Mayo es la columna 5 (enero=1, mayo=5)
-                        texto_ipc_mayo = celdas[5].get_text(strip=True)
-                        indicadores['IPC'] = extraer_monto(texto_ipc_mayo)
-                        _logger.info('texto_ipc_mayo %s' %(texto_ipc_mayo))
-                        break
+        bloques = soup_ipc.find_all("div", class_="col-sm-12 col-md-6 col-lg-3")
+        for bloque in bloques:
+            titulo = bloque.find("span", class_="sub-title")
+            if titulo and "IPC" in titulo.get_text():
+                valor = bloque.find("span", class_="number")
+                if valor:
+                    indicadores["IPC"] = extraer_monto(valor.get_text(strip=True))
+            break
                 
 
         return indicadores
