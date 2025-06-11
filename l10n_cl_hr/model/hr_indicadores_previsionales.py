@@ -284,7 +284,7 @@ class hr_indicadores_previsionales(models.Model):
         self.trabajo_pesado_trabajador = new_ind['COTIZACION_TRAB_PESADO'][2]
 
         # 10 IPC
-        self.ipc                    = new_ind['IPC']
+        self.ipc                    = new_ind['IPC'][0]
 
         #except Exception as e:
          #   _logger.error(f"Error actualizando indicadores previsionales: {e}")
