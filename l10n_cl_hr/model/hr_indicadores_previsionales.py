@@ -294,6 +294,7 @@ class hr_indicadores_previsionales(models.Model):
     def _hrIndPrevired(self):
         page = requests.get(URL_PREVIRED)
         page_ipc = requests.get(URL_BCENTRAL)
+        _logger.info('page_ipc %s'%(page_ipc))
         if page.status_code != 200 or page_ipc.status_code != 200:
             return None
         
