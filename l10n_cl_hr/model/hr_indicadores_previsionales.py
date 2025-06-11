@@ -17,6 +17,7 @@ locale._override_localeconv["decimal_point"] = ","
 
 
 URL_PREVIRED = "https://www.previred.com/indicadores-previsionales/"
+URL_BCENTRAL = "https://si3.bcentral.cl/indicadoressiete/secure/Serie.aspx?gcode=IPC&param=UQBSAEYAYwAxAFIARABYADAALQBqAHAAWABKAHEAcQBzAHAAQgB4ADcATwBHAGIAMgBfAEwATgBOAHIAWQA1ACMAZwBsAC4AeABtAEwATQBsAHcAdQBvAGQARwBQAGUARQBvAG0ASwB4AEQAbABTAGgARgAxAGUAQgBxAHkAcwA5AG8ARQAzAGgAMQBPAFQARgBSAEwASABZAE0ARgBKAFoAMwBmAHYATgBoAGMANQBpAE8ANwBFAGMAJAA="
 
 _logger = logging.getLogger(__name__)
 
@@ -282,6 +283,9 @@ class hr_indicadores_previsionales(models.Model):
         self.trabajo_menos_pesado_trabajador = new_ind['COTIZACION_TRAB_MENOS_PESADO'][2]
         self.trabajo_pesado_trabajador = new_ind['COTIZACION_TRAB_PESADO'][2]
 
+        # 10 IPC
+        self.ipc                    = new_ind['IPC'][0]
+
         #except Exception as e:
          #   _logger.error(f"Error actualizando indicadores previsionales: {e}")
 
@@ -289,8 +293,11 @@ class hr_indicadores_previsionales(models.Model):
 
     def _hrIndPrevired(self):
         page = requests.get(URL_PREVIRED)
-        if page.status_code != 200:
+        page_ipc = requests.get(URL_BCENTRAL)
+        if page.status_code != 200 or page_ipc.status_code != 200:
             return None
+        
+
 
         indicadores = {
             'UF':0,
@@ -326,6 +333,7 @@ class hr_indicadores_previsionales(models.Model):
             'ASIGNACION_FAMILIAR_D':0,
             'COTIZACION_TRAB_PESADO':0,
             'COTIZACION_TRAB_MENOS_PESADO':0,
+            'IPC':0
         }
 
 
