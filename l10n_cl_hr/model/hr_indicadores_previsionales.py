@@ -608,7 +608,7 @@ class hr_indicadores_previsionales(models.Model):
         
         for tabla_ipc in tablas_ipc:
             for fila_ipc in tabla_ipc.find_all('tr'):
-                #_logger.info('fila %s' %(fila))
+                _logger.info('fila_ipc %s' %(fila_ipc))
                 texto_raw_ipc = fila_ipc.get_text(strip=True)
                 textos = normalizar(texto_raw_ipc)
 
