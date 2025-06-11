@@ -22,12 +22,6 @@
 							class="rounded-circle btn btn-beta" role="button" target="_blank">Ir a
 							Previred</a>
 					</div>
-					<div class="oe_button_box" name="button_box">
-						<a
-							href="https://si3.bcentral.cl/indicadoressiete/secure/Serie.aspx?gcode=IPC&param=UQBSAEYAYwAxAFIARABYADAALQBqAHAAWABKAHEAcQBzAHAAQgB4ADcATwBHAGIAMgBfAEwATgBOAHIAWQA1ACMAZwBsAC4AeABtAEwATQBsAHcAdQBvAGQARwBQAGUARQBvAG0ASwB4AEQAbABTAGgARgAxAGUAQgBxAHkAcwA5AG8ARQAzAGgAMQBPAFQARgBSAEwASABZAE0ARgBKAFoAMwBmAHYATgBoAGMANQBpAE8ANwBFAGMAJAA="
-							class="rounded-circle btn btn-beta" role="button" target="_blank">Ir a
-							banco central</a>
-					</div>
 					<div>
 						<group>
 							<group string="Período">
