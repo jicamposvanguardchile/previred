@@ -615,7 +615,7 @@ class hr_indicadores_previsionales(models.Model):
                 if col6:
                     p_texts = [p.get_text(strip=True).lower() for p in col6.find_all("p")]
                     if any("mensual" in t for t in p_texts):
-                        otro_div = fila.find_all("div")[-1]
+                        otro_div = fila.find_all("div")[+1]
                         valor_p = otro_div.find("p")
                         if valor_p:
                             indicadores['IPC'] = extraer_monto(valor_p.get_text(strip=True))
