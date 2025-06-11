@@ -348,7 +348,7 @@ class hr_indicadores_previsionales(models.Model):
                 extraccion = re.search(r'(\d{1,3}(?:[\.\,]\d{3})*(?:[\.,]\d{2}))', texto)
             if not extraccion:
                 extraccion = re.search(r'(\d+(?:[\.,]\d+)?)\s*%', texto)
-            #_logger.info('extraccion %s'%(extraccion))
+            _logger.info('extraccion %s'%(extraccion))
             #_logger.info('%s'%(float(extraccion.group(1).replace('.', '').replace(',', '.').replace('$', '').replace('%', ''))))
             if extraccion:
                 return float(extraccion.group(1).replace('.', '').replace(',', '.').replace('$', '').replace('%', ''))
