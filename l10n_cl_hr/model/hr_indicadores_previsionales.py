@@ -608,7 +608,7 @@ class hr_indicadores_previsionales(models.Model):
         for fila in soup_ipc.find_all("tr"):
             texto = fila.get_text(strip=True).lower()
             
-            if '2025' in texto and indicadores['IPC']:
+            if '2025' in texto and indicadores['IPC'] == 0:
                 celdas = fila.find_all("td")
                 if len(celdas) >= 6:
                     texto_ipc = celdas[5].get_text(strip=True)  # Mayo es la 6ta celda (índice 5)
