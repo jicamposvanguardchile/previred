@@ -18,7 +18,7 @@ class HrPayslip(models.Model):
              'to the contract chosen. If you let empty the field contract, this field isn\'t '
              'mandatory anymore and thus the rules applied will be all the rules set on the '
              'structure of all contracts of the employee valid for the chosen period')
-    name = fields.Char(string='Payslip Name', readonly=False,)
+    name = fields.Char(string='Payslip Name', readonly=0,)
     number = fields.Char(string='Reference', readonly=False, copy=False,)
     employee_id = fields.Many2one('hr.employee', string='Employee', required=True, readonly=False,)
     date_from = fields.Date(string='Date From', readonly=False, required=True,
