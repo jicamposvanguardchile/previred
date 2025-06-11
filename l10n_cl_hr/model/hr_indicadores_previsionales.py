@@ -605,10 +605,10 @@ class hr_indicadores_previsionales(models.Model):
         #Extraccion IPC
         soup_ipc = BeautifulSoup(page_ipc.content, "html.parser")
 
-        tablas_ipc = soup_ipc.find_all('table')
-        _logger.info('tablas_ipc %s'%(tablas_ipc))
+        tablas = soup_ipc.find_all('table')
+        _logger.info('tablas %s'%(tablas))
 
-        for tabla in tablas_ipc:
+        for tabla in tablas:
             for fila in tabla.find_all('tr'):
                 texto_raw = fila.get_text(strip=True)
                 texto = normalizar(texto_raw)
