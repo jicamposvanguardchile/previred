@@ -619,7 +619,7 @@ class hr_indicadores_previsionales(models.Model):
                         # Mayo es la columna 5 (enero=1, mayo=5)
                         texto_ipc_mayo = celdas[5].get_text(strip=True)
                         indicadores['IPC'] = extraer_monto(texto_ipc_mayo)
-                        _logger.info('texto_ip_mayo %s' %(texto_ipc_mayo))
+                        _logger.info('texto_ipc_mayo %s' %(texto_ipc_mayo))
                         break
                 
 
