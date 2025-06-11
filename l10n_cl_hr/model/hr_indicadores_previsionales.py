@@ -602,18 +602,16 @@ class hr_indicadores_previsionales(models.Model):
                             extraer_monto(celdas[3].get_text(strip=True))
                         ]
 
-        #Extraccion IPC
-        soup_ipc = BeautifulSoup(page_ipc.content, "html.parser")
+                #Extraccion IPC
+                soup_ipc = BeautifulSoup(page_ipc.content, "html.parser")
 
-        for fila in soup_ipc.find_all("tr"):
-            texto = fila.get_text(strip=True).lower()
-            
-            if '2025' in texto and not indicadores['IPC']:
-                celdas = fila.find_all("td")
-                if len(celdas) >= 6:
-                    texto_ipc = celdas[5].get_text(strip=True)  
-                    indicadores['IPC'] = extraer_monto(texto_ipc)
-                break
+                for fila in soup_ipc.find_all("tr"):
+                    if '2025' in texto and not indicadores['IPC']:
+                        celdas = fila.find_all("td")
+                        if len(celdas) >= 6:
+                            texto_ipc = celdas[5].get_text(strip=True)  
+                            indicadores['IPC'] = extraer_monto(texto_ipc)
+                        break
                 
 
         return indicadores
