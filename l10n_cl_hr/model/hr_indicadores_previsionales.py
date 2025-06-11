@@ -605,19 +605,14 @@ class hr_indicadores_previsionales(models.Model):
         #Extraccion IPC
         soup_ipc = BeautifulSoup(page_ipc.content, "html.parser")
 
-        bloques = soup_ipc.find_all("div", class_="col-sm-12 col-md-6 col-lg-3")
-        _logger.info('Encontrados %s bloques IPC en la página del Banco Central', len(bloques))
-
-        for bloque in bloques:
-            titulo = bloque.find("span", class_="sub-title")
-            if titulo:
-                _logger.info('Título encontrado: %s', titulo.get_text(strip=True))
-            if titulo and "IPC" in titulo.get_text():
-                valor = bloque.find("span", class_="number")
-                _logger.info('Valor IPC encontrado: %s', valor.get_text(strip=True) if valor else 'Ninguno')
-                if valor:
-                    indicadores["IPC"] = extraer_monto(valor.get_text(strip=True))
-                    _logger.info('IPC asignado: %s', indicadores["IPC"])
+        for fila in soup_ipc.find_all("tr"):
+            texto = fila.get_text(strip=True).lower()
+            
+            if '2025' in texto:
+                celdas = fila.find_all("td")
+                if len(celdas) >= 6:
+                    texto_ipc = celdas[5].get_text(strip=True)  # Mayo es la 6ta celda (índice 5)
+                    indicadores['IPC'] = extraer_monto(texto_ipc)
                 break
                 
 
