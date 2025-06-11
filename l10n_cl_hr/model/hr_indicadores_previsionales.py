@@ -363,6 +363,8 @@ class hr_indicadores_previsionales(models.Model):
 
         soup = BeautifulSoup(page.content, "html.parser")
 
+        #Extraccion previred
+
         tablas = soup.find_all('table')
         #_logger.info('tablas %s'%(tablas))
         for tabla in tablas:
@@ -598,6 +600,21 @@ class hr_indicadores_previsionales(models.Model):
                             extraer_monto(celdas[2].get_text(strip=True)),
                             extraer_monto(celdas[3].get_text(strip=True))
                         ]
+
+        #Extraccion IPC
+        soup_ipc = BeautifulSoup(page_ipc.content, "html.parser")
+
+        tablas_ipc = soup_ipc.find_all('table')
+
+        for tabla in tablas_ipc:
+            for fila in tabla.find_all('tr'):
+                texto_raw = fila.get_text(strip=True)
+                texto = normalizar(texto_raw)
+
+                if 'marzo 2025' in texto and indicadores['IPC'] == 0:
+                    celdas = fila.find_all('td')
+                    if len(celdas) >=2:
+                        indicadores['IPC'] =extraer_monto(celdas[1].get_text(strip=True))
 
                 
 
