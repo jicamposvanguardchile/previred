@@ -613,7 +613,7 @@ class hr_indicadores_previsionales(models.Model):
                 texto_raw = fila.get_text(strip=True)
                 texto = normalizar(texto_raw)
 
-                if 'IPC (MAY)' in texto and 'Mensual' in texto and indicadores['IPC'] == 0:
+                if 'IPC (MAY) (Var.%)' in texto and indicadores['IPC'] == 0:
                     celdas = fila.find_all('td')
                     if len(celdas) >= 2:
                         indicadores['IPC'] = extraer_monto(celdas[1].get_text(strip=True))
