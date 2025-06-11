@@ -608,16 +608,18 @@ class hr_indicadores_previsionales(models.Model):
         #tablas = soup_ipc.find_all('table')
         #_logger.info('tablas %s'%(tablas))
 
-        for tabla in soup_ipc.find_all("table"):
-            if '2025' in tabla.get_text():
-                filas = tabla.find_all('tr')
-                for fila in filas:
-                    columnas = fila.find_all('td')
-                    if len(columnas) >= 2:
-                        mes = normalizar(columnas[0].get_text(strip=True))
-                        if 'mayo' in mes:
-                            indicadores['IPC'] = extraer_monto(columnas[1].get_text(strip=True))
-                            break
+        cont = soup_ipc.find("div", class_="container")
+        if cont:
+            for fila in cont.find_all("div", class_="row"):
+                col6 = fila.find("div", class_="col-6")
+                if col6:
+                    p_texts = [p.get_text(strip=True).lower() for p in col6.find_all("p")]
+                    if any("mensual" in t for t in p_texts):
+                        otro_div = fila.find_all("div")[-1]
+                        valor_p = otro_div.find("p")
+                        if valor_p:
+                            indicadores['IPC'] = extraer_monto(valor_p.get_text(strip=True))
+                        break
                 
 
         return indicadores
