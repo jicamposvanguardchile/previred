@@ -350,9 +350,10 @@ class hr_indicadores_previsionales(models.Model):
             if not extraccion:
                 extraccion = re.search(r'(\d+(?:[\.,]\d+)?)\s*%', texto)
             #_logger.info('extraccion %s'%(extraccion))
-            _logger.info('%s'%(float(extraccion.group(1).replace('.', '').replace(',', '.').replace('$', '').replace('%', ''))))
+            
             if extraccion:
                 return float(extraccion.group(1).replace('.', '').replace(',', '.').replace('$', '').replace('%', ''))
+            _logger.info('%s'%(float(extraccion.group(1).replace('.', '').replace(',', '.').replace('$', '').replace('%', ''))))
             return 0
         
         def extraer_porcentaje(texto):
