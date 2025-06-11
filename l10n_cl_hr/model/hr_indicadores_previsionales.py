@@ -602,25 +602,25 @@ class hr_indicadores_previsionales(models.Model):
                             extraer_monto(celdas[3].get_text(strip=True))
                         ]
 
-                #Extraccion IPC
-                soup_ipc = BeautifulSoup(page_ipc.content, "html.parser")
+        #Extraccion IPC
+        soup_ipc = BeautifulSoup(page_ipc.content, "html.parser")
 
-                #tablas = soup_ipc.find_all('table')
-                #_logger.info('tablas %s'%(tablas))
+        #tablas = soup_ipc.find_all('table')
+        #_logger.info('tablas %s'%(tablas))
 
-                # Buscar tabla de IPC
-                tabla_ipc = soup_ipc.find("table", {"id": "gr"})
-                if tabla_ipc:
-                    for fila in tabla_ipc.find_all("tr"):
-                        celdas = fila.find_all("td")
-                        if celdas:
-                            anio = celdas[0].get_text(strip=True)
-                            if anio == '2025':
-                                # Mayo es la columna 5 (enero=1, mayo=5)
-                                texto_ipc_mayo = celdas[5].get_text(strip=True)
-                                indicadores['IPC'] = extraer_monto(texto_ipc_mayo)
-                                _logger.info('IPC mayo 2025 extraído: %s' % texto_ipc_mayo)
-                                break
+        # Buscar tabla de IPC
+        tabla_ipc = soup_ipc.find("table", {"id": "gr"})
+        if tabla_ipc:
+            for fila in tabla_ipc.find_all("tr"):
+                celdas = fila.find_all("td")
+                if celdas:
+                    anio = celdas[0].get_text(strip=True)
+                    if anio == '2025':
+                        # Mayo es la columna 5 (enero=1, mayo=5)
+                        texto_ipc_mayo = celdas[5].get_text(strip=True)
+                        indicadores['IPC'] = extraer_monto(texto_ipc_mayo)
+                        _logger.info('IPC mayo 2025 extraído: %s' % texto_ipc_mayo)
+                        break
                 
 
         return indicadores
