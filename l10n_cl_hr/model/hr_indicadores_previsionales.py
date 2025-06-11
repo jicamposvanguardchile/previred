@@ -605,18 +605,16 @@ class hr_indicadores_previsionales(models.Model):
         #Extraccion IPC
         soup_ipc = BeautifulSoup(page_ipc.content, "html.parser")
 
-        tablas = soup_ipc.find_all('table')
-        _logger.info('tablas %s'%(tablas))
-
-        for tabla in tablas:
-            for fila in tabla.find_all('tr'):
-                texto_raw = fila.get_text(strip=True)
-                texto = normalizar(texto_raw)
-
-                if 'IPC (MAY) (Var.%)' in texto and indicadores['IPC']:
-                    celdas = fila.find_all('td')
-                    if len(celdas) >= 2:
-                        indicadores['IPC'] = extraer_monto(celdas[1].get_text(strip=True))
+        #tablas = soup_ipc.find_all('table')
+        #_logger.info('tablas %s'%(tablas))
+        
+        for fila in soup_ipc.find_all('tr'):
+            columnas = fila.find_all('td')
+            if len(columnas) >= 2:
+                mes = columnas[0].get_text(strip=True).lower()
+                if 'mayo' in mes:
+                    indicadores['IPC'] = extraer_monto(columnas[1].get_text(strip=True))
+                    break
 
                 
 
