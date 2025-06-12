@@ -615,7 +615,7 @@ class hr_indicadores_previsionales(models.Model):
 
                 if '2025' in textos and indicadores['IPC'] == 0:
                     celda = fila_ipc.find_all('span')
-                    if len(celda) >= 4:
+                    if len(celda) >= 2:
                         indicadores['IPC'] =[
                             extraer_monto(celdas[1].get_text(strip=True))
                     ]
