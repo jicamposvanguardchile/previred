@@ -613,9 +613,9 @@ class hr_indicadores_previsionales(models.Model):
                 _logger.info('texto_raw_ipc %s' %(texto_raw_ipc))
                 textos = normalizar(texto_raw_ipc)
 
-                if 'gr_ctl99_Mayo' in textos and indicadores['IPC'] == 0:
+                if 'gr_ctl99_Mayo' in textos and indicadores['IPC']:
                     celda = fila_ipc.find_all('span')
-                    if len(celda) >= 2:
+                    if len(celda) >= 6:
                         indicadores['IPC'] =[
                             extraer_monto(celdas[1].get_text(strip=True))
                     ]
