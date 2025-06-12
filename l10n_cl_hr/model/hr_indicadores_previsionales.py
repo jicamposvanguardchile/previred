@@ -618,8 +618,8 @@ class hr_indicadores_previsionales(models.Model):
                     for celda in celdas:
                         get_txt = celda.get_text(strip=True)
                         celda = str(celda)
-                        _logger.info('celda %s' %(celda))
-                        _logger.info('type(celda) %s' %(type(celda)))
+                        #_logger.info('celda %s' %(celda))
+                        #_logger.info('type(celda) %s' %(type(celda)))
                         if 'Mayo' in celda:
                             _logger.info('celda.get_text %s' %(get_txt))
                             try:
