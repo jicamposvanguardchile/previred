@@ -627,10 +627,4 @@ class hr_indicadores_previsionales(models.Model):
                             except ValueError:
                                 _logger.warning('No se pudo convertir el valor de IPC: %s' % (get_txt))
                             break
-                #if '2025' in textos and 'gr_ctl99_Mayo' and indicadores['IPC'] == 0:
-                 #   celdas = fila_ipc.find_all("td")
-                  #  if len(celdas) >= 6:
-                   #     texto_ipc = celdas[5].get_text(strip=True)
-                    #    indicadores['IPC'] = extraer_monto(texto_ipc)
-                
         return indicadores
