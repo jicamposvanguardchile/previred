@@ -614,7 +614,7 @@ class hr_indicadores_previsionales(models.Model):
                 textos = normalizar(texto_raw_ipc)
 
                 celdas = fila_ipc.find_all('td')
-                if celdas and celdas[0].get_text(strip=True) == '2022':
+                if celdas and celdas[0].get_text(strip=True) == '2025':
                     for celda in celdas:
                         get_txt = celda.get_text(strip=True)
                         celda = str(celda)
