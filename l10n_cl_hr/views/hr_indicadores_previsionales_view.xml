@@ -87,6 +87,8 @@
 												</field>
 											</group>
 										</td>
+									</tr>
+									<tr>
 										<td width="40%">
 											<group col="2" name="top"
 												string="Distribucion del 7% Salud">
@@ -96,6 +98,8 @@
 												</field>
 											</group>
 										</td>
+									</tr>
+									<tr>
 										<td width="60%">
 											<group col="4" name="family_bonus"
 												string="Asignación Familiar">
