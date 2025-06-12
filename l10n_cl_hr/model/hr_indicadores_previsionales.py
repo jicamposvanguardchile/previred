@@ -284,7 +284,7 @@ class hr_indicadores_previsionales(models.Model):
         self.trabajo_pesado_trabajador = new_ind['COTIZACION_TRAB_PESADO'][2]
 
         # 10 IPC
-        self.ipc                    = new_ind['IPC'][0]
+        self.ipc                    = new_ind['IPC']
 
         #except Exception as e:
          #   _logger.error(f"Error actualizando indicadores previsionales: {e}")
@@ -623,9 +623,7 @@ class hr_indicadores_previsionales(models.Model):
                         _logger.info('type(celda) %s' %(type(celda)))
                         if re.search("Mayo", celda):
                             _logger.info('celda.get_text %s' %(get_txt))
-                            indicadores['IPC'] =[
-                                extraer_monto(get_txt)
-                        ]
+                            indicadores['IPC'] = extraer_monto(get_txt)
                             break
                 #if '2025' in textos and 'gr_ctl99_Mayo' and indicadores['IPC'] == 0:
                  #   celdas = fila_ipc.find_all("td")
