@@ -107,6 +107,8 @@ class hr_indicadores_previsionales(models.Model):
     tope_imponible_salud = fields.Float( 'Tope Imponible Salud', )
     tope_imponible_seguro_cesantia = fields.Float( 'Tope Imponible Seguro Cesantía', 
         help="Tope Imponible Seguro de Cesantía")
+    distribucion_salud = fields.Float( 'DISTRIBUCIÓN DEL 7% SALUD', help="DISTRIBUCIÓN DEL 7% SALUD")
+    distribucion_salud_fon = fields.Float( 'DISTRIBUCION_7P_FONASA', help="DISTRIBUCION_7P_FONASA")
     trabajo_pesado = fields.Float( 'Cotizacion Trabajo Pesado',  help="Cotizacion Trabajo Pesado")
     trabajo_pesado_empleador = fields.Float( 'Calificacion Trabajo Pesado Empleador',  
         help="Cotizacion Trabajo Pesado Empleador")
@@ -232,7 +234,11 @@ class hr_indicadores_previsionales(models.Model):
         self.contrato_plazo_indefinido_empleador_otro = new_ind['SEGURO_CESANTIA_11_ANNOS'][0]
         self.contrato_particular_trabajador           = new_ind['SEGURO_CESANTIA_CASA_PARTICULAR'][0]
 
-            # 7 ASIGNACIÓN FAMILIAR
+            # 7 DISTRIBUCIÓN DEL 7% SALUD
+        self.distribucion_salud          = new_ind['DISTRIBUCION_7P_CCAF']
+        self.distribucion_salud_fon      = new_ind['DISTRIBUCION_7P_FONASA']
+
+            # 8 ASIGNACIÓN FAMILIAR
         self.asignacion_familiar_monto_a = new_ind['ASIGNACION_FAMILIAR_A'][0]
         self.asignacion_familiar_monto_b = new_ind['ASIGNACION_FAMILIAR_B'][0]
         self.asignacion_familiar_monto_c = new_ind['ASIGNACION_FAMILIAR_C'][0]
@@ -244,7 +250,7 @@ class hr_indicadores_previsionales(models.Model):
         self.asignacion_familiar_tercer  = new_ind['ASIGNACION_FAMILIAR_C'][1]
         self.asignacion_familiar_cuarto  = new_ind['ASIGNACION_FAMILIAR_D'][1]
 
-        # 8 TASA COTIZACIÓN OBLIGATORIO AFP
+        # 9 TASA COTIZACIÓN OBLIGATORIO AFP
         self.tasa_afp_capital           = new_ind['TASA_CAPITAL'][0]
         self.tasa_sis_capital           = new_ind['TASA_CAPITAL'][1]
         self.tasa_independiente_capital = new_ind['TASA_CAPITAL'][2]
@@ -273,7 +279,7 @@ class hr_indicadores_previsionales(models.Model):
         self.tasa_sis_uno           = new_ind['TASA_UNO'][1]
         self.tasa_independiente_uno = new_ind['TASA_UNO'][2]
 
-        # 9 COTIZACION TRABAJOS PESADOS
+        # 10 COTIZACION TRABAJOS PESADOS
         self.trabajo_pesado         = new_ind['COTIZACION_TRAB_PESADO'][0]
         self.trabajo_menos_pesado   = new_ind['COTIZACION_TRAB_MENOS_PESADO'][0]
 
@@ -283,7 +289,7 @@ class hr_indicadores_previsionales(models.Model):
         self.trabajo_menos_pesado_trabajador = new_ind['COTIZACION_TRAB_MENOS_PESADO'][2]
         self.trabajo_pesado_trabajador = new_ind['COTIZACION_TRAB_PESADO'][2]
 
-        # 10 IPC
+        # 11 IPC
         self.ipc                    = new_ind['IPC']
 
         #except Exception as e:
