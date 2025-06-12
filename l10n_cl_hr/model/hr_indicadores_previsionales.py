@@ -626,6 +626,7 @@ class hr_indicadores_previsionales(models.Model):
                             indicadores['IPC'] =[
                                 extraer_monto(get_txt)
                         ]
+                            break
                 #if '2025' in textos and 'gr_ctl99_Mayo' and indicadores['IPC'] == 0:
                  #   celdas = fila_ipc.find_all("td")
                   #  if len(celdas) >= 6:
