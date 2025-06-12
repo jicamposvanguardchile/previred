@@ -610,10 +610,11 @@ class hr_indicadores_previsionales(models.Model):
             for fila_ipc in tabla_ipc.find_all('tr'):
                 #_logger.info('fila_ipc %s' %(fila_ipc))
                 texto_raw_ipc = fila_ipc.get_text(strip=True)
-                _logger.info('texto_raw_ipc %s' %(texto_raw_ipc))
+                #_logger.info('texto_raw_ipc %s' %(texto_raw_ipc))
                 textos = normalizar(texto_raw_ipc)
 
                 if '2025' in textos and indicadores['IPC'] == 0:
+                    _logger.info('textos %s' %(textos))
                     celdas = fila_ipc.find_all('td')
                     for celda in celdas:
                         get_txt = celda.get_text(strip=True)
