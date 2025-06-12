@@ -602,7 +602,7 @@ class hr_indicadores_previsionales(models.Model):
                             extraer_monto(celdas[3].get_text(strip=True))
                         ]
 
-                #Extraccion IPC
+        #Extraccion IPC
         soup_ipc = BeautifulSoup(page_ipc.content, "html.parser")
         tablas_ipc = soup_ipc.find_all('table')
         
@@ -610,7 +610,7 @@ class hr_indicadores_previsionales(models.Model):
             for fila_ipc in tabla_ipc.find_all('tr'):
                 #_logger.info('fila_ipc %s' %(fila_ipc))
                 texto_raw_ipc = fila_ipc.get_text(strip=True)
-                #_logger.info('texto_raw_ipc %s' %(texto_raw_ipc))
+                _logger.info('texto_raw_ipc %s' %(texto_raw_ipc))
                 textos = normalizar(texto_raw_ipc)
 
                 if '>2025' in texto_raw_ipc and indicadores['IPC'] == 0:
