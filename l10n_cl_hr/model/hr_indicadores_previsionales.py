@@ -604,10 +604,17 @@ class hr_indicadores_previsionales(models.Model):
 
                 #Extraccion IPC
         soup_ipc = BeautifulSoup(page_ipc.content, "html.parser")
-        span_ipc_mayo = soup_ipc.find('span', {'id': 'gr_ctl99_Mayo'})
-        if span_ipc_mayo:
-            texto_ipc = span_ipc_mayo.get_text(strip=True)
-            indicadores['IPC'] = extraer_monto(texto_ipc)
+        tablas_ipc = soup_ipc.find_all('table')
+        
+        for tabla_ipc in tablas_ipc:
+            for fila_ipc in tabla_ipc.find_all('tr'):
+                #_logger.info('fila_ipc %s' %(fila_ipc))
+                texto_raw_ipc = fila_ipc.get_text(strip=True)
+                _logger.info('texto_raw_ipc %s' %(texto_raw_ipc))
+                textos = normalizar(texto_raw_ipc)
+
+                if 'gr_ctl99_Marzo' in textos and indicadores['IPC'] == 0:
+                    indicadores['IPC'] = extraer_monto(texto_raw_ipc)
 
                 #if '2025' in textos and 'gr_ctl99_Mayo' and indicadores['IPC'] == 0:
                  #   celdas = fila_ipc.find_all("td")
