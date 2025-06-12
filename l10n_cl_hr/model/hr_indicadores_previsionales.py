@@ -613,19 +613,17 @@ class hr_indicadores_previsionales(models.Model):
                 #_logger.info('texto_raw_ipc %s' %(texto_raw_ipc))
                 textos = normalizar(texto_raw_ipc)
 
-                celdas = fila_ipc.find_all('td')
-                if celdas and celdas[0].get_text(strip=True) == '20252':
+                if re.search('\>2025<', str(fila_ipc)):
+                    #_logger.info('textos %s' %(textos))
+                    celdas = fila_ipc.find_all('td')
                     for celda in celdas:
                         get_txt = celda.get_text(strip=True)
-                        celda_str = str(celda)
-                        _logger.info('celda %s' %(celda_str))
+                        celda = str(celda)
+                        _logger.info('celda %s' %(celda))
                         _logger.info('type(celda) %s' %(type(celda)))
-                        if 'Mayo' in celda_str:
+                        if re.search("Mayo", celda):
                             _logger.info('celda.get_text %s' %(get_txt))
-                            try:
-                                indicadores['IPC'] = float(get_txt.replace(',', '.'))
-                            except ValueError:
-                                _logger.warning('No se pudo convertir el valor de IPC: %s' % (get_txt))
+                            indicadores['IPC'] = float(get_txt.replace(',', '.'))
                             break
                 #if '2025' in textos and 'gr_ctl99_Mayo' and indicadores['IPC'] == 0:
                  #   celdas = fila_ipc.find_all("td")
