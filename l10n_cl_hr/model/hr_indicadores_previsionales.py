@@ -613,7 +613,7 @@ class hr_indicadores_previsionales(models.Model):
                 #_logger.info('texto_raw_ipc %s' %(texto_raw_ipc))
                 textos = normalizar(texto_raw_ipc)
 
-                if '>2025<' in fila_ipc and indicadores['IPC'] == 0:
+                if re.search('>2025<', str(fila_ipc)) and indicadores['IPC'] == 0:
                     #_logger.info('textos %s' %(textos))
                     celdas = fila_ipc.find_all('td')
                     for celda in celdas:
