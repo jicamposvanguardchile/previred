@@ -90,7 +90,7 @@
 										<td width="40%">
 											<group col="2" name="top"
 												string="Distribucion del 7% Salud">
-												<field name="distribucion_salud" string="Distribucion 7% CCAF ">
+												<field name="distribucion_salud" string="Distribucion 7% CCAF">
 												</field>
 												<field name="distribucion_salud_fon" string="Distribucion 7% FONASA">
 												</field>
