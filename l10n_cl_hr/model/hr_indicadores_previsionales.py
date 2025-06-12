@@ -618,6 +618,7 @@ class hr_indicadores_previsionales(models.Model):
                     for celda in celdas:
                         _logger.info('celda %s' %(celda))
                         if re.search("Mayo", celda):
+                            _logger.info('celda.get_text %s' %(celda.get_text(strip=True)))
                             indicadores['IPC'] =[
                                 extraer_monto(celda.get_text(strip=True))
                         ]
