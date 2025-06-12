@@ -617,10 +617,10 @@ class hr_indicadores_previsionales(models.Model):
                 if celdas and celdas[0].get_text(strip=True) == '2022':
                     for celda in celdas:
                         get_txt = celda.get_text(strip=True)
-                        celda_str = str(celda)
-                        _logger.info('celda %s' %(celda_str))
+                        celda = str(celda)
+                        _logger.info('celda %s' %(celda))
                         _logger.info('type(celda) %s' %(type(celda)))
-                        if 'Mayo' in celda_str:
+                        if 'Mayo' in celda:
                             _logger.info('celda.get_text %s' %(get_txt))
                             try:
                                 indicadores['IPC'] = float(get_txt.replace(',', '.'))
