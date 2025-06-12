@@ -620,7 +620,7 @@ class hr_indicadores_previsionales(models.Model):
                         celda_str = str(celda)
                         _logger.info('celda %s' %(celda_str))
                         _logger.info('type(celda) %s' %(type(celda)))
-                        if 'Marzo' in celda_str:
+                        if 'Mayo' in celda_str:
                             _logger.info('celda.get_text %s' %(get_txt))
                             try:
                                 indicadores['IPC'] = float(get_txt.replace(',', '.'))
