@@ -388,8 +388,8 @@ class hr_indicadores_previsionales(models.Model):
                 _, last_day = calendar.monthrange(self.year, int(self.month))
                 mes = str(dict(self._fields['month'].selection).get(self.month))
                 _logger.info('mes %s'%(mes))
-                _logger.info('texto %s'%('al %s de %s del %s' %(last_day, mes.lower, self.year)))
-                if ('uf %s'%(mes.lower) in texto or 'al %s de %s del %s' %(last_day, mes.lower, self.year) in texto):
+                _logger.info('texto %s'%('al %s de %s del %s' %(last_day, mes.lower(), self.year)))
+                if ('uf %s'%(mes.lower()) in texto or 'al %s de %s del %s' %(last_day, mes.lower(), self.year) in texto):
                     indicadores['UF'] = extraer_monto(texto_raw)
                 #_logger.info('texto_raw %s'%(texto_raw))
                 #_logger.info('texto %s'%(texto))
