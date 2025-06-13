@@ -9,6 +9,7 @@ import logging
 import requests
 import re
 import unicodedata
+import calendar
 
 import locale
 
@@ -383,20 +384,22 @@ class hr_indicadores_previsionales(models.Model):
                  # UF
             #if ('uf abril' in texto or '30 de abril del' in texto):
              #   indicadores['UF']['ABRIL'] = extraer_monto(texto_raw)
-
-                if ('uf mayo' in texto or 'al 31 de mayo del 2025' in texto):
+                mes_id = dict(self._fields['month'].selection).get(self.month)
+                _, last_day = calendar.monthrange(self.year, int(mes_id))
+                
+                if ('uf %s'%(str(self.month).lower) in texto or 'al %s de %s del %s' %(last_day, str(self.month).lower, self.year) in texto):
                     indicadores['UF'] = extraer_monto(texto_raw)
                 #_logger.info('texto_raw %s'%(texto_raw))
                 #_logger.info('texto %s'%(texto))
 
 
                 # UTM y UTA
-                if 'mayo 2025' in texto:
+                if 'mayo %s'%(self.year) in texto:
                     celdas = fila.find_all('td')
                     if len(celdas) >= 3:
                         if indicadores['UTM'] == 0:
                             indicadores['UTM'] = extraer_monto(celdas[1].get_text(strip=True))
-                            indicadores['MES_UTM'] = 'MAYO'
+                            indicadores['MES_UTM'] = str(self.month).upper()
                         if indicadores['UTA'] == 0:
                             indicadores['UTA'] = extraer_monto(celdas[2].get_text(strip=True))
 
@@ -620,7 +623,7 @@ class hr_indicadores_previsionales(models.Model):
                 textos = normalizar(texto_raw_ipc)
 
                 celdas = fila_ipc.find_all('td')
-                if celdas and celdas[0].get_text(strip=True) == '2025':
+                if celdas and celdas[0].get_text(strip=True) == str(self.year):
                     for celda in celdas:
                         get_txt = celda.get_text(strip=True)
                         celda = str(celda)
