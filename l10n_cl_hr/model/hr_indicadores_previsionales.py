@@ -384,9 +384,8 @@ class hr_indicadores_previsionales(models.Model):
                  # UF
             #if ('uf abril' in texto or '30 de abril del' in texto):
              #   indicadores['UF']['ABRIL'] = extraer_monto(texto_raw)
-                mes_id = dict(self._fields['month'].selection).get(self.month)
-                _logger.info('self.mont %s'%(self.month))
-                _, last_day = calendar.monthrange(self.year, int(mes_id))
+
+                _, last_day = calendar.monthrange(self.year, int(self.month))
                 
                 if ('uf %s'%(str(self.month).lower) in texto or 'al %s de %s del %s' %(last_day, str(self.month).lower, self.year) in texto):
                     indicadores['UF'] = extraer_monto(texto_raw)
