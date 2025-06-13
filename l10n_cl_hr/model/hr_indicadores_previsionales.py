@@ -628,9 +628,7 @@ class hr_indicadores_previsionales(models.Model):
                         #_logger.info('type(celda) %s' %(type(celda)))
                         if 'Mayo' in celda:
                             _logger.info('celda.get_text %s' %(get_txt))
-                            try:
-                                indicadores['IPC'] = float(get_txt.replace(',', '.'))
-                            except ValueError:
-                                _logger.warning('No se pudo convertir el valor de IPC: %s' % (get_txt))
+                            indicadores['IPC'] = float(get_txt.replace(',', '.'))
+                            _logger.warning('No se pudo convertir el valor de IPC: %s' % (get_txt))
                             break
         return indicadores
