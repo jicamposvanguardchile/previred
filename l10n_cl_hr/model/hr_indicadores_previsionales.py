@@ -396,7 +396,7 @@ class hr_indicadores_previsionales(models.Model):
 
 
                 # UTM y UTA
-                if 'mayo %s'%(self.year) in texto:
+                if '%s %s'%(mes.lower(),self.year) in texto:
                     celdas = fila.find_all('td')
                     if len(celdas) >= 3:
                         if indicadores['UTM'] == 0:
