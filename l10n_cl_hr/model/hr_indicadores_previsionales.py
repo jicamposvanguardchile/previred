@@ -629,13 +629,14 @@ class hr_indicadores_previsionales(models.Model):
                 if celdas and celdas[0].get_text(strip=True) == str(self.year):
                     for celda in celdas:
                         get_txt = celda.get_text(strip=True)
-                        celda = str(celda)
-                        #_logger.info('celda %s' %(celda))
-                        #_logger.info('type(celda) %s' %(type(celda)))
-                        mes = dict(self._fields['month'].selection).get(self.month)
-                        if mes in celda:
-                            _logger.info('celda.get_text %s' %(get_txt))
-                            indicadores['IPC'] = float(get_txt.replace(',', '.'))
-                            _logger.warning('No se pudo convertir el valor de IPC: %s' % (get_txt))
-                            break
+                        if get_txt:
+                            celda = str(celda)
+                            #_logger.info('celda %s' %(celda))
+                            #_logger.info('type(celda) %s' %(type(celda)))
+                            mes = dict(self._fields['month'].selection).get(self.month)
+                            if mes in celda:
+                                _logger.info('celda.get_text %s' %(get_txt))
+                                indicadores['IPC'] = float(get_txt.replace(',', '.'))
+                                _logger.warning('No se pudo convertir el valor de IPC: %s' % (get_txt))
+                                break
         return indicadores
